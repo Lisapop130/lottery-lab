@@ -1,0 +1,320 @@
+/* Dark is the default ground — a lottery draw studio at night.
+   Every colour goes through a token so the light theme is a token swap,
+   never a second set of component rules. */
+:root{
+  --bg:#0b0f16;
+  --panel:#121822;
+  --panel-2:#171f2c;
+  --sunk:#0e141d;
+  --tip-bg:#05080d;
+  --line:#242f40;
+  --ink:#e8edf6;
+  --muted:#8b98ad;
+  --gold:#e9b949;
+  --gold-dim:#8a6d24;
+  --hot:#f0705a;
+  --cool:#4b8fd6;
+  --good:#57c98a;
+  --glow-a:#1b2740;
+  --glow-b:#2a2013;
+  --tab-a:#2a3348;
+  --tab-b:#1d2434;
+  --bar-cool-b:#2f5f92;
+  --bar-hot-a:#f8917d;
+  --bar-hot-b:#c2543f;
+  --ball-ring:rgba(0,0,0,.22);
+  --verdict-fair:#16241c;
+  --verdict-bias:#241d12;
+  --shadow:rgba(0,0,0,.5);
+  --line-strong:#33415a;
+  /* The physical balls read the same on paper or screen, so their own
+     gold is fixed while --gold (the UI accent) darkens for light grounds. */
+  --ball-gold:#e9b949;
+  --radius:14px;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+
+/* Light: a printed results sheet — warm paper, not grey. Neutrals carry a
+   slight gold bias so the accent belongs to the page. The OS preference sets
+   it, and the viewer's own toggle (data-theme on :root) overrides that in
+   both directions. */
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f7f4ec; --panel:#fffdf8; --panel-2:#fffefb; --sunk:#f2eee3;
+    --tip-bg:#241f16; --line:#e2dac9; --line-strong:#c9bda3;
+    --ink:#20242c; --muted:#6a6353;
+    --gold:#8f6913; --gold-dim:#cbb478;
+    --cool:#2f6fae; --glow-a:#e8eef7; --glow-b:#f6ecd6;
+    --tab-a:#fdf6e6; --tab-b:#f7eeda;
+    --bar-cool-b:#5d94c6; --bar-hot-a:#e07a63; --bar-hot-b:#b8452f;
+    --ball-ring:rgba(0,0,0,.14);
+    --verdict-fair:#e6f3ea; --verdict-bias:#fbf1de;
+    --shadow:rgba(60,50,25,.22);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f7f4ec; --panel:#fffdf8; --panel-2:#fffefb; --sunk:#f2eee3;
+  --tip-bg:#241f16; --line:#e2dac9; --line-strong:#c9bda3;
+  --ink:#20242c; --muted:#6a6353;
+  --gold:#8f6913; --gold-dim:#cbb478;
+  --cool:#2f6fae; --glow-a:#e8eef7; --glow-b:#f6ecd6;
+  --tab-a:#fdf6e6; --tab-b:#f7eeda;
+  --bar-cool-b:#5d94c6; --bar-hot-a:#e07a63; --bar-hot-b:#b8452f;
+  --ball-ring:rgba(0,0,0,.14);
+  --verdict-fair:#e6f3ea; --verdict-bias:#fbf1de;
+  --shadow:rgba(60,50,25,.22);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1100px 520px at 12% -12%, var(--glow-a) 0%, transparent 60%),
+    radial-gradient(900px 420px at 92% 0%, var(--glow-b) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  padding:26px clamp(16px,4vw,44px) 18px;
+}
+.brand{display:flex;align-items:center;gap:16px}
+.brand-ball{
+  width:52px;height:52px;flex:none;border-radius:50%;
+  background:linear-gradient(160deg,#f7d778,var(--ball-gold) 45%,#b7891f);
+  color:#161008;display:grid;place-items:center;
+  font-weight:800;font-size:24px;
+  box-shadow:0 6px 20px rgba(233,185,73,.28), inset 0 -3px 8px rgba(0,0,0,.25);
+}
+.brand h1{margin:0;font-size:23px;letter-spacing:-.02em;font-weight:700}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.topbar-meta{display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--line);background:var(--panel);
+  padding:7px 13px;border-radius:99px;font-size:12.5px;color:var(--muted);
+}
+.chip b{color:var(--ink);font-weight:600}
+
+/* ---------- game tabs ---------- */
+.gametabs{
+  display:flex;gap:8px;flex-wrap:wrap;
+  padding:0 clamp(16px,4vw,44px) 22px;
+}
+.tab{
+  appearance:none;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted);
+  padding:9px 16px;border-radius:10px;transition:.15s;
+  display:flex;align-items:center;gap:8px;
+}
+.tab:hover{color:var(--ink);border-color:var(--line-strong)}
+.tab[aria-selected="true"]{
+  background:linear-gradient(180deg,var(--tab-a),var(--tab-b));
+  color:var(--ink);border-color:var(--gold-dim);
+  box-shadow:0 0 0 1px rgba(233,185,73,.18);
+}
+.tab .flag{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--gold);
+  border:1px solid var(--gold-dim);border-radius:5px;padding:1px 5px}
+
+/* ---------- layout ---------- */
+.app{padding:0 clamp(16px,4vw,44px) 60px;max-width:1360px;margin:0 auto}
+
+.statrow{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:12px;margin-bottom:20px;
+}
+.stat{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:15px 17px;
+}
+.stat .k{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em}
+.stat .v{font-size:24px;font-weight:700;margin-top:5px;letter-spacing:-.02em}
+.stat .v small{font-size:13px;color:var(--muted);font-weight:500}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.span2{grid-column:1/-1}
+/* minmax(0,1fr), not 1fr: a plain 1fr track is min-content sized and would let
+   the wide bar chart stretch the card instead of scrolling inside it. */
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.span2{grid-column:auto}}
+
+@media(max-width:720px){
+  .statrow{grid-template-columns:repeat(auto-fit,minmax(148px,1fr))}
+  .pick .name{min-width:100%}
+  .card{padding:18px 16px 20px}
+}
+
+.card{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px 22px;
+}
+.card-head h2{margin:0;font-size:16.5px;font-weight:650;letter-spacing:-.01em}
+.card-head h3{margin:0;font-size:13.5px;font-weight:650;color:var(--ink)}
+.card-head .sub{margin:5px 0 0;color:var(--muted);font-size:12.5px;max-width:64ch}
+.card-head.tight{margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+
+/* ---------- frequency chart ---------- */
+.chart{
+  margin-top:18px;position:relative;
+  display:flex;align-items:flex-end;gap:2px;height:190px;
+  padding-bottom:22px;
+}
+.bar{
+  flex:1;min-width:0;position:relative;border-radius:3px 3px 0 0;
+  background:linear-gradient(180deg,var(--cool),var(--bar-cool-b));
+  transition:filter .12s;
+}
+.bar.up{background:linear-gradient(180deg,var(--bar-hot-a),var(--bar-hot-b))}
+.bar:hover{filter:brightness(1.35)}
+.bar .lab{
+  position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+  font-size:9px;color:var(--muted);font-family:var(--mono);
+}
+.charttip{
+  position:absolute;background:var(--tip-bg);border:1px solid var(--line);border-radius:8px;
+  padding:7px 10px;font-size:11.5px;line-height:1.45;white-space:nowrap;
+  pointer-events:none;z-index:5;box-shadow:0 8px 24px var(--shadow);
+  /* the tip stays dark on both grounds, so its text colour is fixed */
+  color:#f4efe4;
+}
+.charttip[hidden]{display:none}
+.expline{
+  position:absolute;left:0;right:0;border-top:1px dashed var(--gold);
+  opacity:.55;pointer-events:none;
+}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:12px}
+.legend .sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.sw.hot{background:var(--bar-hot-b)}.sw.cool{background:var(--cool)}
+.sw.line{background:none;border-top:2px dashed var(--gold);height:0;border-radius:0}
+
+/* ---------- ball rows ---------- */
+.balls{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.ballwrap{text-align:center}
+.ball{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  font-weight:700;font-size:16px;
+  background:linear-gradient(160deg,#f2f5fa,#c3ccdb);color:#131924;
+  /* the outer hairline keeps a white ball visible against pale paper */
+  box-shadow:inset 0 -3px 7px var(--ball-ring), 0 0 0 1px var(--line);
+  font-variant-numeric:tabular-nums;
+}
+.ball.gold{background:linear-gradient(160deg,#f7d778,var(--ball-gold) 50%,#b7891f);color:#171006}
+.ball.star{background:linear-gradient(160deg,#ffe89a,#e0b533);color:#171006}
+.ball.life,.ball.thunder,.ball.power,.ball.bonus{
+  background:linear-gradient(160deg,#ff9b8a,#cf5340);color:#200906}
+.ball.cool{background:linear-gradient(160deg,#a9c6e6,#5d84ac);color:#0d1621}
+.balls.small .ball{width:36px;height:36px;font-size:13.5px}
+.ballwrap .meta{display:block;margin-top:5px;font-size:10.5px;color:var(--muted);font-family:var(--mono)}
+
+/* ---------- picks ---------- */
+.picks-actions{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{
+  appearance:none;cursor:pointer;font:inherit;font-weight:650;font-size:13.5px;
+  border:0;border-radius:10px;padding:10px 18px;
+  background:linear-gradient(180deg,#f7d778,var(--ball-gold));color:#191106;
+  transition:.15s;
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--line-strong);transform:none;filter:none}
+.rolled{color:var(--muted);font-size:12px}
+
+.picklist{display:flex;flex-direction:column;gap:11px;margin-top:18px}
+.pick{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+}
+.pick .name{min-width:168px}
+.pick .name b{display:block;font-size:13.5px}
+.pick .name span{color:var(--muted);font-size:11.5px}
+.pick .line{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pick .sep{color:var(--muted);margin:0 2px;font-size:18px;line-height:1}
+.pick .ball{width:40px;height:40px;font-size:15px}
+
+/* ---------- shape / buckets / pairs ---------- */
+.shape{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.srow .k{font-size:12.5px;color:var(--muted);margin-bottom:7px}
+.srow .v{font-size:14px}
+.dist{display:flex;gap:6px;flex-wrap:wrap}
+.dpill{
+  background:var(--sunk);border:1px solid var(--line);border-radius:8px;
+  padding:6px 10px;font-size:12.5px;font-family:var(--mono);
+}
+.dpill b{color:var(--gold);font-weight:700}
+.dpill.top{border-color:var(--gold-dim)}
+
+.buckets{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.brow{display:flex;align-items:center;gap:11px;font-size:12.5px}
+.brow .bk{width:62px;color:var(--muted);font-family:var(--mono)}
+.brow .track{flex:1;height:9px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.brow .fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:99px}
+.brow .bv{width:42px;text-align:right;color:var(--muted);font-family:var(--mono)}
+
+.pairs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pairchip{
+  display:flex;align-items:center;gap:6px;
+  background:var(--sunk);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;
+  font-size:12.5px;
+}
+.pairchip .mini{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:11.5px;font-weight:700;
+  background:linear-gradient(160deg,#f2f5fa,#c3ccdb);color:#131924;
+}
+.pairchip .n{color:var(--muted);font-family:var(--mono);margin-left:3px}
+
+/* ---------- recent ---------- */
+.recent{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.rrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:9px 12px;background:var(--sunk);border:1px solid var(--line);border-radius:10px}
+.rrow .d{width:132px;color:var(--muted);font-size:12.5px;font-family:var(--mono)}
+.rrow .balls{margin:0;gap:7px}
+.rrow .ball{width:34px;height:34px;font-size:13px}
+.rrow .rd{font-size:10px;color:var(--gold);border:1px solid var(--gold-dim);
+  border-radius:5px;padding:1px 5px;font-weight:700}
+
+/* ---------- verdict + footer ---------- */
+.verdict{
+  margin-top:20px;border-radius:var(--radius);padding:18px 22px;
+  border:1px solid var(--line);background:var(--panel);
+  display:flex;gap:15px;align-items:flex-start;
+}
+.verdict .icon{font-size:22px;line-height:1.2}
+.verdict h3{margin:0 0 5px;font-size:15px}
+.verdict p{margin:0;color:var(--muted);font-size:13px;max-width:92ch}
+.verdict.fair{border-color:#2b4a37;background:linear-gradient(180deg,var(--verdict-fair),var(--panel))}
+.verdict.bias{border-color:#5a4420;background:linear-gradient(180deg,var(--verdict-bias),var(--panel))}
+
+.foot{margin-top:28px;color:var(--muted);font-size:12.5px;max-width:100ch}
+.foot p{margin:0 0 9px}
+.foot b{color:var(--ink)}
+.foot a{color:var(--gold)}
+.foot .muted{opacity:.8}
+
+.loaderr{
+  margin:40px auto;max-width:640px;background:#241416;border:1px solid #5c2a2e;
+  border-radius:12px;padding:20px;color:#f5c3c3;font-size:14px;
+}
+.loaderr code{font-family:var(--mono);background:#000;padding:2px 6px;border-radius:5px}
+
+/* Narrow screens: let the wide bar chart scroll inside its own box rather than
+   squashing 69 balls into a couple of pixels each. Must come after .bar. */
+@media(max-width:720px){
+  .chart{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+  .chart .bar{flex:0 0 10px;min-width:10px}
+  .chart .expline{display:none}
+}
+
+/* ---------- accessibility ---------- */
+:where(.tab,.btn,a):focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;border-radius:8px;
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .btn:hover{transform:none}
+}
+.stat .v,.brow .bv,.pairchip .n,.rrow .d{font-variant-numeric:tabular-nums}

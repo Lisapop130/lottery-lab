@@ -1,0 +1,14 @@
+{
+  "name": "uk-lottery-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal dashboard analysing 12 months of UK (and US Powerball) lottery draws.",
+  "scripts": {
+    "scrape": "node src/scrape.js",
+    "analyse": "node src/analyse.js",
+    "refresh": "node src/scrape.js && node src/analyse.js && node src/build-artifact.js",
+    "artifact": "node src/build-artifact.js",
+    "start": "node src/serve.js"
+  }
+}

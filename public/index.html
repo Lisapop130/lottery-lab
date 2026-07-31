@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lottery Lab — 12-month draw analysis</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23e9b949'/><text x='16' y='22' font-size='16' text-anchor='middle' font-family='sans-serif' font-weight='700' fill='%230d1117'>7</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-ball">7</span>
+    <div>
+      <h1>Lottery Lab</h1>
+      <p id="windowLine">Loading draw history…</p>
+    </div>
+  </div>
+  <div class="topbar-meta" id="topbarMeta"></div>
+</header>
+
+<nav class="gametabs" id="gameTabs"></nav>
+
+<main id="app" class="app" hidden>
+
+  <section class="statrow" id="statRow"></section>
+
+  <section class="grid">
+
+    <article class="card span2">
+      <div class="card-head">
+        <h2>Frequency of every number</h2>
+        <p class="sub">How many times each ball was drawn, against the dashed line showing what a perfectly fair machine would produce.</p>
+      </div>
+      <div class="chart" id="freqChart"></div>
+      <div class="legend">
+        <span><i class="sw hot"></i> Above expected</span>
+        <span><i class="sw cool"></i> Below expected</span>
+        <span><i class="sw line"></i> Expected (fair draw)</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Hot numbers</h2><p class="sub">Drawn most often in the window.</p></div>
+      <div class="balls" id="hotBalls"></div>
+      <div class="card-head tight"><h3>Hot <span id="extraLabelHot"></span></h3></div>
+      <div class="balls small" id="hotExtra"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Cold numbers</h2><p class="sub">Drawn least often in the window.</p></div>
+      <div class="balls" id="coldBalls"></div>
+      <div class="card-head tight"><h3>Longest waiting</h3><p class="sub">Draws since each number last appeared.</p></div>
+      <div class="balls" id="overdueBalls"></div>
+    </article>
+
+    <article class="card span2 picks">
+      <div class="card-head">
+        <h2>Suggested lines</h2>
+        <p class="sub">Five different strategies applied to the data above. Tap a ball count or roll again for a fresh set.</p>
+      </div>
+      <div class="picks-actions">
+        <button id="rollBtn" class="btn">Roll new lines</button>
+        <button id="copyBtn" class="btn ghost">Copy all</button>
+        <span class="rolled" id="rolledNote"></span>
+      </div>
+      <div class="picklist" id="pickList"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Shape of a typical draw</h2><p class="sub">The patterns that show up most often.</p></div>
+      <div class="shape" id="shapeBox"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Number ranges</h2><p class="sub">Which part of the pool the balls come from.</p></div>
+      <div class="buckets" id="bucketBox"></div>
+      <div class="card-head tight"><h3>Most frequent pairs</h3><p class="sub">Numbers that landed together. Chance alone predicts about <b id="pairExpected"></b> per pair.</p></div>
+      <div class="pairs" id="pairBox"></div>
+    </article>
+
+    <article class="card span2">
+      <div class="card-head"><h2>Most recent draws</h2></div>
+      <div class="recent" id="recentBox"></div>
+    </article>
+
+  </section>
+
+  <section class="verdict" id="verdict"></section>
+
+  <footer class="foot">
+    <p><b>How to read this.</b> Every draw is independent — the machine has no memory, so a "hot" or "overdue" number is no more likely to come up next time than any other. The statistical test on this page checks whether the last 12 months show any real bias, and reports honestly when it doesn't. Treat the suggested lines as a nicer way to pick than a random dip, not as an edge.</p>
+    <p class="muted">Data scraped from lottery.co.uk archives, cross-checked against the National Lottery feed. For fun and personal use. If gambling stops being fun, <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware.org</a> · 0808 8020 133.</p>
+  </footer>
+</main>
+
+<div id="loadError" class="loaderr" hidden></div>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>

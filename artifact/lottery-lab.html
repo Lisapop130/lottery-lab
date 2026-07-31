@@ -1,0 +1,819 @@
+<title>Lottery Lab — 12 months of UK lottery draws</title>
+<style>
+/* Dark is the default ground — a lottery draw studio at night.
+   Every colour goes through a token so the light theme is a token swap,
+   never a second set of component rules. */
+:root{
+  --bg:#0b0f16;
+  --panel:#121822;
+  --panel-2:#171f2c;
+  --sunk:#0e141d;
+  --tip-bg:#05080d;
+  --line:#242f40;
+  --ink:#e8edf6;
+  --muted:#8b98ad;
+  --gold:#e9b949;
+  --gold-dim:#8a6d24;
+  --hot:#f0705a;
+  --cool:#4b8fd6;
+  --good:#57c98a;
+  --glow-a:#1b2740;
+  --glow-b:#2a2013;
+  --tab-a:#2a3348;
+  --tab-b:#1d2434;
+  --bar-cool-b:#2f5f92;
+  --bar-hot-a:#f8917d;
+  --bar-hot-b:#c2543f;
+  --ball-ring:rgba(0,0,0,.22);
+  --verdict-fair:#16241c;
+  --verdict-bias:#241d12;
+  --shadow:rgba(0,0,0,.5);
+  --line-strong:#33415a;
+  /* The physical balls read the same on paper or screen, so their own
+     gold is fixed while --gold (the UI accent) darkens for light grounds. */
+  --ball-gold:#e9b949;
+  --radius:14px;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+
+/* Light: a printed results sheet — warm paper, not grey. Neutrals carry a
+   slight gold bias so the accent belongs to the page. The OS preference sets
+   it, and the viewer's own toggle (data-theme on :root) overrides that in
+   both directions. */
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f7f4ec; --panel:#fffdf8; --panel-2:#fffefb; --sunk:#f2eee3;
+    --tip-bg:#241f16; --line:#e2dac9; --line-strong:#c9bda3;
+    --ink:#20242c; --muted:#6a6353;
+    --gold:#8f6913; --gold-dim:#cbb478;
+    --cool:#2f6fae; --glow-a:#e8eef7; --glow-b:#f6ecd6;
+    --tab-a:#fdf6e6; --tab-b:#f7eeda;
+    --bar-cool-b:#5d94c6; --bar-hot-a:#e07a63; --bar-hot-b:#b8452f;
+    --ball-ring:rgba(0,0,0,.14);
+    --verdict-fair:#e6f3ea; --verdict-bias:#fbf1de;
+    --shadow:rgba(60,50,25,.22);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f7f4ec; --panel:#fffdf8; --panel-2:#fffefb; --sunk:#f2eee3;
+  --tip-bg:#241f16; --line:#e2dac9; --line-strong:#c9bda3;
+  --ink:#20242c; --muted:#6a6353;
+  --gold:#8f6913; --gold-dim:#cbb478;
+  --cool:#2f6fae; --glow-a:#e8eef7; --glow-b:#f6ecd6;
+  --tab-a:#fdf6e6; --tab-b:#f7eeda;
+  --bar-cool-b:#5d94c6; --bar-hot-a:#e07a63; --bar-hot-b:#b8452f;
+  --ball-ring:rgba(0,0,0,.14);
+  --verdict-fair:#e6f3ea; --verdict-bias:#fbf1de;
+  --shadow:rgba(60,50,25,.22);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1100px 520px at 12% -12%, var(--glow-a) 0%, transparent 60%),
+    radial-gradient(900px 420px at 92% 0%, var(--glow-b) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  padding:26px clamp(16px,4vw,44px) 18px;
+}
+.brand{display:flex;align-items:center;gap:16px}
+.brand-ball{
+  width:52px;height:52px;flex:none;border-radius:50%;
+  background:linear-gradient(160deg,#f7d778,var(--ball-gold) 45%,#b7891f);
+  color:#161008;display:grid;place-items:center;
+  font-weight:800;font-size:24px;
+  box-shadow:0 6px 20px rgba(233,185,73,.28), inset 0 -3px 8px rgba(0,0,0,.25);
+}
+.brand h1{margin:0;font-size:23px;letter-spacing:-.02em;font-weight:700}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.topbar-meta{display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--line);background:var(--panel);
+  padding:7px 13px;border-radius:99px;font-size:12.5px;color:var(--muted);
+}
+.chip b{color:var(--ink);font-weight:600}
+
+/* ---------- game tabs ---------- */
+.gametabs{
+  display:flex;gap:8px;flex-wrap:wrap;
+  padding:0 clamp(16px,4vw,44px) 22px;
+}
+.tab{
+  appearance:none;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted);
+  padding:9px 16px;border-radius:10px;transition:.15s;
+  display:flex;align-items:center;gap:8px;
+}
+.tab:hover{color:var(--ink);border-color:var(--line-strong)}
+.tab[aria-selected="true"]{
+  background:linear-gradient(180deg,var(--tab-a),var(--tab-b));
+  color:var(--ink);border-color:var(--gold-dim);
+  box-shadow:0 0 0 1px rgba(233,185,73,.18);
+}
+.tab .flag{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--gold);
+  border:1px solid var(--gold-dim);border-radius:5px;padding:1px 5px}
+
+/* ---------- layout ---------- */
+.app{padding:0 clamp(16px,4vw,44px) 60px;max-width:1360px;margin:0 auto}
+
+.statrow{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:12px;margin-bottom:20px;
+}
+.stat{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:15px 17px;
+}
+.stat .k{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em}
+.stat .v{font-size:24px;font-weight:700;margin-top:5px;letter-spacing:-.02em}
+.stat .v small{font-size:13px;color:var(--muted);font-weight:500}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.span2{grid-column:1/-1}
+/* minmax(0,1fr), not 1fr: a plain 1fr track is min-content sized and would let
+   the wide bar chart stretch the card instead of scrolling inside it. */
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.span2{grid-column:auto}}
+
+@media(max-width:720px){
+  .statrow{grid-template-columns:repeat(auto-fit,minmax(148px,1fr))}
+  .pick .name{min-width:100%}
+  .card{padding:18px 16px 20px}
+}
+
+.card{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px 22px;
+}
+.card-head h2{margin:0;font-size:16.5px;font-weight:650;letter-spacing:-.01em}
+.card-head h3{margin:0;font-size:13.5px;font-weight:650;color:var(--ink)}
+.card-head .sub{margin:5px 0 0;color:var(--muted);font-size:12.5px;max-width:64ch}
+.card-head.tight{margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+
+/* ---------- frequency chart ---------- */
+.chart{
+  margin-top:18px;position:relative;
+  display:flex;align-items:flex-end;gap:2px;height:190px;
+  padding-bottom:22px;
+}
+.bar{
+  flex:1;min-width:0;position:relative;border-radius:3px 3px 0 0;
+  background:linear-gradient(180deg,var(--cool),var(--bar-cool-b));
+  transition:filter .12s;
+}
+.bar.up{background:linear-gradient(180deg,var(--bar-hot-a),var(--bar-hot-b))}
+.bar:hover{filter:brightness(1.35)}
+.bar .lab{
+  position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+  font-size:9px;color:var(--muted);font-family:var(--mono);
+}
+.charttip{
+  position:absolute;background:var(--tip-bg);border:1px solid var(--line);border-radius:8px;
+  padding:7px 10px;font-size:11.5px;line-height:1.45;white-space:nowrap;
+  pointer-events:none;z-index:5;box-shadow:0 8px 24px var(--shadow);
+  /* the tip stays dark on both grounds, so its text colour is fixed */
+  color:#f4efe4;
+}
+.charttip[hidden]{display:none}
+.expline{
+  position:absolute;left:0;right:0;border-top:1px dashed var(--gold);
+  opacity:.55;pointer-events:none;
+}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:12px}
+.legend .sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.sw.hot{background:var(--bar-hot-b)}.sw.cool{background:var(--cool)}
+.sw.line{background:none;border-top:2px dashed var(--gold);height:0;border-radius:0}
+
+/* ---------- ball rows ---------- */
+.balls{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.ballwrap{text-align:center}
+.ball{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  font-weight:700;font-size:16px;
+  background:linear-gradient(160deg,#f2f5fa,#c3ccdb);color:#131924;
+  /* the outer hairline keeps a white ball visible against pale paper */
+  box-shadow:inset 0 -3px 7px var(--ball-ring), 0 0 0 1px var(--line);
+  font-variant-numeric:tabular-nums;
+}
+.ball.gold{background:linear-gradient(160deg,#f7d778,var(--ball-gold) 50%,#b7891f);color:#171006}
+.ball.star{background:linear-gradient(160deg,#ffe89a,#e0b533);color:#171006}
+.ball.life,.ball.thunder,.ball.power,.ball.bonus{
+  background:linear-gradient(160deg,#ff9b8a,#cf5340);color:#200906}
+.ball.cool{background:linear-gradient(160deg,#a9c6e6,#5d84ac);color:#0d1621}
+.balls.small .ball{width:36px;height:36px;font-size:13.5px}
+.ballwrap .meta{display:block;margin-top:5px;font-size:10.5px;color:var(--muted);font-family:var(--mono)}
+
+/* ---------- picks ---------- */
+.picks-actions{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{
+  appearance:none;cursor:pointer;font:inherit;font-weight:650;font-size:13.5px;
+  border:0;border-radius:10px;padding:10px 18px;
+  background:linear-gradient(180deg,#f7d778,var(--ball-gold));color:#191106;
+  transition:.15s;
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--line-strong);transform:none;filter:none}
+.rolled{color:var(--muted);font-size:12px}
+
+.picklist{display:flex;flex-direction:column;gap:11px;margin-top:18px}
+.pick{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+}
+.pick .name{min-width:168px}
+.pick .name b{display:block;font-size:13.5px}
+.pick .name span{color:var(--muted);font-size:11.5px}
+.pick .line{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pick .sep{color:var(--muted);margin:0 2px;font-size:18px;line-height:1}
+.pick .ball{width:40px;height:40px;font-size:15px}
+
+/* ---------- shape / buckets / pairs ---------- */
+.shape{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.srow .k{font-size:12.5px;color:var(--muted);margin-bottom:7px}
+.srow .v{font-size:14px}
+.dist{display:flex;gap:6px;flex-wrap:wrap}
+.dpill{
+  background:var(--sunk);border:1px solid var(--line);border-radius:8px;
+  padding:6px 10px;font-size:12.5px;font-family:var(--mono);
+}
+.dpill b{color:var(--gold);font-weight:700}
+.dpill.top{border-color:var(--gold-dim)}
+
+.buckets{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.brow{display:flex;align-items:center;gap:11px;font-size:12.5px}
+.brow .bk{width:62px;color:var(--muted);font-family:var(--mono)}
+.brow .track{flex:1;height:9px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.brow .fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:99px}
+.brow .bv{width:42px;text-align:right;color:var(--muted);font-family:var(--mono)}
+
+.pairs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pairchip{
+  display:flex;align-items:center;gap:6px;
+  background:var(--sunk);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 6px;
+  font-size:12.5px;
+}
+.pairchip .mini{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:11.5px;font-weight:700;
+  background:linear-gradient(160deg,#f2f5fa,#c3ccdb);color:#131924;
+}
+.pairchip .n{color:var(--muted);font-family:var(--mono);margin-left:3px}
+
+/* ---------- recent ---------- */
+.recent{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.rrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:9px 12px;background:var(--sunk);border:1px solid var(--line);border-radius:10px}
+.rrow .d{width:132px;color:var(--muted);font-size:12.5px;font-family:var(--mono)}
+.rrow .balls{margin:0;gap:7px}
+.rrow .ball{width:34px;height:34px;font-size:13px}
+.rrow .rd{font-size:10px;color:var(--gold);border:1px solid var(--gold-dim);
+  border-radius:5px;padding:1px 5px;font-weight:700}
+
+/* ---------- verdict + footer ---------- */
+.verdict{
+  margin-top:20px;border-radius:var(--radius);padding:18px 22px;
+  border:1px solid var(--line);background:var(--panel);
+  display:flex;gap:15px;align-items:flex-start;
+}
+.verdict .icon{font-size:22px;line-height:1.2}
+.verdict h3{margin:0 0 5px;font-size:15px}
+.verdict p{margin:0;color:var(--muted);font-size:13px;max-width:92ch}
+.verdict.fair{border-color:#2b4a37;background:linear-gradient(180deg,var(--verdict-fair),var(--panel))}
+.verdict.bias{border-color:#5a4420;background:linear-gradient(180deg,var(--verdict-bias),var(--panel))}
+
+.foot{margin-top:28px;color:var(--muted);font-size:12.5px;max-width:100ch}
+.foot p{margin:0 0 9px}
+.foot b{color:var(--ink)}
+.foot a{color:var(--gold)}
+.foot .muted{opacity:.8}
+
+.loaderr{
+  margin:40px auto;max-width:640px;background:#241416;border:1px solid #5c2a2e;
+  border-radius:12px;padding:20px;color:#f5c3c3;font-size:14px;
+}
+.loaderr code{font-family:var(--mono);background:#000;padding:2px 6px;border-radius:5px}
+
+/* Narrow screens: let the wide bar chart scroll inside its own box rather than
+   squashing 69 balls into a couple of pixels each. Must come after .bar. */
+@media(max-width:720px){
+  .chart{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+  .chart .bar{flex:0 0 10px;min-width:10px}
+  .chart .expline{display:none}
+}
+
+/* ---------- accessibility ---------- */
+:where(.tab,.btn,a):focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;border-radius:8px;
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .btn:hover{transform:none}
+}
+.stat .v,.brow .bv,.pairchip .n,.rrow .d{font-variant-numeric:tabular-nums}
+
+/* the artifact is a fixed snapshot, so the freshness line is part of the page */
+.snapshot{
+  display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;
+  margin:0 clamp(16px,4vw,44px) 18px;padding:11px 15px;
+  background:var(--sunk);border:1px solid var(--line);border-radius:10px;
+  color:var(--muted);font-size:12.5px;max-width:1360px;
+}
+.snapshot b{color:var(--ink)}
+@media(min-width:1449px){.snapshot{margin-left:auto;margin-right:auto}}
+</style>
+
+<div class="snapshot">
+  <span>Snapshot of <b>693</b> draws, latest <b>30 July 2026</b>.</span>
+  <span>Figures are fixed at the moment this page was built — re-run the scraper locally and republish to bring it up to date.</span>
+</div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-ball">7</span>
+    <div>
+      <h1>Lottery Lab</h1>
+      <p id="windowLine">Loading draw history…</p>
+    </div>
+  </div>
+  <div class="topbar-meta" id="topbarMeta"></div>
+</header>
+
+<nav class="gametabs" id="gameTabs"></nav>
+
+<main id="app" class="app" hidden>
+
+  <section class="statrow" id="statRow"></section>
+
+  <section class="grid">
+
+    <article class="card span2">
+      <div class="card-head">
+        <h2>Frequency of every number</h2>
+        <p class="sub">How many times each ball was drawn, against the dashed line showing what a perfectly fair machine would produce.</p>
+      </div>
+      <div class="chart" id="freqChart"></div>
+      <div class="legend">
+        <span><i class="sw hot"></i> Above expected</span>
+        <span><i class="sw cool"></i> Below expected</span>
+        <span><i class="sw line"></i> Expected (fair draw)</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Hot numbers</h2><p class="sub">Drawn most often in the window.</p></div>
+      <div class="balls" id="hotBalls"></div>
+      <div class="card-head tight"><h3>Hot <span id="extraLabelHot"></span></h3></div>
+      <div class="balls small" id="hotExtra"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Cold numbers</h2><p class="sub">Drawn least often in the window.</p></div>
+      <div class="balls" id="coldBalls"></div>
+      <div class="card-head tight"><h3>Longest waiting</h3><p class="sub">Draws since each number last appeared.</p></div>
+      <div class="balls" id="overdueBalls"></div>
+    </article>
+
+    <article class="card span2 picks">
+      <div class="card-head">
+        <h2>Suggested lines</h2>
+        <p class="sub">Five different strategies applied to the data above. Tap a ball count or roll again for a fresh set.</p>
+      </div>
+      <div class="picks-actions">
+        <button id="rollBtn" class="btn">Roll new lines</button>
+        <button id="copyBtn" class="btn ghost">Copy all</button>
+        <span class="rolled" id="rolledNote"></span>
+      </div>
+      <div class="picklist" id="pickList"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Shape of a typical draw</h2><p class="sub">The patterns that show up most often.</p></div>
+      <div class="shape" id="shapeBox"></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h2>Number ranges</h2><p class="sub">Which part of the pool the balls come from.</p></div>
+      <div class="buckets" id="bucketBox"></div>
+      <div class="card-head tight"><h3>Most frequent pairs</h3><p class="sub">Numbers that landed together. Chance alone predicts about <b id="pairExpected"></b> per pair.</p></div>
+      <div class="pairs" id="pairBox"></div>
+    </article>
+
+    <article class="card span2">
+      <div class="card-head"><h2>Most recent draws</h2></div>
+      <div class="recent" id="recentBox"></div>
+    </article>
+
+  </section>
+
+  <section class="verdict" id="verdict"></section>
+
+  <footer class="foot">
+    <p><b>How to read this.</b> Every draw is independent — the machine has no memory, so a "hot" or "overdue" number is no more likely to come up next time than any other. The statistical test on this page checks whether the last 12 months show any real bias, and reports honestly when it doesn't. Treat the suggested lines as a nicer way to pick than a random dip, not as an edge.</p>
+    <p class="muted">Data scraped from lottery.co.uk archives, cross-checked against the National Lottery feed. For fun and personal use. If gambling stops being fun, <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware.org</a> · 0808 8020 133.</p>
+  </footer>
+</main>
+
+<div id="loadError" class="loaderr" hidden></div>
+
+<script>window.__LOTTERY_DATA__ = {"generatedAt":"2026-07-31T15:01:12.475Z","sourceGeneratedAt":"2026-07-31T15:01:11.590Z","windowMonths":12,"cutoff":"2025-07-31","games":{"lotto":{"meta":{"id":"lotto","name":"Lotto","region":"UK","schedule":"Wed & Sat","mainCount":6,"mainMax":59,"mainLabel":"Main balls","extraCount":1,"extraMax":59,"extraLabel":"Bonus ball","extraClass":"bonus","extraPlayerPicks":false,"draws":119,"from":"2025-08-02","to":"2026-07-29"},"main":{"rows":[{"n":1,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":28,"lastSeen":"2026-06-10"},{"n":2,"count":14,"expected":12.1,"deviation":15.7,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":3,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":4,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":8,"lastSeen":"2026-07-15"},{"n":5,"count":14,"expected":12.1,"deviation":15.7,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":6,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":7,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":8,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":17,"lastSeen":"2026-07-01"},{"n":9,"count":19,"expected":12.1,"deviation":57,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":10,"count":14,"expected":12.1,"deviation":15.7,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":11,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":34,"lastSeen":"2026-05-23"},{"n":12,"count":15,"expected":12.1,"deviation":23.9,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":13,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":8,"lastSeen":"2026-07-15"},{"n":14,"count":10,"expected":12.1,"deviation":-17.4,"drawsSince":8,"lastSeen":"2026-07-15"},{"n":15,"count":15,"expected":12.1,"deviation":23.9,"drawsSince":22,"lastSeen":"2026-06-20"},{"n":16,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":37,"lastSeen":"2026-05-13"},{"n":17,"count":12,"expected":12.1,"deviation":-0.8,"drawsSince":5,"lastSeen":"2026-07-22"},{"n":18,"count":15,"expected":12.1,"deviation":23.9,"drawsSince":19,"lastSeen":"2026-06-27"},{"n":19,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":42,"lastSeen":"2026-04-25"},{"n":20,"count":15,"expected":12.1,"deviation":23.9,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":21,"count":4,"expected":12.1,"deviation":-66.9,"drawsSince":23,"lastSeen":"2026-06-20"},{"n":22,"count":18,"expected":12.1,"deviation":48.7,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":23,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":24,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":35,"lastSeen":"2026-05-20"},{"n":25,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":5,"lastSeen":"2026-07-22"},{"n":26,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":27,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":36,"lastSeen":"2026-05-16"},{"n":28,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":20,"lastSeen":"2026-06-24"},{"n":29,"count":10,"expected":12.1,"deviation":-17.4,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":30,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":7,"lastSeen":"2026-07-18"},{"n":31,"count":15,"expected":12.1,"deviation":23.9,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":32,"count":14,"expected":12.1,"deviation":15.7,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":33,"count":15,"expected":12.1,"deviation":23.9,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":34,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":35,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":12,"lastSeen":"2026-07-08"},{"n":36,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":37,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":27,"lastSeen":"2026-06-13"},{"n":38,"count":14,"expected":12.1,"deviation":15.7,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":39,"count":12,"expected":12.1,"deviation":-0.8,"drawsSince":12,"lastSeen":"2026-07-08"},{"n":40,"count":19,"expected":12.1,"deviation":57,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":41,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":15,"lastSeen":"2026-07-04"},{"n":42,"count":14,"expected":12.1,"deviation":15.7,"drawsSince":7,"lastSeen":"2026-07-18"},{"n":43,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":5,"lastSeen":"2026-07-22"},{"n":44,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":19,"lastSeen":"2026-06-27"},{"n":45,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":10,"lastSeen":"2026-07-11"},{"n":46,"count":10,"expected":12.1,"deviation":-17.4,"drawsSince":7,"lastSeen":"2026-07-18"},{"n":47,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":48,"count":12,"expected":12.1,"deviation":-0.8,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":49,"count":10,"expected":12.1,"deviation":-17.4,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":50,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":33,"lastSeen":"2026-05-27"},{"n":51,"count":12,"expected":12.1,"deviation":-0.8,"drawsSince":9,"lastSeen":"2026-07-15"},{"n":52,"count":10,"expected":12.1,"deviation":-17.4,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":53,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":54,"count":18,"expected":12.1,"deviation":48.7,"drawsSince":13,"lastSeen":"2026-07-08"},{"n":55,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":56,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":57,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":9,"lastSeen":"2026-07-15"},{"n":58,"count":13,"expected":12.1,"deviation":7.4,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":59,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":2,"lastSeen":"2026-07-25"}],"expected":12.1,"chi2":52.01,"df":58,"p":0.6964,"biased":false},"extra":{"rows":[{"n":1,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":2,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":3,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":4,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":70,"lastSeen":"2026-01-17"},{"n":5,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":38,"lastSeen":"2026-05-09"},{"n":6,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":23,"lastSeen":"2026-06-20"},{"n":7,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":43,"lastSeen":"2026-04-22"},{"n":8,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":9,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":72,"lastSeen":"2026-01-10"},{"n":10,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":11,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":5,"lastSeen":"2026-07-22"},{"n":12,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":73,"lastSeen":"2026-01-07"},{"n":13,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":107,"lastSeen":"2025-09-10"},{"n":14,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":37,"lastSeen":"2026-05-13"},{"n":15,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":67,"lastSeen":"2026-01-28"},{"n":16,"count":5,"expected":2.02,"deviation":147.9,"drawsSince":21,"lastSeen":"2026-06-24"},{"n":17,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":18,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":50,"lastSeen":"2026-03-28"},{"n":19,"count":5,"expected":2.02,"deviation":147.9,"drawsSince":40,"lastSeen":"2026-05-02"},{"n":20,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":36,"lastSeen":"2026-05-16"},{"n":21,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":76,"lastSeen":"2025-12-27"},{"n":22,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":104,"lastSeen":"2025-09-20"},{"n":23,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":42,"lastSeen":"2026-04-25"},{"n":24,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":25,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":45,"lastSeen":"2026-04-15"},{"n":26,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":27,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":41,"lastSeen":"2026-04-29"},{"n":28,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":109,"lastSeen":"2025-09-03"},{"n":29,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":19,"lastSeen":"2026-06-27"},{"n":30,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":31,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":35,"lastSeen":"2026-05-20"},{"n":32,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":93,"lastSeen":"2025-10-29"},{"n":33,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":32,"lastSeen":"2026-05-30"},{"n":34,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":35,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":33,"lastSeen":"2026-05-27"},{"n":36,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":79,"lastSeen":"2025-12-17"},{"n":37,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":12,"lastSeen":"2026-07-08"},{"n":38,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":7,"lastSeen":"2026-07-18"},{"n":39,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":40,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":64,"lastSeen":"2026-02-07"},{"n":41,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":10,"lastSeen":"2026-07-11"},{"n":42,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":100,"lastSeen":"2025-10-04"},{"n":43,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":51,"lastSeen":"2026-03-25"},{"n":44,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":22,"lastSeen":"2026-06-20"},{"n":45,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":13,"lastSeen":"2026-07-08"},{"n":46,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":47,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":48,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":44,"lastSeen":"2026-04-18"},{"n":49,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":15,"lastSeen":"2026-07-04"},{"n":50,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":51,"count":2,"expected":2.02,"deviation":-0.8,"drawsSince":29,"lastSeen":"2026-06-10"},{"n":52,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":48,"lastSeen":"2026-04-04"},{"n":53,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":98,"lastSeen":"2025-10-11"},{"n":54,"count":5,"expected":2.02,"deviation":147.9,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":55,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":94,"lastSeen":"2025-10-25"},{"n":56,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":8,"lastSeen":"2026-07-15"},{"n":57,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":58,"count":1,"expected":2.02,"deviation":-50.4,"drawsSince":111,"lastSeen":"2025-08-27"},{"n":59,"count":3,"expected":2.02,"deviation":48.7,"drawsSince":54,"lastSeen":"2026-03-14"}],"expected":2.02,"chi2":53.04,"df":58,"p":0.6597,"biased":false},"hot":[{"n":9,"count":19,"expected":12.1,"deviation":57,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":40,"count":19,"expected":12.1,"deviation":57,"drawsSince":1,"lastSeen":"2026-07-29"},{"n":22,"count":18,"expected":12.1,"deviation":48.7,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":54,"count":18,"expected":12.1,"deviation":48.7,"drawsSince":13,"lastSeen":"2026-07-08"},{"n":36,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":43,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":5,"lastSeen":"2026-07-22"},{"n":56,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":59,"count":16,"expected":12.1,"deviation":32.2,"drawsSince":2,"lastSeen":"2026-07-25"}],"cold":[{"n":21,"count":4,"expected":12.1,"deviation":-66.9,"drawsSince":23,"lastSeen":"2026-06-20"},{"n":44,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":19,"lastSeen":"2026-06-27"},{"n":19,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":42,"lastSeen":"2026-04-25"},{"n":8,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":17,"lastSeen":"2026-07-01"},{"n":41,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":15,"lastSeen":"2026-07-04"},{"n":37,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":27,"lastSeen":"2026-06-13"},{"n":26,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":3,"lastSeen":"2026-07-25"},{"n":11,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":34,"lastSeen":"2026-05-23"}],"overdue":[{"n":19,"count":6,"expected":12.1,"deviation":-50.4,"drawsSince":42,"lastSeen":"2026-04-25"},{"n":16,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":37,"lastSeen":"2026-05-13"},{"n":27,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":36,"lastSeen":"2026-05-16"},{"n":24,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":35,"lastSeen":"2026-05-20"},{"n":11,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":34,"lastSeen":"2026-05-23"},{"n":50,"count":9,"expected":12.1,"deviation":-25.6,"drawsSince":33,"lastSeen":"2026-05-27"},{"n":1,"count":11,"expected":12.1,"deviation":-9.1,"drawsSince":28,"lastSeen":"2026-06-10"},{"n":37,"count":8,"expected":12.1,"deviation":-33.9,"drawsSince":27,"lastSeen":"2026-06-13"}],"hotExtra":[{"n":16,"count":5,"expected":2.02,"deviation":147.9,"drawsSince":21,"lastSeen":"2026-06-24"},{"n":19,"count":5,"expected":2.02,"deviation":147.9,"drawsSince":40,"lastSeen":"2026-05-02"},{"n":54,"count":5,"expected":2.02,"deviation":147.9,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":10,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":14,"count":4,"expected":2.02,"deviation":98.3,"drawsSince":37,"lastSeen":"2026-05-13"}],"overdueExtra":[{"n":2,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":3,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":8,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":17,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null},{"n":26,"count":0,"expected":2.02,"deviation":-100,"drawsSince":119,"lastSeen":null}],"shape":{"sum":{"min":66,"max":297,"mean":183.8,"median":185,"p10":128,"p90":242},"span":{"mean":42.9,"median":46},"oddEven":{"3/3":39,"2/4":32,"4/2":28,"1/5":9,"5/1":9,"0/6":1,"6/0":1},"lowHigh":{"3/3":40,"2/4":27,"4/2":25,"1/5":15,"5/1":8,"0/6":4},"consecutivePct":40.3,"repeatFromPrevPct":44.9,"buckets":{"1-9":110,"10-19":115,"20-29":104,"30-39":131,"50-59":133,"40-49":121}},"pairs":{"expected":1.04,"top":[{"pair":[22,56],"count":6},{"pair":[22,32],"count":5},{"pair":[22,40],"count":5},{"pair":[31,32],"count":5},{"pair":[49,56],"count":5},{"pair":[17,31],"count":5},{"pair":[2,42],"count":5},{"pair":[31,54],"count":5},{"pair":[20,59],"count":5},{"pair":[54,56],"count":5},{"pair":[38,48],"count":5},{"pair":[12,15],"count":5}]},"monthly":{"2025-08":9,"2025-09":8,"2025-10":9,"2025-11":9,"2025-12":9,"2026-01":9,"2026-02":8,"2026-03":8,"2026-04":9,"2026-05":9,"2026-06":14,"2026-07":18},"recent":[{"date":"2026-07-29","round":1,"main":[5,10,22,38,56,58],"extra":[54]},{"date":"2026-07-29","round":2,"main":[20,22,31,32,40,55],"extra":[1]},{"date":"2026-07-25","round":1,"main":[2,6,29,36,55,59],"extra":[50]},{"date":"2026-07-25","round":2,"main":[9,22,26,49,53,56],"extra":[34]},{"date":"2026-07-22","round":1,"main":[3,9,12,23,32,53],"extra":[46]},{"date":"2026-07-22","round":2,"main":[5,17,25,43,56,58],"extra":[11]},{"date":"2026-07-18","round":1,"main":[22,32,34,47,52,55],"extra":[10]},{"date":"2026-07-18","round":2,"main":[20,29,30,42,46,55],"extra":[38]},{"date":"2026-07-15","round":1,"main":[4,13,14,17,23,31],"extra":[56]},{"date":"2026-07-15","round":2,"main":[4,40,43,51,55,57],"extra":[34]},{"date":"2026-07-11","round":1,"main":[9,13,22,36,40,45],"extra":[41]},{"date":"2026-07-11","round":2,"main":[2,13,22,40,42,58],"extra":[54]}]},"euromillions":{"meta":{"id":"euromillions","name":"EuroMillions","region":"UK / EU","schedule":"Tue & Fri","mainCount":5,"mainMax":50,"mainLabel":"Main balls","extraCount":2,"extraMax":12,"extraLabel":"Lucky Stars","extraClass":"star","extraPlayerPicks":true,"draws":104,"from":"2025-08-01","to":"2026-07-28"},"main":{"rows":[{"n":1,"count":7,"expected":10.4,"deviation":-32.7,"drawsSince":8,"lastSeen":"2026-06-30"},{"n":2,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":2,"lastSeen":"2026-07-21"},{"n":3,"count":8,"expected":10.4,"deviation":-23.1,"drawsSince":2,"lastSeen":"2026-07-21"},{"n":4,"count":13,"expected":10.4,"deviation":25,"drawsSince":13,"lastSeen":"2026-06-12"},{"n":5,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":6,"count":14,"expected":10.4,"deviation":34.6,"drawsSince":9,"lastSeen":"2026-06-26"},{"n":7,"count":9,"expected":10.4,"deviation":-13.5,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":8,"count":15,"expected":10.4,"deviation":44.2,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":9,"count":9,"expected":10.4,"deviation":-13.5,"drawsSince":16,"lastSeen":"2026-06-02"},{"n":10,"count":14,"expected":10.4,"deviation":34.6,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":11,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":32,"lastSeen":"2026-04-07"},{"n":12,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":3,"lastSeen":"2026-07-17"},{"n":13,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":28,"lastSeen":"2026-04-21"},{"n":14,"count":14,"expected":10.4,"deviation":34.6,"drawsSince":5,"lastSeen":"2026-07-10"},{"n":15,"count":4,"expected":10.4,"deviation":-61.5,"drawsSince":41,"lastSeen":"2026-03-06"},{"n":16,"count":9,"expected":10.4,"deviation":-13.5,"drawsSince":9,"lastSeen":"2026-06-26"},{"n":17,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":7,"lastSeen":"2026-07-03"},{"n":18,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":12,"lastSeen":"2026-06-16"},{"n":19,"count":8,"expected":10.4,"deviation":-23.1,"drawsSince":4,"lastSeen":"2026-07-14"},{"n":20,"count":5,"expected":10.4,"deviation":-51.9,"drawsSince":20,"lastSeen":"2026-05-19"},{"n":21,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":3,"lastSeen":"2026-07-17"},{"n":22,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":13,"lastSeen":"2026-06-12"},{"n":23,"count":8,"expected":10.4,"deviation":-23.1,"drawsSince":3,"lastSeen":"2026-07-17"},{"n":24,"count":12,"expected":10.4,"deviation":15.4,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":25,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":7,"lastSeen":"2026-07-03"},{"n":26,"count":12,"expected":10.4,"deviation":15.4,"drawsSince":9,"lastSeen":"2026-06-26"},{"n":27,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":33,"lastSeen":"2026-04-03"},{"n":28,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":2,"lastSeen":"2026-07-21"},{"n":29,"count":13,"expected":10.4,"deviation":25,"drawsSince":6,"lastSeen":"2026-07-07"},{"n":30,"count":9,"expected":10.4,"deviation":-13.5,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":31,"count":12,"expected":10.4,"deviation":15.4,"drawsSince":12,"lastSeen":"2026-06-16"},{"n":32,"count":5,"expected":10.4,"deviation":-51.9,"drawsSince":22,"lastSeen":"2026-05-12"},{"n":33,"count":8,"expected":10.4,"deviation":-23.1,"drawsSince":5,"lastSeen":"2026-07-10"},{"n":34,"count":12,"expected":10.4,"deviation":15.4,"drawsSince":3,"lastSeen":"2026-07-17"},{"n":35,"count":12,"expected":10.4,"deviation":15.4,"drawsSince":9,"lastSeen":"2026-06-26"},{"n":36,"count":8,"expected":10.4,"deviation":-23.1,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":37,"count":13,"expected":10.4,"deviation":25,"drawsSince":4,"lastSeen":"2026-07-14"},{"n":38,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":20,"lastSeen":"2026-05-19"},{"n":39,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":2,"lastSeen":"2026-07-21"},{"n":40,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":3,"lastSeen":"2026-07-17"},{"n":41,"count":14,"expected":10.4,"deviation":34.6,"drawsSince":11,"lastSeen":"2026-06-19"},{"n":42,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":4,"lastSeen":"2026-07-14"},{"n":43,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":21,"lastSeen":"2026-05-15"},{"n":44,"count":15,"expected":10.4,"deviation":44.2,"drawsSince":8,"lastSeen":"2026-06-30"},{"n":45,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":6,"lastSeen":"2026-07-07"},{"n":46,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":10,"lastSeen":"2026-06-23"},{"n":47,"count":13,"expected":10.4,"deviation":25,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":48,"count":11,"expected":10.4,"deviation":5.8,"drawsSince":5,"lastSeen":"2026-07-10"},{"n":49,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":50,"count":4,"expected":10.4,"deviation":-61.5,"drawsSince":40,"lastSeen":"2026-03-10"}],"expected":10.4,"chi2":52.69,"df":49,"p":0.3332,"biased":false},"extra":{"rows":[{"n":1,"count":14,"expected":17.33,"deviation":-19.2,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":2,"count":24,"expected":17.33,"deviation":38.5,"drawsSince":2,"lastSeen":"2026-07-21"},{"n":3,"count":13,"expected":17.33,"deviation":-25,"drawsSince":14,"lastSeen":"2026-06-09"},{"n":4,"count":11,"expected":17.33,"deviation":-36.5,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":5,"count":22,"expected":17.33,"deviation":26.9,"drawsSince":6,"lastSeen":"2026-07-07"},{"n":6,"count":20,"expected":17.33,"deviation":15.4,"drawsSince":8,"lastSeen":"2026-06-30"},{"n":7,"count":12,"expected":17.33,"deviation":-30.8,"drawsSince":11,"lastSeen":"2026-06-19"},{"n":8,"count":17,"expected":17.33,"deviation":-1.9,"drawsSince":5,"lastSeen":"2026-07-10"},{"n":9,"count":18,"expected":17.33,"deviation":3.8,"drawsSince":3,"lastSeen":"2026-07-17"},{"n":10,"count":23,"expected":17.33,"deviation":32.7,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":11,"count":16,"expected":17.33,"deviation":-7.7,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":12,"count":18,"expected":17.33,"deviation":3.8,"drawsSince":4,"lastSeen":"2026-07-14"}],"expected":17.33,"chi2":11.92,"df":11,"p":0.3695,"biased":false},"hot":[{"n":5,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":13,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":28,"lastSeen":"2026-04-21"},{"n":17,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":7,"lastSeen":"2026-07-03"},{"n":42,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":4,"lastSeen":"2026-07-14"},{"n":8,"count":15,"expected":10.4,"deviation":44.2,"drawsSince":1,"lastSeen":"2026-07-24"},{"n":44,"count":15,"expected":10.4,"deviation":44.2,"drawsSince":8,"lastSeen":"2026-06-30"},{"n":6,"count":14,"expected":10.4,"deviation":34.6,"drawsSince":9,"lastSeen":"2026-06-26"},{"n":10,"count":14,"expected":10.4,"deviation":34.6,"drawsSince":1,"lastSeen":"2026-07-24"}],"cold":[{"n":50,"count":4,"expected":10.4,"deviation":-61.5,"drawsSince":40,"lastSeen":"2026-03-10"},{"n":15,"count":4,"expected":10.4,"deviation":-61.5,"drawsSince":41,"lastSeen":"2026-03-06"},{"n":32,"count":5,"expected":10.4,"deviation":-51.9,"drawsSince":22,"lastSeen":"2026-05-12"},{"n":20,"count":5,"expected":10.4,"deviation":-51.9,"drawsSince":20,"lastSeen":"2026-05-19"},{"n":49,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":38,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":20,"lastSeen":"2026-05-19"},{"n":22,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":13,"lastSeen":"2026-06-12"},{"n":21,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":3,"lastSeen":"2026-07-17"}],"overdue":[{"n":15,"count":4,"expected":10.4,"deviation":-61.5,"drawsSince":41,"lastSeen":"2026-03-06"},{"n":50,"count":4,"expected":10.4,"deviation":-61.5,"drawsSince":40,"lastSeen":"2026-03-10"},{"n":27,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":33,"lastSeen":"2026-04-03"},{"n":11,"count":6,"expected":10.4,"deviation":-42.3,"drawsSince":32,"lastSeen":"2026-04-07"},{"n":13,"count":16,"expected":10.4,"deviation":53.8,"drawsSince":28,"lastSeen":"2026-04-21"},{"n":32,"count":5,"expected":10.4,"deviation":-51.9,"drawsSince":22,"lastSeen":"2026-05-12"},{"n":43,"count":10,"expected":10.4,"deviation":-3.8,"drawsSince":21,"lastSeen":"2026-05-15"},{"n":20,"count":5,"expected":10.4,"deviation":-51.9,"drawsSince":20,"lastSeen":"2026-05-19"}],"hotExtra":[{"n":2,"count":24,"expected":17.33,"deviation":38.5,"drawsSince":2,"lastSeen":"2026-07-21"},{"n":10,"count":23,"expected":17.33,"deviation":32.7,"drawsSince":0,"lastSeen":"2026-07-28"},{"n":5,"count":22,"expected":17.33,"deviation":26.9,"drawsSince":6,"lastSeen":"2026-07-07"},{"n":6,"count":20,"expected":17.33,"deviation":15.4,"drawsSince":8,"lastSeen":"2026-06-30"},{"n":9,"count":18,"expected":17.33,"deviation":3.8,"drawsSince":3,"lastSeen":"2026-07-17"}],"overdueExtra":[{"n":3,"count":13,"expected":17.33,"deviation":-25,"drawsSince":14,"lastSeen":"2026-06-09"},{"n":7,"count":12,"expected":17.33,"deviation":-30.8,"drawsSince":11,"lastSeen":"2026-06-19"},{"n":6,"count":20,"expected":17.33,"deviation":15.4,"drawsSince":8,"lastSeen":"2026-06-30"},{"n":5,"count":22,"expected":17.33,"deviation":26.9,"drawsSince":6,"lastSeen":"2026-07-07"},{"n":8,"count":17,"expected":17.33,"deviation":-1.9,"drawsSince":5,"lastSeen":"2026-07-10"}],"shape":{"sum":{"min":61,"max":196,"mean":126,"median":125,"p10":85,"p90":164},"span":{"mean":34.2,"median":36},"oddEven":{"3/2":35,"2/3":33,"1/4":16,"4/1":16,"0/5":3,"5/0":1},"lowHigh":{"3/2":34,"2/3":31,"1/4":18,"4/1":14,"5/0":4,"0/5":3},"consecutivePct":39.4,"repeatFromPrevPct":37.9,"buckets":{"1-9":102,"20-29":94,"30-39":96,"40-49":116,"10-19":108,"50-59":4}},"pairs":{"expected":0.85,"top":[{"pair":[13,40],"count":5},{"pair":[10,47],"count":4},{"pair":[42,47],"count":4},{"pair":[5,29],"count":4},{"pair":[5,33],"count":4},{"pair":[26,34],"count":4},{"pair":[39,42],"count":4},{"pair":[18,31],"count":4},{"pair":[25,45],"count":4},{"pair":[31,37],"count":4},{"pair":[5,17],"count":4},{"pair":[6,17],"count":4}]},"monthly":{"2025-08":9,"2025-09":9,"2025-10":9,"2025-11":8,"2025-12":9,"2026-01":9,"2026-02":8,"2026-03":9,"2026-04":8,"2026-05":9,"2026-06":9,"2026-07":8},"recent":[{"date":"2026-07-28","main":[5,7,24,30,49],"extra":[10,11]},{"date":"2026-07-24","main":[8,10,30,36,47],"extra":[1,4]},{"date":"2026-07-21","main":[2,3,8,28,39],"extra":[2,11]},{"date":"2026-07-17","main":[12,21,23,34,40],"extra":[9,10]},{"date":"2026-07-14","main":[10,19,37,42,47],"extra":[9,12]},{"date":"2026-07-10","main":[2,14,28,33,48],"extra":[8,10]},{"date":"2026-07-07","main":[5,29,33,45,47],"extra":[5,8]},{"date":"2026-07-03","main":[2,12,17,25,39],"extra":[1,2]},{"date":"2026-06-30","main":[1,8,37,44,48],"extra":[2,6]},{"date":"2026-06-26","main":[6,16,26,34,35],"extra":[11,12]},{"date":"2026-06-23","main":[3,33,36,45,46],"extra":[5,6]},{"date":"2026-06-19","main":[8,34,39,41,42],"extra":[2,7]}]},"set-for-life":{"meta":{"id":"set-for-life","name":"Set For Life","region":"UK","schedule":"Mon & Thu","mainCount":5,"mainMax":47,"mainLabel":"Main balls","extraCount":1,"extraMax":10,"extraLabel":"Life Ball","extraClass":"life","extraPlayerPicks":true,"draws":105,"from":"2025-07-31","to":"2026-07-30"},"main":{"rows":[{"n":1,"count":14,"expected":11.17,"deviation":25.3,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":2,"count":9,"expected":11.17,"deviation":-19.4,"drawsSince":2,"lastSeen":"2026-07-23"},{"n":3,"count":13,"expected":11.17,"deviation":16.4,"drawsSince":7,"lastSeen":"2026-07-06"},{"n":4,"count":13,"expected":11.17,"deviation":16.4,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":5,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":4,"lastSeen":"2026-07-16"},{"n":6,"count":15,"expected":11.17,"deviation":34.3,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":7,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":6,"lastSeen":"2026-07-09"},{"n":8,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":13,"lastSeen":"2026-06-15"},{"n":9,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":10,"lastSeen":"2026-06-25"},{"n":10,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":2,"lastSeen":"2026-07-23"},{"n":11,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":12,"lastSeen":"2026-06-18"},{"n":12,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":14,"lastSeen":"2026-06-11"},{"n":13,"count":15,"expected":11.17,"deviation":34.3,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":14,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":15,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":16,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":17,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":13,"lastSeen":"2026-06-15"},{"n":18,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":2,"lastSeen":"2026-07-23"},{"n":19,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":5,"lastSeen":"2026-07-13"},{"n":20,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":3,"lastSeen":"2026-07-20"},{"n":21,"count":9,"expected":11.17,"deviation":-19.4,"drawsSince":19,"lastSeen":"2026-05-25"},{"n":22,"count":11,"expected":11.17,"deviation":-1.5,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":23,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":24,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":25,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":26,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":7,"lastSeen":"2026-07-06"},{"n":27,"count":14,"expected":11.17,"deviation":25.3,"drawsSince":12,"lastSeen":"2026-06-18"},{"n":28,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":10,"lastSeen":"2026-06-25"},{"n":29,"count":9,"expected":11.17,"deviation":-19.4,"drawsSince":41,"lastSeen":"2026-03-09"},{"n":30,"count":15,"expected":11.17,"deviation":34.3,"drawsSince":2,"lastSeen":"2026-07-23"},{"n":31,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":36,"lastSeen":"2026-03-26"},{"n":32,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":11,"lastSeen":"2026-06-22"},{"n":33,"count":11,"expected":11.17,"deviation":-1.5,"drawsSince":4,"lastSeen":"2026-07-16"},{"n":34,"count":17,"expected":11.17,"deviation":52.2,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":35,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":3,"lastSeen":"2026-07-20"},{"n":36,"count":11,"expected":11.17,"deviation":-1.5,"drawsSince":9,"lastSeen":"2026-06-29"},{"n":37,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":27,"lastSeen":"2026-04-27"},{"n":38,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":11,"lastSeen":"2026-06-22"},{"n":39,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":40,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":4,"lastSeen":"2026-07-16"},{"n":41,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":14,"lastSeen":"2026-06-11"},{"n":42,"count":11,"expected":11.17,"deviation":-1.5,"drawsSince":15,"lastSeen":"2026-06-08"},{"n":43,"count":11,"expected":11.17,"deviation":-1.5,"drawsSince":5,"lastSeen":"2026-07-13"},{"n":44,"count":6,"expected":11.17,"deviation":-46.3,"drawsSince":19,"lastSeen":"2026-05-25"},{"n":45,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":46,"count":10,"expected":11.17,"deviation":-10.5,"drawsSince":5,"lastSeen":"2026-07-13"},{"n":47,"count":6,"expected":11.17,"deviation":-46.3,"drawsSince":6,"lastSeen":"2026-07-09"}],"expected":11.17,"chi2":33.36,"df":46,"p":0.9179,"biased":false},"extra":{"rows":[{"n":1,"count":8,"expected":10.5,"deviation":-23.8,"drawsSince":17,"lastSeen":"2026-06-01"},{"n":2,"count":10,"expected":10.5,"deviation":-4.8,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":3,"count":11,"expected":10.5,"deviation":4.8,"drawsSince":9,"lastSeen":"2026-06-29"},{"n":4,"count":13,"expected":10.5,"deviation":23.8,"drawsSince":5,"lastSeen":"2026-07-13"},{"n":5,"count":10,"expected":10.5,"deviation":-4.8,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":6,"count":8,"expected":10.5,"deviation":-23.8,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":7,"count":13,"expected":10.5,"deviation":23.8,"drawsSince":7,"lastSeen":"2026-07-06"},{"n":8,"count":10,"expected":10.5,"deviation":-4.8,"drawsSince":2,"lastSeen":"2026-07-23"},{"n":9,"count":10,"expected":10.5,"deviation":-4.8,"drawsSince":23,"lastSeen":"2026-05-11"},{"n":10,"count":12,"expected":10.5,"deviation":14.3,"drawsSince":3,"lastSeen":"2026-07-20"}],"expected":10.5,"chi2":2.71,"df":9,"p":0.9746,"biased":false},"hot":[{"n":34,"count":17,"expected":11.17,"deviation":52.2,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":8,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":13,"lastSeen":"2026-06-15"},{"n":26,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":7,"lastSeen":"2026-07-06"},{"n":32,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":11,"lastSeen":"2026-06-22"},{"n":45,"count":16,"expected":11.17,"deviation":43.2,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":6,"count":15,"expected":11.17,"deviation":34.3,"drawsSince":1,"lastSeen":"2026-07-27"},{"n":13,"count":15,"expected":11.17,"deviation":34.3,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":30,"count":15,"expected":11.17,"deviation":34.3,"drawsSince":2,"lastSeen":"2026-07-23"}],"cold":[{"n":47,"count":6,"expected":11.17,"deviation":-46.3,"drawsSince":6,"lastSeen":"2026-07-09"},{"n":44,"count":6,"expected":11.17,"deviation":-46.3,"drawsSince":19,"lastSeen":"2026-05-25"},{"n":41,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":14,"lastSeen":"2026-06-11"},{"n":25,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":12,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":14,"lastSeen":"2026-06-11"},{"n":40,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":4,"lastSeen":"2026-07-16"},{"n":37,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":27,"lastSeen":"2026-04-27"},{"n":15,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":1,"lastSeen":"2026-07-27"}],"overdue":[{"n":29,"count":9,"expected":11.17,"deviation":-19.4,"drawsSince":41,"lastSeen":"2026-03-09"},{"n":31,"count":12,"expected":11.17,"deviation":7.4,"drawsSince":36,"lastSeen":"2026-03-26"},{"n":37,"count":8,"expected":11.17,"deviation":-28.4,"drawsSince":27,"lastSeen":"2026-04-27"},{"n":21,"count":9,"expected":11.17,"deviation":-19.4,"drawsSince":19,"lastSeen":"2026-05-25"},{"n":44,"count":6,"expected":11.17,"deviation":-46.3,"drawsSince":19,"lastSeen":"2026-05-25"},{"n":42,"count":11,"expected":11.17,"deviation":-1.5,"drawsSince":15,"lastSeen":"2026-06-08"},{"n":12,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":14,"lastSeen":"2026-06-11"},{"n":41,"count":7,"expected":11.17,"deviation":-37.3,"drawsSince":14,"lastSeen":"2026-06-11"}],"hotExtra":[{"n":4,"count":13,"expected":10.5,"deviation":23.8,"drawsSince":5,"lastSeen":"2026-07-13"},{"n":7,"count":13,"expected":10.5,"deviation":23.8,"drawsSince":7,"lastSeen":"2026-07-06"},{"n":10,"count":12,"expected":10.5,"deviation":14.3,"drawsSince":3,"lastSeen":"2026-07-20"},{"n":3,"count":11,"expected":10.5,"deviation":4.8,"drawsSince":9,"lastSeen":"2026-06-29"},{"n":2,"count":10,"expected":10.5,"deviation":-4.8,"drawsSince":1,"lastSeen":"2026-07-27"}],"overdueExtra":[{"n":9,"count":10,"expected":10.5,"deviation":-4.8,"drawsSince":23,"lastSeen":"2026-05-11"},{"n":1,"count":8,"expected":10.5,"deviation":-23.8,"drawsSince":17,"lastSeen":"2026-06-01"},{"n":3,"count":11,"expected":10.5,"deviation":4.8,"drawsSince":9,"lastSeen":"2026-06-29"},{"n":6,"count":8,"expected":10.5,"deviation":-23.8,"drawsSince":8,"lastSeen":"2026-07-02"},{"n":7,"count":13,"expected":10.5,"deviation":23.8,"drawsSince":7,"lastSeen":"2026-07-06"}],"shape":{"sum":{"min":48,"max":189,"mean":116.9,"median":120,"p10":79,"p90":151},"span":{"mean":32,"median":32},"oddEven":{"2/3":40,"3/2":38,"4/1":10,"1/4":9,"0/5":5,"5/0":3},"lowHigh":{"2/3":44,"3/2":31,"1/4":15,"4/1":11,"5/0":4},"consecutivePct":41,"repeatFromPrevPct":46.2,"buckets":{"1-9":110,"10-19":108,"20-29":110,"40-49":75,"30-39":122}},"pairs":{"expected":0.97,"top":[{"pair":[11,26],"count":5},{"pair":[13,24],"count":4},{"pair":[6,34],"count":4},{"pair":[6,18],"count":4},{"pair":[6,30],"count":4},{"pair":[16,32],"count":4},{"pair":[16,34],"count":4},{"pair":[32,38],"count":4},{"pair":[14,20],"count":4},{"pair":[8,32],"count":4},{"pair":[26,32],"count":4},{"pair":[34,45],"count":4}]},"monthly":{"2025-07":1,"2025-08":8,"2025-09":9,"2025-10":9,"2025-11":8,"2025-12":9,"2026-01":9,"2026-02":8,"2026-03":9,"2026-04":9,"2026-05":8,"2026-06":9,"2026-07":9},"recent":[{"date":"2026-07-30","main":[1,4,13,24,45],"extra":[5]},{"date":"2026-07-27","main":[6,14,15,34,39],"extra":[2]},{"date":"2026-07-23","main":[2,6,10,18,30],"extra":[8]},{"date":"2026-07-20","main":[1,13,20,35,39],"extra":[10]},{"date":"2026-07-16","main":[5,13,24,33,40],"extra":[10]},{"date":"2026-07-13","main":[1,19,40,43,46],"extra":[4]},{"date":"2026-07-09","main":[7,35,40,46,47],"extra":[10]},{"date":"2026-07-06","main":[3,4,15,26,45],"extra":[7]},{"date":"2026-07-02","main":[16,22,23,25,30],"extra":[6]},{"date":"2026-06-29","main":[10,19,30,33,36],"extra":[3]},{"date":"2026-06-25","main":[1,9,26,28,45],"extra":[3]},{"date":"2026-06-22","main":[1,16,32,34,38],"extra":[5]}]},"thunderball":{"meta":{"id":"thunderball","name":"Thunderball","region":"UK","schedule":"Tue, Wed, Fri & Sat","mainCount":5,"mainMax":39,"mainLabel":"Main balls","extraCount":1,"extraMax":14,"extraLabel":"Thunderball","extraClass":"thunder","extraPlayerPicks":true,"draws":208,"from":"2025-08-01","to":"2026-07-29"},"main":{"rows":[{"n":1,"count":28,"expected":26.67,"deviation":5,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":2,"count":30,"expected":26.67,"deviation":12.5,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":3,"count":31,"expected":26.67,"deviation":16.2,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":4,"count":25,"expected":26.67,"deviation":-6.3,"drawsSince":21,"lastSeen":"2026-06-23"},{"n":5,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":7,"lastSeen":"2026-07-17"},{"n":6,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":7,"count":32,"expected":26.67,"deviation":20,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":8,"count":28,"expected":26.67,"deviation":5,"drawsSince":7,"lastSeen":"2026-07-17"},{"n":9,"count":21,"expected":26.67,"deviation":-21.3,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":10,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":11,"count":39,"expected":26.67,"deviation":46.2,"drawsSince":11,"lastSeen":"2026-07-10"},{"n":12,"count":20,"expected":26.67,"deviation":-25,"drawsSince":13,"lastSeen":"2026-07-07"},{"n":13,"count":24,"expected":26.67,"deviation":-10,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":14,"count":27,"expected":26.67,"deviation":1.2,"drawsSince":8,"lastSeen":"2026-07-15"},{"n":15,"count":27,"expected":26.67,"deviation":1.2,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":16,"count":33,"expected":26.67,"deviation":23.7,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":17,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":18,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":8,"lastSeen":"2026-07-15"},{"n":19,"count":24,"expected":26.67,"deviation":-10,"drawsSince":5,"lastSeen":"2026-07-21"},{"n":20,"count":28,"expected":26.67,"deviation":5,"drawsSince":7,"lastSeen":"2026-07-17"},{"n":21,"count":25,"expected":26.67,"deviation":-6.3,"drawsSince":2,"lastSeen":"2026-07-25"},{"n":22,"count":20,"expected":26.67,"deviation":-25,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":23,"count":34,"expected":26.67,"deviation":27.5,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":24,"count":32,"expected":26.67,"deviation":20,"drawsSince":7,"lastSeen":"2026-07-17"},{"n":25,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":26,"count":39,"expected":26.67,"deviation":46.2,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":27,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":28,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":29,"count":34,"expected":26.67,"deviation":27.5,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":30,"count":21,"expected":26.67,"deviation":-21.3,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":31,"count":28,"expected":26.67,"deviation":5,"drawsSince":15,"lastSeen":"2026-07-03"},{"n":32,"count":29,"expected":26.67,"deviation":8.7,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":33,"count":25,"expected":26.67,"deviation":-6.3,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":34,"count":17,"expected":26.67,"deviation":-36.3,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":35,"count":28,"expected":26.67,"deviation":5,"drawsSince":10,"lastSeen":"2026-07-11"},{"n":36,"count":27,"expected":26.67,"deviation":1.2,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":37,"count":30,"expected":26.67,"deviation":12.5,"drawsSince":30,"lastSeen":"2026-06-06"},{"n":38,"count":33,"expected":26.67,"deviation":23.7,"drawsSince":13,"lastSeen":"2026-07-07"},{"n":39,"count":25,"expected":26.67,"deviation":-6.3,"drawsSince":25,"lastSeen":"2026-06-16"}],"expected":26.67,"chi2":39.4,"df":38,"p":0.4071,"biased":false},"extra":{"rows":[{"n":1,"count":12,"expected":14.86,"deviation":-19.2,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":2,"count":10,"expected":14.86,"deviation":-32.7,"drawsSince":12,"lastSeen":"2026-07-08"},{"n":3,"count":22,"expected":14.86,"deviation":48.1,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":4,"count":10,"expected":14.86,"deviation":-32.7,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":5,"count":20,"expected":14.86,"deviation":34.6,"drawsSince":42,"lastSeen":"2026-05-16"},{"n":6,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":6,"lastSeen":"2026-07-18"},{"n":7,"count":13,"expected":14.86,"deviation":-12.5,"drawsSince":9,"lastSeen":"2026-07-14"},{"n":8,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":39,"lastSeen":"2026-05-22"},{"n":9,"count":11,"expected":14.86,"deviation":-26,"drawsSince":11,"lastSeen":"2026-07-10"},{"n":10,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":13,"lastSeen":"2026-07-07"},{"n":11,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":25,"lastSeen":"2026-06-16"},{"n":12,"count":17,"expected":14.86,"deviation":14.4,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":13,"count":19,"expected":14.86,"deviation":27.9,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":14,"count":10,"expected":14.86,"deviation":-32.7,"drawsSince":1,"lastSeen":"2026-07-28"}],"expected":14.86,"chi2":13.58,"df":13,"p":0.4043,"biased":false},"hot":[{"n":11,"count":39,"expected":26.67,"deviation":46.2,"drawsSince":11,"lastSeen":"2026-07-10"},{"n":26,"count":39,"expected":26.67,"deviation":46.2,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":23,"count":34,"expected":26.67,"deviation":27.5,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":29,"count":34,"expected":26.67,"deviation":27.5,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":16,"count":33,"expected":26.67,"deviation":23.7,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":38,"count":33,"expected":26.67,"deviation":23.7,"drawsSince":13,"lastSeen":"2026-07-07"},{"n":7,"count":32,"expected":26.67,"deviation":20,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":24,"count":32,"expected":26.67,"deviation":20,"drawsSince":7,"lastSeen":"2026-07-17"}],"cold":[{"n":34,"count":17,"expected":26.67,"deviation":-36.3,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":22,"count":20,"expected":26.67,"deviation":-25,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":12,"count":20,"expected":26.67,"deviation":-25,"drawsSince":13,"lastSeen":"2026-07-07"},{"n":30,"count":21,"expected":26.67,"deviation":-21.3,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":9,"count":21,"expected":26.67,"deviation":-21.3,"drawsSince":4,"lastSeen":"2026-07-22"},{"n":28,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":27,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":25,"count":22,"expected":26.67,"deviation":-17.5,"drawsSince":6,"lastSeen":"2026-07-18"}],"overdue":[{"n":37,"count":30,"expected":26.67,"deviation":12.5,"drawsSince":30,"lastSeen":"2026-06-06"},{"n":39,"count":25,"expected":26.67,"deviation":-6.3,"drawsSince":25,"lastSeen":"2026-06-16"},{"n":4,"count":25,"expected":26.67,"deviation":-6.3,"drawsSince":21,"lastSeen":"2026-06-23"},{"n":22,"count":20,"expected":26.67,"deviation":-25,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":31,"count":28,"expected":26.67,"deviation":5,"drawsSince":15,"lastSeen":"2026-07-03"},{"n":2,"count":30,"expected":26.67,"deviation":12.5,"drawsSince":14,"lastSeen":"2026-07-04"},{"n":12,"count":20,"expected":26.67,"deviation":-25,"drawsSince":13,"lastSeen":"2026-07-07"},{"n":38,"count":33,"expected":26.67,"deviation":23.7,"drawsSince":13,"lastSeen":"2026-07-07"}],"hotExtra":[{"n":3,"count":22,"expected":14.86,"deviation":48.1,"drawsSince":3,"lastSeen":"2026-07-24"},{"n":5,"count":20,"expected":14.86,"deviation":34.6,"drawsSince":42,"lastSeen":"2026-05-16"},{"n":13,"count":19,"expected":14.86,"deviation":27.9,"drawsSince":0,"lastSeen":"2026-07-29"},{"n":12,"count":17,"expected":14.86,"deviation":14.4,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":6,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":6,"lastSeen":"2026-07-18"}],"overdueExtra":[{"n":5,"count":20,"expected":14.86,"deviation":34.6,"drawsSince":42,"lastSeen":"2026-05-16"},{"n":8,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":39,"lastSeen":"2026-05-22"},{"n":11,"count":16,"expected":14.86,"deviation":7.7,"drawsSince":25,"lastSeen":"2026-06-16"},{"n":12,"count":17,"expected":14.86,"deviation":14.4,"drawsSince":18,"lastSeen":"2026-06-27"},{"n":4,"count":10,"expected":14.86,"deviation":-32.7,"drawsSince":14,"lastSeen":"2026-07-04"}],"shape":{"sum":{"min":27,"max":166,"mean":100.3,"median":99,"p10":69,"p90":133},"span":{"mean":26.4,"median":27},"oddEven":{"3/2":70,"2/3":67,"4/1":37,"1/4":26,"5/0":5,"0/5":3},"lowHigh":{"2/3":75,"3/2":74,"1/4":26,"4/1":19,"0/5":9,"5/0":5},"consecutivePct":41.8,"repeatFromPrevPct":59.9,"buckets":{"20-29":278,"30-39":263,"1-9":239,"10-19":260}},"pairs":{"expected":2.81,"top":[{"pair":[16,26],"count":11},{"pair":[20,26],"count":9},{"pair":[16,29],"count":8},{"pair":[11,31],"count":8},{"pair":[11,37],"count":8},{"pair":[20,24],"count":7},{"pair":[15,24],"count":7},{"pair":[1,26],"count":7},{"pair":[8,23],"count":7},{"pair":[11,26],"count":7},{"pair":[11,38],"count":7},{"pair":[16,22],"count":7}]},"monthly":{"2025-08":18,"2025-09":17,"2025-10":18,"2025-11":17,"2025-12":18,"2026-01":18,"2026-02":16,"2026-03":17,"2026-04":17,"2026-05":18,"2026-06":17,"2026-07":17},"recent":[{"date":"2026-07-29","main":[23,26,28,32,34],"extra":[13]},{"date":"2026-07-28","main":[1,7,33,34,36],"extra":[14]},{"date":"2026-07-25","main":[13,15,17,21,23],"extra":[14]},{"date":"2026-07-24","main":[10,16,27,29,34],"extra":[3]},{"date":"2026-07-22","main":[3,9,29,30,32],"extra":[1]},{"date":"2026-07-21","main":[19,27,30,32,36],"extra":[3]},{"date":"2026-07-18","main":[3,6,19,25,36],"extra":[6]},{"date":"2026-07-17","main":[5,8,20,24,25],"extra":[1]},{"date":"2026-07-15","main":[8,14,17,18,34],"extra":[3]},{"date":"2026-07-14","main":[1,15,24,25,36],"extra":[7]},{"date":"2026-07-11","main":[14,16,18,23,35],"extra":[7]},{"date":"2026-07-10","main":[1,8,11,23,26],"extra":[9]}]},"powerball":{"meta":{"id":"powerball","name":"Powerball","region":"US","schedule":"Mon, Wed & Sat","mainCount":5,"mainMax":69,"mainLabel":"Main balls","extraCount":1,"extraMax":26,"extraLabel":"Powerball","extraClass":"power","extraPlayerPicks":true,"draws":157,"from":"2025-07-31","to":"2026-07-30"},"main":{"rows":[{"n":1,"count":4,"expected":11.38,"deviation":-64.8,"drawsSince":26,"lastSeen":"2026-05-31"},{"n":2,"count":10,"expected":11.38,"deviation":-12.1,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":3,"count":19,"expected":11.38,"deviation":67,"drawsSince":2,"lastSeen":"2026-07-26"},{"n":4,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":2,"lastSeen":"2026-07-26"},{"n":5,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":3,"lastSeen":"2026-07-23"},{"n":6,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":7,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":6,"lastSeen":"2026-07-16"},{"n":8,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":8,"lastSeen":"2026-07-12"},{"n":9,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":10,"count":10,"expected":11.38,"deviation":-12.1,"drawsSince":8,"lastSeen":"2026-07-12"},{"n":11,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":51,"lastSeen":"2026-04-02"},{"n":12,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":9,"lastSeen":"2026-07-09"},{"n":13,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":15,"lastSeen":"2026-06-25"},{"n":14,"count":15,"expected":11.38,"deviation":31.8,"drawsSince":5,"lastSeen":"2026-07-19"},{"n":15,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":35,"lastSeen":"2026-05-10"},{"n":16,"count":16,"expected":11.38,"deviation":40.6,"drawsSince":14,"lastSeen":"2026-06-28"},{"n":17,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":10,"lastSeen":"2026-07-07"},{"n":18,"count":17,"expected":11.38,"deviation":49.4,"drawsSince":6,"lastSeen":"2026-07-16"},{"n":19,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":16,"lastSeen":"2026-06-23"},{"n":20,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":17,"lastSeen":"2026-06-21"},{"n":21,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":15,"lastSeen":"2026-06-25"},{"n":22,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":3,"lastSeen":"2026-07-23"},{"n":23,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":61,"lastSeen":"2026-03-10"},{"n":24,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":2,"lastSeen":"2026-07-26"},{"n":25,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":7,"lastSeen":"2026-07-14"},{"n":26,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":27,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":26,"lastSeen":"2026-05-31"},{"n":28,"count":20,"expected":11.38,"deviation":75.8,"drawsSince":14,"lastSeen":"2026-06-28"},{"n":29,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":6,"lastSeen":"2026-07-16"},{"n":30,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":31,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":21,"lastSeen":"2026-06-11"},{"n":32,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":23,"lastSeen":"2026-06-07"},{"n":33,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":40,"lastSeen":"2026-04-28"},{"n":34,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":22,"lastSeen":"2026-06-09"},{"n":35,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":26,"lastSeen":"2026-05-31"},{"n":36,"count":14,"expected":11.38,"deviation":23.1,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":37,"count":10,"expected":11.38,"deviation":-12.1,"drawsSince":9,"lastSeen":"2026-07-09"},{"n":38,"count":10,"expected":11.38,"deviation":-12.1,"drawsSince":6,"lastSeen":"2026-07-16"},{"n":39,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":12,"lastSeen":"2026-07-02"},{"n":40,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":41,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":13,"lastSeen":"2026-06-30"},{"n":42,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":43,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":9,"lastSeen":"2026-07-09"},{"n":44,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":45,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":8,"lastSeen":"2026-07-12"},{"n":46,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":47,"count":14,"expected":11.38,"deviation":23.1,"drawsSince":2,"lastSeen":"2026-07-26"},{"n":48,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":7,"lastSeen":"2026-07-14"},{"n":49,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":18,"lastSeen":"2026-06-18"},{"n":50,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":3,"lastSeen":"2026-07-23"},{"n":51,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":27,"lastSeen":"2026-05-28"},{"n":52,"count":15,"expected":11.38,"deviation":31.8,"drawsSince":26,"lastSeen":"2026-05-31"},{"n":53,"count":17,"expected":11.38,"deviation":49.4,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":54,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":61,"lastSeen":"2026-03-10"},{"n":55,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":9,"lastSeen":"2026-07-09"},{"n":56,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":5,"lastSeen":"2026-07-19"},{"n":57,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":58,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":59,"count":15,"expected":11.38,"deviation":31.8,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":60,"count":14,"expected":11.38,"deviation":23.1,"drawsSince":19,"lastSeen":"2026-06-16"},{"n":61,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":18,"lastSeen":"2026-06-18"},{"n":62,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":19,"lastSeen":"2026-06-16"},{"n":63,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":10,"lastSeen":"2026-07-07"},{"n":64,"count":20,"expected":11.38,"deviation":75.8,"drawsSince":23,"lastSeen":"2026-06-07"},{"n":65,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":66,"count":12,"expected":11.38,"deviation":5.5,"drawsSince":10,"lastSeen":"2026-07-07"},{"n":67,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":10,"lastSeen":"2026-07-07"},{"n":68,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":12,"lastSeen":"2026-07-02"},{"n":69,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":11,"lastSeen":"2026-07-05"}],"expected":11.38,"chi2":59.09,"df":68,"p":0.7712,"biased":false},"extra":{"rows":[{"n":1,"count":12,"expected":6.04,"deviation":98.7,"drawsSince":3,"lastSeen":"2026-07-23"},{"n":2,"count":10,"expected":6.04,"deviation":65.6,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":3,"count":8,"expected":6.04,"deviation":32.5,"drawsSince":5,"lastSeen":"2026-07-19"},{"n":4,"count":6,"expected":6.04,"deviation":-0.6,"drawsSince":10,"lastSeen":"2026-07-07"},{"n":5,"count":8,"expected":6.04,"deviation":32.5,"drawsSince":8,"lastSeen":"2026-07-12"},{"n":6,"count":6,"expected":6.04,"deviation":-0.6,"drawsSince":12,"lastSeen":"2026-07-02"},{"n":7,"count":3,"expected":6.04,"deviation":-50.3,"drawsSince":34,"lastSeen":"2026-05-12"},{"n":8,"count":2,"expected":6.04,"deviation":-66.9,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":9,"count":2,"expected":6.04,"deviation":-66.9,"drawsSince":139,"lastSeen":"2025-09-09"},{"n":10,"count":4,"expected":6.04,"deviation":-33.8,"drawsSince":28,"lastSeen":"2026-05-26"},{"n":11,"count":4,"expected":6.04,"deviation":-33.8,"drawsSince":14,"lastSeen":"2026-06-28"},{"n":12,"count":8,"expected":6.04,"deviation":32.5,"drawsSince":18,"lastSeen":"2026-06-18"},{"n":13,"count":4,"expected":6.04,"deviation":-33.8,"drawsSince":16,"lastSeen":"2026-06-23"},{"n":14,"count":11,"expected":6.04,"deviation":82.2,"drawsSince":15,"lastSeen":"2026-06-25"},{"n":15,"count":8,"expected":6.04,"deviation":32.5,"drawsSince":17,"lastSeen":"2026-06-21"},{"n":16,"count":3,"expected":6.04,"deviation":-50.3,"drawsSince":6,"lastSeen":"2026-07-16"},{"n":17,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":2,"lastSeen":"2026-07-26"},{"n":18,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":9,"lastSeen":"2026-07-09"},{"n":19,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":93,"lastSeen":"2025-12-25"},{"n":20,"count":8,"expected":6.04,"deviation":32.5,"drawsSince":11,"lastSeen":"2026-07-05"},{"n":21,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":59,"lastSeen":"2026-03-15"},{"n":22,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":35,"lastSeen":"2026-05-10"},{"n":23,"count":10,"expected":6.04,"deviation":65.6,"drawsSince":19,"lastSeen":"2026-06-16"},{"n":24,"count":4,"expected":6.04,"deviation":-33.8,"drawsSince":51,"lastSeen":"2026-04-02"},{"n":25,"count":4,"expected":6.04,"deviation":-33.8,"drawsSince":1,"lastSeen":"2026-07-28"},{"n":26,"count":7,"expected":6.04,"deviation":15.9,"drawsSince":29,"lastSeen":"2026-05-24"}],"expected":6.04,"chi2":31.29,"df":25,"p":0.1795,"biased":false},"hot":[{"n":28,"count":20,"expected":11.38,"deviation":75.8,"drawsSince":14,"lastSeen":"2026-06-28"},{"n":64,"count":20,"expected":11.38,"deviation":75.8,"drawsSince":23,"lastSeen":"2026-06-07"},{"n":3,"count":19,"expected":11.38,"deviation":67,"drawsSince":2,"lastSeen":"2026-07-26"},{"n":18,"count":17,"expected":11.38,"deviation":49.4,"drawsSince":6,"lastSeen":"2026-07-16"},{"n":53,"count":17,"expected":11.38,"deviation":49.4,"drawsSince":4,"lastSeen":"2026-07-21"},{"n":16,"count":16,"expected":11.38,"deviation":40.6,"drawsSince":14,"lastSeen":"2026-06-28"},{"n":14,"count":15,"expected":11.38,"deviation":31.8,"drawsSince":5,"lastSeen":"2026-07-19"},{"n":52,"count":15,"expected":11.38,"deviation":31.8,"drawsSince":26,"lastSeen":"2026-05-31"}],"cold":[{"n":1,"count":4,"expected":11.38,"deviation":-64.8,"drawsSince":26,"lastSeen":"2026-05-31"},{"n":54,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":61,"lastSeen":"2026-03-10"},{"n":45,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":8,"lastSeen":"2026-07-12"},{"n":39,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":12,"lastSeen":"2026-07-02"},{"n":20,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":17,"lastSeen":"2026-06-21"},{"n":12,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":9,"lastSeen":"2026-07-09"},{"n":69,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":11,"lastSeen":"2026-07-05"},{"n":67,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":10,"lastSeen":"2026-07-07"}],"overdue":[{"n":23,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":61,"lastSeen":"2026-03-10"},{"n":54,"count":7,"expected":11.38,"deviation":-38.5,"drawsSince":61,"lastSeen":"2026-03-10"},{"n":11,"count":11,"expected":11.38,"deviation":-3.3,"drawsSince":51,"lastSeen":"2026-04-02"},{"n":33,"count":8,"expected":11.38,"deviation":-29.7,"drawsSince":40,"lastSeen":"2026-04-28"},{"n":15,"count":9,"expected":11.38,"deviation":-20.9,"drawsSince":35,"lastSeen":"2026-05-10"},{"n":51,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":27,"lastSeen":"2026-05-28"},{"n":1,"count":4,"expected":11.38,"deviation":-64.8,"drawsSince":26,"lastSeen":"2026-05-31"},{"n":27,"count":13,"expected":11.38,"deviation":14.3,"drawsSince":26,"lastSeen":"2026-05-31"}],"hotExtra":[{"n":1,"count":12,"expected":6.04,"deviation":98.7,"drawsSince":3,"lastSeen":"2026-07-23"},{"n":14,"count":11,"expected":6.04,"deviation":82.2,"drawsSince":15,"lastSeen":"2026-06-25"},{"n":2,"count":10,"expected":6.04,"deviation":65.6,"drawsSince":0,"lastSeen":"2026-07-30"},{"n":23,"count":10,"expected":6.04,"deviation":65.6,"drawsSince":19,"lastSeen":"2026-06-16"},{"n":3,"count":8,"expected":6.04,"deviation":32.5,"drawsSince":5,"lastSeen":"2026-07-19"}],"overdueExtra":[{"n":9,"count":2,"expected":6.04,"deviation":-66.9,"drawsSince":139,"lastSeen":"2025-09-09"},{"n":19,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":93,"lastSeen":"2025-12-25"},{"n":21,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":59,"lastSeen":"2026-03-15"},{"n":24,"count":4,"expected":6.04,"deviation":-33.8,"drawsSince":51,"lastSeen":"2026-04-02"},{"n":22,"count":5,"expected":6.04,"deviation":-17.2,"drawsSince":35,"lastSeen":"2026-05-10"}],"shape":{"sum":{"min":77,"max":285,"mean":177.7,"median":176,"p10":129,"p90":227},"span":{"mean":47.5,"median":49},"oddEven":{"3/2":49,"2/3":46,"1/4":32,"4/1":17,"5/0":7,"0/5":6},"lowHigh":{"2/3":60,"3/2":51,"1/4":24,"4/1":17,"5/0":3,"0/5":2},"consecutivePct":24.2,"repeatFromPrevPct":37.2,"buckets":{"30-39":103,"40-49":112,"50-59":126,"1-9":101,"20-29":109,"60-69":118,"10-19":116}},"pairs":{"expected":0.67,"top":[{"pair":[52,64],"count":5},{"pair":[44,50],"count":4},{"pair":[66,67],"count":4},{"pair":[32,64],"count":4},{"pair":[56,64],"count":4},{"pair":[4,52],"count":4},{"pair":[28,36],"count":4},{"pair":[7,47],"count":4},{"pair":[30,36],"count":3},{"pair":[30,42],"count":3},{"pair":[30,57],"count":3},{"pair":[36,42],"count":3}]},"monthly":{"2025-07":1,"2025-08":13,"2025-09":13,"2025-10":13,"2025-11":13,"2025-12":13,"2026-01":13,"2026-02":12,"2026-03":14,"2026-04":13,"2026-05":13,"2026-06":13,"2026-07":13},"recent":[{"date":"2026-07-30","main":[30,36,40,42,57],"extra":[2]},{"date":"2026-07-28","main":[6,26,46,58,65],"extra":[25]},{"date":"2026-07-26","main":[3,4,24,36,47],"extra":[17]},{"date":"2026-07-23","main":[4,5,22,50,58],"extra":[1]},{"date":"2026-07-21","main":[2,9,44,53,59],"extra":[8]},{"date":"2026-07-19","main":[9,14,44,50,56],"extra":[3]},{"date":"2026-07-16","main":[2,7,18,29,38],"extra":[16]},{"date":"2026-07-14","main":[5,25,36,40,48],"extra":[3]},{"date":"2026-07-12","main":[8,10,14,45,59],"extra":[5]},{"date":"2026-07-09","main":[12,29,37,43,55],"extra":[18]},{"date":"2026-07-07","main":[17,44,63,66,67],"extra":[4]},{"date":"2026-07-05","main":[17,38,46,50,69],"extra":[20]}]}}};</script>
+<script type="module">
+/* Lottery Lab dashboard — renders data/analysis.json and generates suggested lines. */
+
+const $ = (id) => document.getElementById(id);
+let DATA = null;
+let current = null;
+
+/* ---------------- suggestion engine ---------------- */
+
+// Weighted pick without replacement.
+function weightedPick(rows, k, weightFn) {
+  const pool = rows.map((r) => ({ n: r.n, w: Math.max(1e-6, weightFn(r)) }));
+  const out = [];
+  for (let i = 0; i < k && pool.length; i++) {
+    const total = pool.reduce((s, p) => s + p.w, 0);
+    let t = Math.random() * total;
+    let idx = pool.length - 1;
+    for (let j = 0; j < pool.length; j++) {
+      t -= pool[j].w;
+      if (t <= 0) { idx = j; break; }
+    }
+    out.push(pool[idx].n);
+    pool.splice(idx, 1);
+  }
+  return out.sort((a, b) => a - b);
+}
+
+const uniform = (rows, k) => weightedPick(rows, k, () => 1);
+
+// Most common odd/even split observed in the window, e.g. "3/3".
+function topSplitOdds(shape) {
+  const key = Object.keys(shape.oddEven)[0];
+  return key ? Number(key.split('/')[0]) : null;
+}
+
+// Retry a generator until the line looks like a typical draw
+// (sum inside the middle 80% band, and the most common odd/even split).
+function profiled(gen, shape, tries = 400) {
+  const wantOdds = topSplitOdds(shape);
+  const { p10, p90 } = shape.sum;
+  let best = gen();
+  for (let i = 0; i < tries; i++) {
+    const line = gen();
+    const s = line.reduce((a, b) => a + b, 0);
+    const odds = line.filter((n) => n % 2 === 1).length;
+    if (s >= p10 && s <= p90 && odds === wantOdds) return line;
+    best = line;
+  }
+  return best;
+}
+
+function buildStrategies(g) {
+  const rows = g.main.rows;
+  const ex = g.extra.rows;
+  const k = g.meta.mainCount;
+  const ek = g.meta.extraCount;
+  const maxCount = Math.max(...rows.map((r) => r.count)) || 1;
+  const maxSince = Math.max(...rows.map((r) => r.drawsSince)) || 1;
+
+  const hotW = (r) => Math.pow(r.count / maxCount, 3) + 0.02;
+  const coldW = (r) => Math.pow(1 - r.count / maxCount, 3) + 0.02;
+  const dueW = (r) => Math.pow(r.drawsSince / maxSince, 2.5) + 0.02;
+
+  return [
+    {
+      key: 'hot',
+      name: 'Hot streak',
+      note: 'Weighted towards the most-drawn balls',
+      main: () => weightedPick(rows, k, hotW),
+      extra: () => weightedPick(ex, ek, hotW),
+    },
+    {
+      key: 'due',
+      name: 'Long overdue',
+      note: 'Weighted towards balls that have waited longest',
+      main: () => weightedPick(rows, k, dueW),
+      extra: () => weightedPick(ex, ek, dueW),
+    },
+    {
+      key: 'cold',
+      name: 'Cold contrarian',
+      note: 'Weighted towards the least-drawn balls',
+      main: () => weightedPick(rows, k, coldW),
+      extra: () => weightedPick(ex, ek, coldW),
+    },
+    {
+      key: 'balanced',
+      name: 'Typical shape',
+      note: 'Random, but matching the commonest sum and odd/even split',
+      main: () => profiled(() => uniform(rows, k), g.shape),
+      extra: () => uniform(ex, ek),
+    },
+    {
+      key: 'dip',
+      name: 'Lucky dip',
+      note: 'Pure chance — the honest baseline to compare against',
+      main: () => uniform(rows, k),
+      extra: () => uniform(ex, ek),
+    },
+  ];
+}
+
+/* ---------------- rendering ---------------- */
+
+const fmtDate = (iso) => {
+  const [y, m, d] = iso.split('-');
+  return new Date(Date.UTC(+y, +m - 1, +d)).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC',
+  });
+};
+
+function ball(n, cls = '') {
+  return `<div class="ball ${cls}">${n}</div>`;
+}
+
+function ballWithMeta(n, meta, cls = '') {
+  return `<div class="ballwrap">${ball(n, cls)}<span class="meta">${meta}</span></div>`;
+}
+
+function renderTabs() {
+  $('gameTabs').innerHTML = Object.values(DATA.games)
+    .map(
+      (g) => `<button class="tab" role="tab" data-id="${g.meta.id}"
+        aria-selected="${g.meta.id === current}">
+        ${g.meta.name}<span class="flag">${g.meta.region}</span></button>`
+    )
+    .join('');
+  for (const btn of $('gameTabs').querySelectorAll('.tab')) {
+    btn.onclick = () => { current = btn.dataset.id; render(); };
+  }
+}
+
+function renderStats(g) {
+  const s = g.shape;
+  const cells = [
+    ['Draws analysed', g.meta.draws, g.meta.schedule],
+    ['Window', `${fmtDate(g.meta.from)}`, `to ${fmtDate(g.meta.to)}`],
+    ['Hottest ball', g.hot[0].n, `${g.hot[0].count} times`],
+    ['Longest wait', g.overdue[0].n, `${g.overdue[0].drawsSince} draws ago`],
+    ['Typical sum', s.sum.median, `usually ${s.sum.p10}–${s.sum.p90}`],
+    ['Fairness test', g.main.biased ? 'Uneven' : 'Fair', `p = ${g.main.p.toFixed(3)}`],
+  ];
+  $('statRow').innerHTML = cells
+    .map(([k, v, sub]) => `<div class="stat"><div class="k">${k}</div>
+      <div class="v">${v} <small>${sub}</small></div></div>`)
+    .join('');
+}
+
+function renderChart(g) {
+  const rows = g.main.rows;
+  const exp = g.main.expected;
+  const max = Math.max(...rows.map((r) => r.count), exp) * 1.12;
+  const el = $('freqChart');
+  el.innerHTML =
+    rows
+      .map((r) => {
+        const h = (r.count / max) * 100;
+        const up = r.count >= exp;
+        const showLab = rows.length <= 50 || r.n % 5 === 0;
+        const tip =
+          `<b>Ball ${r.n}</b> — drawn ${r.count}×<br>expected ${r.expected} · ` +
+          `${r.deviation > 0 ? '+' : ''}${r.deviation}%<br>` +
+          `last seen ${r.lastSeen ? fmtDate(r.lastSeen) : 'not in window'}`;
+        return `<div class="bar ${up ? 'up' : ''}" style="height:${h.toFixed(2)}%"
+            data-tip="${tip.replace(/"/g, '&quot;')}">
+          ${showLab ? `<span class="lab">${r.n}</span>` : ''}
+        </div>`;
+      })
+      .join('') +
+    `<div class="expline" style="bottom:${22 + (exp / max) * (190 - 22)}px"></div>` +
+    `<div class="charttip" id="chartTip" hidden></div>`;
+
+  // One shared tooltip, clamped inside the chart, so 69 hidden popups can't
+  // stretch the card's scroll width.
+  const tipEl = $('chartTip');
+  el.onmousemove = (e) => {
+    const bar = e.target.closest('.bar');
+    if (!bar) { tipEl.hidden = true; return; }
+    tipEl.hidden = false;
+    tipEl.innerHTML = bar.dataset.tip;
+    const cb = el.getBoundingClientRect();
+    const bb = bar.getBoundingClientRect();
+    const w = tipEl.offsetWidth;
+    let left = bb.left - cb.left + bb.width / 2 - w / 2;
+    left = Math.max(0, Math.min(left, cb.width - w));
+    tipEl.style.left = `${left}px`;
+    tipEl.style.bottom = `${cb.bottom - bb.top + 8}px`;
+  };
+  el.onmouseleave = () => { tipEl.hidden = true; };
+}
+
+function renderBalls(g) {
+  $('hotBalls').innerHTML = g.hot
+    .map((r) => ballWithMeta(r.n, `${r.count}×`, 'gold'))
+    .join('');
+  $('coldBalls').innerHTML = g.cold
+    .map((r) => ballWithMeta(r.n, `${r.count}×`, 'cool'))
+    .join('');
+  $('overdueBalls').innerHTML = g.overdue
+    .map((r) => ballWithMeta(r.n, `${r.drawsSince} ago`))
+    .join('');
+  $('extraLabelHot').textContent =
+    g.meta.extraLabel.toLowerCase() + (g.meta.extraPlayerPicks ? '' : ' (drawn, not chosen)');
+  $('hotExtra').innerHTML = g.hotExtra
+    .map((r) => ballWithMeta(r.n, `${r.count}×`, g.meta.extraClass))
+    .join('');
+}
+
+function renderPicks(g) {
+  const strategies = buildStrategies(g);
+  const picksExtra = g.meta.extraPlayerPicks;
+  $('pickList').innerHTML = strategies
+    .map((s) => {
+      const main = s.main();
+      const extra = picksExtra ? s.extra() : [];
+      return `<div class="pick" data-line="${main.join(' ')}${picksExtra ? ` | ${extra.join(' ')}` : ''}">
+        <div class="name"><b>${s.name}</b><span>${s.note}</span></div>
+        <div class="line">
+          ${main.map((n) => ball(n, 'gold')).join('')}
+          ${picksExtra
+            ? `<span class="sep">+</span>${extra.map((n) => ball(n, g.meta.extraClass)).join('')}`
+            : ''}
+        </div>
+      </div>`;
+    })
+    .join('');
+  $('rolledNote').textContent = picksExtra
+    ? `${g.meta.mainCount} ${g.meta.mainLabel.toLowerCase()} + ${g.meta.extraCount} ${g.meta.extraLabel.toLowerCase()}`
+    : `${g.meta.mainCount} ${g.meta.mainLabel.toLowerCase()} — the ${g.meta.extraLabel.toLowerCase()} is drawn, not chosen`;
+}
+
+function renderShape(g) {
+  const s = g.shape;
+  const total = g.meta.draws;
+  const dist = (obj) =>
+    Object.entries(obj)
+      .slice(0, 5)
+      .map(
+        ([k, v], i) =>
+          `<span class="dpill ${i === 0 ? 'top' : ''}">${k} <b>${Math.round((v / total) * 100)}%</b></span>`
+      )
+      .join('');
+
+  $('shapeBox').innerHTML = `
+    <div class="srow"><div class="k">Odd / even split</div><div class="dist">${dist(s.oddEven)}</div></div>
+    <div class="srow"><div class="k">Low / high split (1–${Math.floor(g.meta.mainMax / 2)} vs above)</div><div class="dist">${dist(s.lowHigh)}</div></div>
+    <div class="srow"><div class="k">Sum of the ${g.meta.mainCount} main balls</div>
+      <div class="v">Median <b>${s.sum.median}</b> · middle 80% falls between <b>${s.sum.p10}</b> and <b>${s.sum.p90}</b>
+      <span style="color:var(--muted)"> (range ${s.sum.min}–${s.sum.max})</span></div></div>
+    <div class="srow"><div class="k">Contains at least one consecutive pair</div>
+      <div class="v"><b>${s.consecutivePct}%</b> of draws</div></div>
+    <div class="srow"><div class="k">Shares a number with the previous draw</div>
+      <div class="v"><b>${s.repeatFromPrevPct}%</b> of draws</div></div>
+    <div class="srow"><div class="k">Average gap between lowest and highest ball</div>
+      <div class="v"><b>${s.span.mean}</b></div></div>`;
+}
+
+function renderBuckets(g) {
+  const b = g.shape.buckets;
+  const entries = Object.entries(b).sort(
+    (x, y) => parseInt(x[0]) - parseInt(y[0])
+  );
+  const max = Math.max(...entries.map((e) => e[1]));
+  $('bucketBox').innerHTML = entries
+    .map(
+      ([k, v]) => `<div class="brow"><span class="bk">${k}</span>
+      <span class="track"><span class="fill" style="width:${(v / max) * 100}%"></span></span>
+      <span class="bv">${v}</span></div>`
+    )
+    .join('');
+
+  $('pairExpected').textContent = g.pairs.expected;
+  $('pairBox').innerHTML = g.pairs.top
+    .map(
+      (p) => `<span class="pairchip">
+        <span class="mini">${p.pair[0]}</span><span class="mini">${p.pair[1]}</span>
+        <span class="n">${p.count}×</span></span>`
+    )
+    .join('');
+}
+
+function renderRecent(g) {
+  $('recentBox').innerHTML = g.recent
+    .map(
+      (d) => `<div class="rrow">
+      <span class="d">${fmtDate(d.date)}</span>
+      ${d.round ? `<span class="rd">R${d.round}</span>` : ''}
+      <span class="balls">
+        ${d.main.map((n) => ball(n, 'gold')).join('')}
+        <span class="sep" style="color:var(--muted);margin:0 4px">+</span>
+        ${d.extra.map((n) => ball(n, g.meta.extraClass)).join('')}
+      </span></div>`
+    )
+    .join('');
+}
+
+function renderVerdict(g) {
+  const el = $('verdict');
+  if (g.main.biased) {
+    el.className = 'verdict bias';
+    el.innerHTML = `<div class="icon">◆</div><div>
+      <h3>This game's numbers came up unevenly over the window</h3>
+      <p>Across ${g.meta.draws} draws the spread of results is wider than chance comfortably explains
+      (chi-square ${g.main.chi2} on ${g.main.df} degrees of freedom, p = ${g.main.p}). With a sample this
+      small that is far more likely to be ordinary short-run noise than a faulty machine — over a longer
+      window it almost always flattens out. Worth noticing, not worth betting the house on.</p></div>`;
+  } else {
+    el.className = 'verdict fair';
+    el.innerHTML = `<div class="icon">✓</div><div>
+      <h3>No real pattern — this game looks fair</h3>
+      <p>Across ${g.meta.draws} draws the numbers fell almost exactly as a fair machine would produce
+      (chi-square ${g.main.chi2} on ${g.main.df} degrees of freedom, p = ${g.main.p}; anything above 0.05
+      is consistent with pure chance). The hot and cold numbers below are real history, but they carry no
+      predictive power for the next draw. Pick the ones you like the look of.</p></div>`;
+  }
+}
+
+function render() {
+  const g = DATA.games[current];
+  if (!g) return;
+  for (const btn of $('gameTabs').querySelectorAll('.tab'))
+    btn.setAttribute('aria-selected', String(btn.dataset.id === current));
+
+  renderStats(g);
+  renderChart(g);
+  renderBalls(g);
+  renderPicks(g);
+  renderShape(g);
+  renderBuckets(g);
+  renderRecent(g);
+  renderVerdict(g);
+}
+
+/* ---------------- boot ---------------- */
+
+async function boot() {
+  try {
+    // The published artifact inlines the analysis (its sandbox blocks network
+    // requests); the local server fetches it so a refresh shows up on reload.
+    if (window.__LOTTERY_DATA__) {
+      DATA = window.__LOTTERY_DATA__;
+    } else {
+      const res = await fetch('/data/analysis.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      DATA = await res.json();
+    }
+  } catch (err) {
+    $('loadError').hidden = false;
+    $('loadError').innerHTML = `<b>Couldn't load the analysis data.</b><br>
+      Run <code>npm run refresh</code> in the project folder, then reload this page.
+      <br><br>(${err.message})`;
+    return;
+  }
+
+  current = Object.keys(DATA.games)[0];
+  const built = new Date(DATA.generatedAt);
+  $('windowLine').textContent =
+    `Last ${DATA.windowMonths} months of draws · analysed ${built.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}`;
+
+  const totalDraws = Object.values(DATA.games).reduce((s, g) => s + g.meta.draws, 0);
+  $('topbarMeta').innerHTML = `
+    <span class="chip"><b>${Object.keys(DATA.games).length}</b> games</span>
+    <span class="chip"><b>${totalDraws}</b> draws analysed</span>
+    <span class="chip">since <b>${fmtDate(DATA.cutoff)}</b></span>`;
+
+  renderTabs();
+  $('app').hidden = false;
+  render();
+
+  $('rollBtn').onclick = () => renderPicks(DATA.games[current]);
+  $('copyBtn').onclick = async () => {
+    const g = DATA.games[current];
+    const lines = [...document.querySelectorAll('.pick')].map((p) => {
+      const name = p.querySelector('.name b').textContent;
+      return `${name.padEnd(18)} ${p.dataset.line}`;
+    });
+    const text = `${g.meta.name} — suggested lines\n${lines.join('\n')}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      $('copyBtn').textContent = 'Copied';
+      setTimeout(() => ($('copyBtn').textContent = 'Copy all'), 1400);
+    } catch {
+      $('copyBtn').textContent = 'Copy failed';
+      setTimeout(() => ($('copyBtn').textContent = 'Copy all'), 1400);
+    }
+  };
+}
+
+boot();
+
+</script>
