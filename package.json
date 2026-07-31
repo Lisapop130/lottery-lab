@@ -9,6 +9,7 @@
     "analyse": "node src/analyse.js",
     "refresh": "node src/scrape.js && node src/analyse.js && node src/build-artifact.js",
     "artifact": "node src/build-artifact.js",
+    "changed": "node src/changed.js",
     "start": "node src/serve.js"
   }
 }
