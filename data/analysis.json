@@ -1,8 +1,8 @@
 {
- "generatedAt": "2026-08-08T14:39:31.020Z",
- "sourceGeneratedAt": "2026-08-08T14:39:30.055Z",
+ "generatedAt": "2026-08-10T10:50:16.341Z",
+ "sourceGeneratedAt": "2026-08-10T10:50:15.401Z",
  "windowMonths": 12,
- "cutoff": "2025-08-08",
+ "cutoff": "2025-08-10",
  "games": {
   "lotto": {
    "meta": {
@@ -18,489 +18,489 @@
     "extraLabel": "Bonus ball",
     "extraClass": "bonus",
     "extraPlayerPicks": false,
-    "draws": 121,
-    "from": "2025-08-09",
-    "to": "2026-08-05"
+    "draws": 122,
+    "from": "2025-08-13",
+    "to": "2026-08-08"
    },
    "main": {
     "rows": [
      {
       "n": 1,
       "count": 10,
-      "expected": 12.31,
-      "deviation": -18.7,
-      "drawsSince": 32,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 34,
       "lastSeen": "2026-06-10"
      },
      {
       "n": 2,
-      "count": 15,
-      "expected": 12.31,
-      "deviation": 21.9,
-      "drawsSince": 3,
+      "count": 14,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 5,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 3,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 8,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 10,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 4,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 12,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 14,
       "lastSeen": "2026-07-15"
      },
      {
       "n": 5,
-      "count": 12,
-      "expected": 12.31,
-      "deviation": -2.5,
-      "drawsSince": 4,
-      "lastSeen": "2026-07-29"
+      "count": 13,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 1,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 6,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 6,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 8,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 7,
       "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 18,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 20,
       "lastSeen": "2026-07-04"
      },
      {
       "n": 8,
       "count": 6,
-      "expected": 12.31,
-      "deviation": -51.2,
-      "drawsSince": 21,
+      "expected": 12.41,
+      "deviation": -51.6,
+      "drawsSince": 23,
       "lastSeen": "2026-07-01"
      },
      {
       "n": 9,
       "count": 18,
-      "expected": 12.31,
-      "deviation": 46.3,
-      "drawsSince": 7,
+      "expected": 12.41,
+      "deviation": 45.1,
+      "drawsSince": 9,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 10,
-      "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 4,
-      "lastSeen": "2026-07-29"
+      "count": 14,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 1,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 11,
       "count": 8,
-      "expected": 12.31,
-      "deviation": -35,
-      "drawsSince": 38,
+      "expected": 12.41,
+      "deviation": -35.5,
+      "drawsSince": 40,
       "lastSeen": "2026-05-23"
      },
      {
       "n": 12,
       "count": 16,
-      "expected": 12.31,
-      "deviation": 30,
-      "drawsSince": 1,
+      "expected": 12.41,
+      "deviation": 29,
+      "drawsSince": 3,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 13,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 12,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 14,
       "lastSeen": "2026-07-15"
      },
      {
       "n": 14,
-      "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 1,
-      "lastSeen": "2026-08-05"
+      "count": 12,
+      "expected": 12.41,
+      "deviation": -3.3,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 15,
       "count": 15,
-      "expected": 12.31,
-      "deviation": 21.9,
-      "drawsSince": 26,
+      "expected": 12.41,
+      "deviation": 20.9,
+      "drawsSince": 28,
       "lastSeen": "2026-06-20"
      },
      {
       "n": 16,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 1,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 3,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 17,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 9,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 11,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 18,
-      "count": 15,
-      "expected": 12.31,
-      "deviation": 21.9,
-      "drawsSince": 23,
-      "lastSeen": "2026-06-27"
+      "count": 16,
+      "expected": 12.41,
+      "deviation": 29,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 19,
       "count": 7,
-      "expected": 12.31,
-      "deviation": -43.1,
-      "drawsSince": 2,
+      "expected": 12.41,
+      "deviation": -43.6,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 20,
       "count": 15,
-      "expected": 12.31,
-      "deviation": 21.9,
-      "drawsSince": 5,
+      "expected": 12.41,
+      "deviation": 20.9,
+      "drawsSince": 7,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 21,
       "count": 4,
-      "expected": 12.31,
-      "deviation": -67.5,
-      "drawsSince": 27,
+      "expected": 12.41,
+      "deviation": -67.8,
+      "drawsSince": 29,
       "lastSeen": "2026-06-20"
      },
      {
       "n": 22,
       "count": 20,
-      "expected": 12.31,
-      "deviation": 62.5,
-      "drawsSince": 1,
+      "expected": 12.41,
+      "deviation": 61.2,
+      "drawsSince": 3,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 23,
       "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 8,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 10,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 24,
       "count": 10,
-      "expected": 12.31,
-      "deviation": -18.7,
-      "drawsSince": 0,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 25,
       "count": 9,
-      "expected": 12.31,
-      "deviation": -26.9,
-      "drawsSince": 9,
+      "expected": 12.41,
+      "deviation": -27.5,
+      "drawsSince": 11,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 26,
-      "count": 9,
-      "expected": 12.31,
-      "deviation": -26.9,
+      "count": 11,
+      "expected": 12.41,
+      "deviation": -11.3,
       "drawsSince": 0,
-      "lastSeen": "2026-08-05"
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 27,
-      "count": 12,
-      "expected": 12.31,
-      "deviation": -2.5,
-      "drawsSince": 0,
+      "count": 11,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 28,
-      "count": 9,
-      "expected": 12.31,
-      "deviation": -26.9,
-      "drawsSince": 24,
-      "lastSeen": "2026-06-24"
+      "count": 10,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 1,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 29,
-      "count": 11,
-      "expected": 12.31,
-      "deviation": -10.6,
-      "drawsSince": 1,
+      "count": 10,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 3,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 30,
       "count": 12,
-      "expected": 12.31,
-      "deviation": -2.5,
-      "drawsSince": 11,
+      "expected": 12.41,
+      "deviation": -3.3,
+      "drawsSince": 13,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 31,
       "count": 14,
-      "expected": 12.31,
-      "deviation": 13.8,
-      "drawsSince": 5,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 7,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 32,
       "count": 15,
-      "expected": 12.31,
-      "deviation": 21.9,
-      "drawsSince": 2,
+      "expected": 12.41,
+      "deviation": 20.9,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 33,
       "count": 15,
-      "expected": 12.31,
-      "deviation": 21.9,
-      "drawsSince": 2,
+      "expected": 12.41,
+      "deviation": 20.9,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 34,
       "count": 14,
-      "expected": 12.31,
-      "deviation": 13.8,
-      "drawsSince": 2,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 35,
       "count": 12,
-      "expected": 12.31,
-      "deviation": -2.5,
-      "drawsSince": 3,
+      "expected": 12.41,
+      "deviation": -3.3,
+      "drawsSince": 5,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 36,
       "count": 16,
-      "expected": 12.31,
-      "deviation": 30,
-      "drawsSince": 6,
+      "expected": 12.41,
+      "deviation": 29,
+      "drawsSince": 8,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 37,
       "count": 8,
-      "expected": 12.31,
-      "deviation": -35,
-      "drawsSince": 31,
+      "expected": 12.41,
+      "deviation": -35.5,
+      "drawsSince": 33,
       "lastSeen": "2026-06-13"
      },
      {
       "n": 38,
-      "count": 14,
-      "expected": 12.31,
-      "deviation": 13.8,
-      "drawsSince": 4,
+      "count": 13,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 39,
       "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 0,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 40,
       "count": 19,
-      "expected": 12.31,
-      "deviation": 54.4,
-      "drawsSince": 5,
+      "expected": 12.41,
+      "deviation": 53.1,
+      "drawsSince": 7,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 41,
       "count": 8,
-      "expected": 12.31,
-      "deviation": -35,
-      "drawsSince": 19,
+      "expected": 12.41,
+      "deviation": -35.5,
+      "drawsSince": 21,
       "lastSeen": "2026-07-04"
      },
      {
       "n": 42,
       "count": 14,
-      "expected": 12.31,
-      "deviation": 13.8,
-      "drawsSince": 11,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 13,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 43,
       "count": 17,
-      "expected": 12.31,
-      "deviation": 38.2,
-      "drawsSince": 3,
+      "expected": 12.41,
+      "deviation": 37,
+      "drawsSince": 5,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 44,
-      "count": 7,
-      "expected": 12.31,
-      "deviation": -43.1,
-      "drawsSince": 2,
+      "count": 6,
+      "expected": 12.41,
+      "deviation": -51.6,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 45,
-      "count": 14,
-      "expected": 12.31,
-      "deviation": 13.8,
-      "drawsSince": 3,
-      "lastSeen": "2026-08-01"
+      "count": 16,
+      "expected": 12.41,
+      "deviation": 29,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 46,
       "count": 10,
-      "expected": 12.31,
-      "deviation": -18.7,
-      "drawsSince": 11,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 13,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 47,
-      "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 0,
-      "lastSeen": "2026-08-05"
+      "count": 14,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 1,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 48,
       "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 3,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 5,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 49,
       "count": 10,
-      "expected": 12.31,
-      "deviation": -18.7,
-      "drawsSince": 7,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 9,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 50,
-      "count": 9,
-      "expected": 12.31,
-      "deviation": -26.9,
+      "count": 10,
+      "expected": 12.41,
+      "deviation": -19.4,
       "drawsSince": 0,
-      "lastSeen": "2026-08-05"
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 51,
-      "count": 12,
-      "expected": 12.31,
-      "deviation": -2.5,
-      "drawsSince": 13,
+      "count": 11,
+      "expected": 12.41,
+      "deviation": -11.3,
+      "drawsSince": 15,
       "lastSeen": "2026-07-15"
      },
      {
       "n": 52,
       "count": 10,
-      "expected": 12.31,
-      "deviation": -18.7,
-      "drawsSince": 10,
+      "expected": 12.41,
+      "deviation": -19.4,
+      "drawsSince": 12,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 53,
-      "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 7,
-      "lastSeen": "2026-07-25"
+      "count": 14,
+      "expected": 12.41,
+      "deviation": 12.8,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 54,
       "count": 18,
-      "expected": 12.31,
-      "deviation": 46.3,
-      "drawsSince": 17,
+      "expected": 12.41,
+      "deviation": 45.1,
+      "drawsSince": 19,
       "lastSeen": "2026-07-08"
      },
      {
       "n": 55,
       "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 5,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 7,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 56,
       "count": 16,
-      "expected": 12.31,
-      "deviation": 30,
-      "drawsSince": 4,
+      "expected": 12.41,
+      "deviation": 29,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 57,
       "count": 13,
-      "expected": 12.31,
-      "deviation": 5.6,
-      "drawsSince": 13,
+      "expected": 12.41,
+      "deviation": 4.8,
+      "drawsSince": 15,
       "lastSeen": "2026-07-15"
      },
      {
       "n": 58,
       "count": 12,
-      "expected": 12.31,
-      "deviation": -2.5,
-      "drawsSince": 4,
+      "expected": 12.41,
+      "deviation": -3.3,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 59,
       "count": 17,
-      "expected": 12.31,
-      "deviation": 38.2,
-      "drawsSince": 1,
+      "expected": 12.41,
+      "deviation": 37,
+      "drawsSince": 3,
       "lastSeen": "2026-08-05"
      }
     ],
-    "expected": 12.31,
-    "chi2": 50.59,
+    "expected": 12.41,
+    "chi2": 51.28,
     "df": 58,
-    "p": 0.7444,
+    "p": 0.7214,
     "biased": false
    },
    "extra": {
@@ -508,761 +508,761 @@
      {
       "n": 1,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 5,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 7,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 2,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 3,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 4,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 74,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 76,
       "lastSeen": "2026-01-17"
      },
      {
       "n": 5,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 42,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 44,
       "lastSeen": "2026-05-09"
      },
      {
       "n": 6,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 27,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 29,
       "lastSeen": "2026-06-20"
      },
      {
       "n": 7,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 47,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 49,
       "lastSeen": "2026-04-22"
      },
      {
       "n": 8,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 0,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 9,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 76,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 78,
       "lastSeen": "2026-01-10"
      },
      {
       "n": 10,
       "count": 4,
-      "expected": 2.05,
-      "deviation": 95,
-      "drawsSince": 10,
+      "expected": 2.07,
+      "deviation": 93.4,
+      "drawsSince": 12,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 11,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 9,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 11,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 12,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 77,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 79,
       "lastSeen": "2026-01-07"
      },
      {
       "n": 13,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 111,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 113,
       "lastSeen": "2025-09-10"
      },
      {
       "n": 14,
-      "count": 4,
-      "expected": 2.05,
-      "deviation": 95,
-      "drawsSince": 41,
-      "lastSeen": "2026-05-13"
+      "count": 5,
+      "expected": 2.07,
+      "deviation": 141.8,
+      "drawsSince": 1,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 15,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 71,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 73,
       "lastSeen": "2026-01-28"
      },
      {
       "n": 16,
       "count": 5,
-      "expected": 2.05,
-      "deviation": 143.8,
-      "drawsSince": 25,
+      "expected": 2.07,
+      "deviation": 141.8,
+      "drawsSince": 27,
       "lastSeen": "2026-06-24"
      },
      {
       "n": 17,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 18,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 54,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 56,
       "lastSeen": "2026-03-28"
      },
      {
       "n": 19,
       "count": 5,
-      "expected": 2.05,
-      "deviation": 143.8,
-      "drawsSince": 44,
+      "expected": 2.07,
+      "deviation": 141.8,
+      "drawsSince": 46,
       "lastSeen": "2026-05-02"
      },
      {
       "n": 20,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 40,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 42,
       "lastSeen": "2026-05-16"
      },
      {
       "n": 21,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 80,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 82,
       "lastSeen": "2025-12-27"
      },
      {
       "n": 22,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 108,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 110,
       "lastSeen": "2025-09-20"
      },
      {
       "n": 23,
-      "count": 4,
-      "expected": 2.05,
-      "deviation": 95,
-      "drawsSince": 46,
+      "count": 3,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 48,
       "lastSeen": "2026-04-25"
      },
      {
       "n": 24,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 22,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 24,
       "lastSeen": "2026-06-27"
      },
      {
       "n": 25,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 49,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 51,
       "lastSeen": "2026-04-15"
      },
      {
       "n": 26,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 27,
       "count": 4,
-      "expected": 2.05,
-      "deviation": 95,
-      "drawsSince": 3,
+      "expected": 2.07,
+      "deviation": 93.4,
+      "drawsSince": 5,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 28,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 113,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 115,
       "lastSeen": "2025-09-03"
      },
      {
       "n": 29,
       "count": 4,
-      "expected": 2.05,
-      "deviation": 95,
-      "drawsSince": 2,
+      "expected": 2.07,
+      "deviation": 93.4,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 30,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 31,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 39,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 41,
       "lastSeen": "2026-05-20"
      },
      {
       "n": 32,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 97,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 99,
       "lastSeen": "2025-10-29"
      },
      {
       "n": 33,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 36,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 38,
       "lastSeen": "2026-05-30"
      },
      {
       "n": 34,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 7,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 9,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 35,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 37,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 39,
       "lastSeen": "2026-05-27"
      },
      {
       "n": 36,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 83,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 85,
       "lastSeen": "2025-12-17"
      },
      {
       "n": 37,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 16,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 18,
       "lastSeen": "2026-07-08"
      },
      {
       "n": 38,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 11,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 13,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 39,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 40,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 68,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 70,
       "lastSeen": "2026-02-07"
      },
      {
       "n": 41,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 14,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 16,
       "lastSeen": "2026-07-11"
      },
      {
       "n": 42,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 104,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 106,
       "lastSeen": "2025-10-04"
      },
      {
       "n": 43,
-      "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 55,
-      "lastSeen": "2026-03-25"
+      "count": 2,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 44,
       "count": 4,
-      "expected": 2.05,
-      "deviation": 95,
-      "drawsSince": 26,
+      "expected": 2.07,
+      "deviation": 93.4,
+      "drawsSince": 28,
       "lastSeen": "2026-06-20"
      },
      {
       "n": 45,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 17,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 19,
       "lastSeen": "2026-07-08"
      },
      {
       "n": 46,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 8,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 10,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 47,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 18,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 20,
       "lastSeen": "2026-07-04"
      },
      {
       "n": 48,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 48,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 50,
       "lastSeen": "2026-04-18"
      },
      {
       "n": 49,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 19,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 21,
       "lastSeen": "2026-07-04"
      },
      {
       "n": 50,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 6,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 8,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 51,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 33,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 35,
       "lastSeen": "2026-06-10"
      },
      {
       "n": 52,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 52,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 54,
       "lastSeen": "2026-04-04"
      },
      {
       "n": 53,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 102,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 104,
       "lastSeen": "2025-10-11"
      },
      {
       "n": 54,
       "count": 5,
-      "expected": 2.05,
-      "deviation": 143.8,
-      "drawsSince": 4,
+      "expected": 2.07,
+      "deviation": 141.8,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 55,
       "count": 1,
-      "expected": 2.05,
-      "deviation": -51.2,
-      "drawsSince": 98,
+      "expected": 2.07,
+      "deviation": -51.6,
+      "drawsSince": 100,
       "lastSeen": "2025-10-25"
      },
      {
       "n": 56,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 12,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 14,
       "lastSeen": "2026-07-15"
      },
      {
       "n": 57,
       "count": 0,
-      "expected": 2.05,
+      "expected": 2.07,
       "deviation": -100,
-      "drawsSince": 121,
+      "drawsSince": 122,
       "lastSeen": null
      },
      {
       "n": 58,
       "count": 2,
-      "expected": 2.05,
-      "deviation": -2.5,
-      "drawsSince": 1,
+      "expected": 2.07,
+      "deviation": -3.3,
+      "drawsSince": 3,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 59,
       "count": 3,
-      "expected": 2.05,
-      "deviation": 46.3,
-      "drawsSince": 58,
+      "expected": 2.07,
+      "deviation": 45.1,
+      "drawsSince": 60,
       "lastSeen": "2026-03-14"
      }
     ],
-    "expected": 2.05,
-    "chi2": 50.15,
+    "expected": 2.07,
+    "chi2": 50.16,
     "df": 58,
-    "p": 0.7587,
+    "p": 0.7582,
     "biased": false
    },
    "hot": [
     {
      "n": 22,
      "count": 20,
-     "expected": 12.31,
-     "deviation": 62.5,
-     "drawsSince": 1,
+     "expected": 12.41,
+     "deviation": 61.2,
+     "drawsSince": 3,
      "lastSeen": "2026-08-05"
     },
     {
      "n": 40,
      "count": 19,
-     "expected": 12.31,
-     "deviation": 54.4,
-     "drawsSince": 5,
+     "expected": 12.41,
+     "deviation": 53.1,
+     "drawsSince": 7,
      "lastSeen": "2026-07-29"
     },
     {
      "n": 9,
      "count": 18,
-     "expected": 12.31,
-     "deviation": 46.3,
-     "drawsSince": 7,
+     "expected": 12.41,
+     "deviation": 45.1,
+     "drawsSince": 9,
      "lastSeen": "2026-07-25"
     },
     {
      "n": 54,
      "count": 18,
-     "expected": 12.31,
-     "deviation": 46.3,
-     "drawsSince": 17,
+     "expected": 12.41,
+     "deviation": 45.1,
+     "drawsSince": 19,
      "lastSeen": "2026-07-08"
     },
     {
      "n": 43,
      "count": 17,
-     "expected": 12.31,
-     "deviation": 38.2,
-     "drawsSince": 3,
+     "expected": 12.41,
+     "deviation": 37,
+     "drawsSince": 5,
      "lastSeen": "2026-08-01"
     },
     {
      "n": 59,
      "count": 17,
-     "expected": 12.31,
-     "deviation": 38.2,
-     "drawsSince": 1,
+     "expected": 12.41,
+     "deviation": 37,
+     "drawsSince": 3,
      "lastSeen": "2026-08-05"
     },
     {
      "n": 12,
      "count": 16,
-     "expected": 12.31,
-     "deviation": 30,
-     "drawsSince": 1,
+     "expected": 12.41,
+     "deviation": 29,
+     "drawsSince": 3,
      "lastSeen": "2026-08-05"
     },
     {
-     "n": 36,
+     "n": 18,
      "count": 16,
-     "expected": 12.31,
-     "deviation": 30,
-     "drawsSince": 6,
-     "lastSeen": "2026-07-25"
+     "expected": 12.41,
+     "deviation": 29,
+     "drawsSince": 0,
+     "lastSeen": "2026-08-08"
     }
    ],
    "cold": [
     {
      "n": 21,
      "count": 4,
-     "expected": 12.31,
-     "deviation": -67.5,
-     "drawsSince": 27,
+     "expected": 12.41,
+     "deviation": -67.8,
+     "drawsSince": 29,
      "lastSeen": "2026-06-20"
+    },
+    {
+     "n": 44,
+     "count": 6,
+     "expected": 12.41,
+     "deviation": -51.6,
+     "drawsSince": 4,
+     "lastSeen": "2026-08-01"
     },
     {
      "n": 8,
      "count": 6,
-     "expected": 12.31,
-     "deviation": -51.2,
-     "drawsSince": 21,
+     "expected": 12.41,
+     "deviation": -51.6,
+     "drawsSince": 23,
      "lastSeen": "2026-07-01"
-    },
-    {
-     "n": 44,
-     "count": 7,
-     "expected": 12.31,
-     "deviation": -43.1,
-     "drawsSince": 2,
-     "lastSeen": "2026-08-01"
     },
     {
      "n": 19,
      "count": 7,
-     "expected": 12.31,
-     "deviation": -43.1,
-     "drawsSince": 2,
+     "expected": 12.41,
+     "deviation": -43.6,
+     "drawsSince": 4,
      "lastSeen": "2026-08-01"
     },
     {
      "n": 41,
      "count": 8,
-     "expected": 12.31,
-     "deviation": -35,
-     "drawsSince": 19,
+     "expected": 12.41,
+     "deviation": -35.5,
+     "drawsSince": 21,
      "lastSeen": "2026-07-04"
     },
     {
      "n": 37,
      "count": 8,
-     "expected": 12.31,
-     "deviation": -35,
-     "drawsSince": 31,
+     "expected": 12.41,
+     "deviation": -35.5,
+     "drawsSince": 33,
      "lastSeen": "2026-06-13"
     },
     {
      "n": 11,
      "count": 8,
-     "expected": 12.31,
-     "deviation": -35,
-     "drawsSince": 38,
+     "expected": 12.41,
+     "deviation": -35.5,
+     "drawsSince": 40,
      "lastSeen": "2026-05-23"
     },
     {
-     "n": 50,
+     "n": 25,
      "count": 9,
-     "expected": 12.31,
-     "deviation": -26.9,
-     "drawsSince": 0,
-     "lastSeen": "2026-08-05"
+     "expected": 12.41,
+     "deviation": -27.5,
+     "drawsSince": 11,
+     "lastSeen": "2026-07-22"
     }
    ],
    "overdue": [
     {
      "n": 11,
      "count": 8,
-     "expected": 12.31,
-     "deviation": -35,
-     "drawsSince": 38,
+     "expected": 12.41,
+     "deviation": -35.5,
+     "drawsSince": 40,
      "lastSeen": "2026-05-23"
     },
     {
      "n": 1,
      "count": 10,
-     "expected": 12.31,
-     "deviation": -18.7,
-     "drawsSince": 32,
+     "expected": 12.41,
+     "deviation": -19.4,
+     "drawsSince": 34,
      "lastSeen": "2026-06-10"
     },
     {
      "n": 37,
      "count": 8,
-     "expected": 12.31,
-     "deviation": -35,
-     "drawsSince": 31,
+     "expected": 12.41,
+     "deviation": -35.5,
+     "drawsSince": 33,
      "lastSeen": "2026-06-13"
     },
     {
      "n": 21,
      "count": 4,
-     "expected": 12.31,
-     "deviation": -67.5,
-     "drawsSince": 27,
+     "expected": 12.41,
+     "deviation": -67.8,
+     "drawsSince": 29,
      "lastSeen": "2026-06-20"
     },
     {
      "n": 15,
      "count": 15,
-     "expected": 12.31,
-     "deviation": 21.9,
-     "drawsSince": 26,
+     "expected": 12.41,
+     "deviation": 20.9,
+     "drawsSince": 28,
      "lastSeen": "2026-06-20"
-    },
-    {
-     "n": 28,
-     "count": 9,
-     "expected": 12.31,
-     "deviation": -26.9,
-     "drawsSince": 24,
-     "lastSeen": "2026-06-24"
-    },
-    {
-     "n": 18,
-     "count": 15,
-     "expected": 12.31,
-     "deviation": 21.9,
-     "drawsSince": 23,
-     "lastSeen": "2026-06-27"
     },
     {
      "n": 8,
      "count": 6,
-     "expected": 12.31,
-     "deviation": -51.2,
-     "drawsSince": 21,
+     "expected": 12.41,
+     "deviation": -51.6,
+     "drawsSince": 23,
      "lastSeen": "2026-07-01"
+    },
+    {
+     "n": 41,
+     "count": 8,
+     "expected": 12.41,
+     "deviation": -35.5,
+     "drawsSince": 21,
+     "lastSeen": "2026-07-04"
+    },
+    {
+     "n": 7,
+     "count": 13,
+     "expected": 12.41,
+     "deviation": 4.8,
+     "drawsSince": 20,
+     "lastSeen": "2026-07-04"
     }
    ],
    "hotExtra": [
     {
+     "n": 14,
+     "count": 5,
+     "expected": 2.07,
+     "deviation": 141.8,
+     "drawsSince": 1,
+     "lastSeen": "2026-08-08"
+    },
+    {
      "n": 16,
      "count": 5,
-     "expected": 2.05,
-     "deviation": 143.8,
-     "drawsSince": 25,
+     "expected": 2.07,
+     "deviation": 141.8,
+     "drawsSince": 27,
      "lastSeen": "2026-06-24"
     },
     {
      "n": 19,
      "count": 5,
-     "expected": 2.05,
-     "deviation": 143.8,
-     "drawsSince": 44,
+     "expected": 2.07,
+     "deviation": 141.8,
+     "drawsSince": 46,
      "lastSeen": "2026-05-02"
     },
     {
      "n": 54,
      "count": 5,
-     "expected": 2.05,
-     "deviation": 143.8,
-     "drawsSince": 4,
+     "expected": 2.07,
+     "deviation": 141.8,
+     "drawsSince": 6,
      "lastSeen": "2026-07-29"
     },
     {
      "n": 10,
      "count": 4,
-     "expected": 2.05,
-     "deviation": 95,
-     "drawsSince": 10,
+     "expected": 2.07,
+     "deviation": 93.4,
+     "drawsSince": 12,
      "lastSeen": "2026-07-18"
-    },
-    {
-     "n": 14,
-     "count": 4,
-     "expected": 2.05,
-     "deviation": 95,
-     "drawsSince": 41,
-     "lastSeen": "2026-05-13"
     }
    ],
    "overdueExtra": [
     {
      "n": 2,
      "count": 0,
-     "expected": 2.05,
+     "expected": 2.07,
      "deviation": -100,
-     "drawsSince": 121,
+     "drawsSince": 122,
      "lastSeen": null
     },
     {
      "n": 3,
      "count": 0,
-     "expected": 2.05,
+     "expected": 2.07,
      "deviation": -100,
-     "drawsSince": 121,
+     "drawsSince": 122,
      "lastSeen": null
     },
     {
      "n": 17,
      "count": 0,
-     "expected": 2.05,
+     "expected": 2.07,
      "deviation": -100,
-     "drawsSince": 121,
+     "drawsSince": 122,
      "lastSeen": null
     },
     {
      "n": 26,
      "count": 0,
-     "expected": 2.05,
+     "expected": 2.07,
      "deviation": -100,
-     "drawsSince": 121,
+     "drawsSince": 122,
      "lastSeen": null
     },
     {
      "n": 30,
      "count": 0,
-     "expected": 2.05,
+     "expected": 2.07,
      "deviation": -100,
-     "drawsSince": 121,
+     "drawsSince": 122,
      "lastSeen": null
     }
    ],
@@ -1270,18 +1270,18 @@
     "sum": {
      "min": 66,
      "max": 297,
-     "mean": 184.4,
+     "mean": 184.3,
      "median": 185,
      "p10": 128,
      "p90": 242
     },
     "span": {
-     "mean": 42.5,
-     "median": 46
+     "mean": 42.4,
+     "median": 45
     },
     "oddEven": {
      "3/3": 40,
-     "2/4": 34,
+     "2/4": 35,
      "4/2": 28,
      "1/5": 9,
      "5/1": 8,
@@ -1291,24 +1291,24 @@
     "lowHigh": {
      "3/3": 39,
      "2/4": 29,
-     "4/2": 25,
+     "4/2": 26,
      "1/5": 15,
      "5/1": 9,
      "0/6": 4
     },
-    "consecutivePct": 41.3,
-    "repeatFromPrevPct": 45,
+    "consecutivePct": 41,
+    "repeatFromPrevPct": 45.5,
     "buckets": {
-     "20-29": 110,
-     "30-39": 133,
-     "40-49": 125,
-     "50-59": 133,
-     "10-19": 118,
-     "1-9": 107
+     "10-19": 121,
+     "20-29": 111,
+     "40-49": 127,
+     "50-59": 134,
+     "1-9": 107,
+     "30-39": 132
     }
    },
    "pairs": {
-    "expected": 1.06,
+    "expected": 1.07,
     "top": [
      {
       "pair": [
@@ -1397,7 +1397,7 @@
     ]
    },
    "monthly": {
-    "2025-08": 7,
+    "2025-08": 6,
     "2025-09": 8,
     "2025-10": 9,
     "2025-11": 9,
@@ -1409,9 +1409,39 @@
     "2026-05": 9,
     "2026-06": 14,
     "2026-07": 18,
-    "2026-08": 4
+    "2026-08": 6
    },
    "recent": [
+    {
+     "date": "2026-08-08",
+     "round": 1,
+     "main": [
+      14,
+      18,
+      26,
+      45,
+      50,
+      53
+     ],
+     "extra": [
+      43
+     ]
+    },
+    {
+     "date": "2026-08-08",
+     "round": 2,
+     "main": [
+      5,
+      10,
+      26,
+      28,
+      45,
+      47
+     ],
+     "extra": [
+      14
+     ]
+    },
     {
      "date": "2026-08-05",
      "round": 1,
@@ -1561,36 +1591,6 @@
      "extra": [
       11
      ]
-    },
-    {
-     "date": "2026-07-18",
-     "round": 1,
-     "main": [
-      22,
-      32,
-      34,
-      47,
-      52,
-      55
-     ],
-     "extra": [
-      10
-     ]
-    },
-    {
-     "date": "2026-07-18",
-     "round": 2,
-     "main": [
-      20,
-      29,
-      30,
-      42,
-      46,
-      55
-     ],
-     "extra": [
-      38
-     ]
     }
    ]
   },
@@ -1608,8 +1608,8 @@
     "extraLabel": "Lucky Stars",
     "extraClass": "star",
     "extraPlayerPicks": true,
-    "draws": 105,
-    "from": "2025-08-08",
+    "draws": 104,
+    "from": "2025-08-12",
     "to": "2026-08-07"
    },
    "main": {
@@ -1617,408 +1617,408 @@
      {
       "n": 1,
       "count": 6,
-      "expected": 10.5,
-      "deviation": -42.9,
+      "expected": 10.4,
+      "deviation": -42.3,
       "drawsSince": 11,
       "lastSeen": "2026-06-30"
      },
      {
       "n": 2,
-      "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "count": 10,
+      "expected": 10.4,
+      "deviation": -3.8,
       "drawsSince": 5,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 3,
       "count": 7,
-      "expected": 10.5,
-      "deviation": -33.3,
+      "expected": 10.4,
+      "deviation": -32.7,
       "drawsSince": 5,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 4,
       "count": 12,
-      "expected": 10.5,
-      "deviation": 14.3,
+      "expected": 10.4,
+      "deviation": 15.4,
       "drawsSince": 16,
       "lastSeen": "2026-06-12"
      },
      {
       "n": 5,
       "count": 15,
-      "expected": 10.5,
-      "deviation": 42.9,
+      "expected": 10.4,
+      "deviation": 44.2,
       "drawsSince": 3,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 6,
       "count": 14,
-      "expected": 10.5,
-      "deviation": 33.3,
+      "expected": 10.4,
+      "deviation": 34.6,
       "drawsSince": 12,
       "lastSeen": "2026-06-26"
      },
      {
       "n": 7,
       "count": 9,
-      "expected": 10.5,
-      "deviation": -14.3,
+      "expected": 10.4,
+      "deviation": -13.5,
       "drawsSince": 3,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 8,
       "count": 15,
-      "expected": 10.5,
-      "deviation": 42.9,
+      "expected": 10.4,
+      "deviation": 44.2,
       "drawsSince": 4,
       "lastSeen": "2026-07-24"
      },
      {
       "n": 9,
       "count": 9,
-      "expected": 10.5,
-      "deviation": -14.3,
+      "expected": 10.4,
+      "deviation": -13.5,
       "drawsSince": 19,
       "lastSeen": "2026-06-02"
      },
      {
       "n": 10,
       "count": 15,
-      "expected": 10.5,
-      "deviation": 42.9,
+      "expected": 10.4,
+      "deviation": 44.2,
       "drawsSince": 2,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 11,
       "count": 6,
-      "expected": 10.5,
-      "deviation": -42.9,
+      "expected": 10.4,
+      "deviation": -42.3,
       "drawsSince": 35,
       "lastSeen": "2026-04-07"
      },
      {
       "n": 12,
-      "count": 10,
-      "expected": 10.5,
-      "deviation": -4.8,
+      "count": 9,
+      "expected": 10.4,
+      "deviation": -13.5,
       "drawsSince": 6,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 13,
       "count": 16,
-      "expected": 10.5,
-      "deviation": 52.4,
+      "expected": 10.4,
+      "deviation": 53.8,
       "drawsSince": 31,
       "lastSeen": "2026-04-21"
      },
      {
       "n": 14,
       "count": 14,
-      "expected": 10.5,
-      "deviation": 33.3,
+      "expected": 10.4,
+      "deviation": 34.6,
       "drawsSince": 8,
       "lastSeen": "2026-07-10"
      },
      {
       "n": 15,
       "count": 4,
-      "expected": 10.5,
-      "deviation": -61.9,
+      "expected": 10.4,
+      "deviation": -61.5,
       "drawsSince": 44,
       "lastSeen": "2026-03-06"
      },
      {
       "n": 16,
       "count": 8,
-      "expected": 10.5,
-      "deviation": -23.8,
+      "expected": 10.4,
+      "deviation": -23.1,
       "drawsSince": 12,
       "lastSeen": "2026-06-26"
      },
      {
       "n": 17,
       "count": 16,
-      "expected": 10.5,
-      "deviation": 52.4,
+      "expected": 10.4,
+      "deviation": 53.8,
       "drawsSince": 10,
       "lastSeen": "2026-07-03"
      },
      {
       "n": 18,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 15,
       "lastSeen": "2026-06-16"
      },
      {
       "n": 19,
-      "count": 8,
-      "expected": 10.5,
-      "deviation": -23.8,
+      "count": 7,
+      "expected": 10.4,
+      "deviation": -32.7,
       "drawsSince": 7,
       "lastSeen": "2026-07-14"
      },
      {
       "n": 20,
       "count": 5,
-      "expected": 10.5,
-      "deviation": -52.4,
+      "expected": 10.4,
+      "deviation": -51.9,
       "drawsSince": 23,
       "lastSeen": "2026-05-19"
      },
      {
       "n": 21,
       "count": 6,
-      "expected": 10.5,
-      "deviation": -42.9,
+      "expected": 10.4,
+      "deviation": -42.3,
       "drawsSince": 6,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 22,
       "count": 6,
-      "expected": 10.5,
-      "deviation": -42.9,
+      "expected": 10.4,
+      "deviation": -42.3,
       "drawsSince": 16,
       "lastSeen": "2026-06-12"
      },
      {
       "n": 23,
       "count": 8,
-      "expected": 10.5,
-      "deviation": -23.8,
+      "expected": 10.4,
+      "deviation": -23.1,
       "drawsSince": 6,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 24,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 2,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 25,
       "count": 12,
-      "expected": 10.5,
-      "deviation": 14.3,
+      "expected": 10.4,
+      "deviation": 15.4,
       "drawsSince": 1,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 26,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 27,
       "count": 10,
-      "expected": 10.5,
-      "deviation": -4.8,
+      "expected": 10.4,
+      "deviation": -3.8,
       "drawsSince": 36,
       "lastSeen": "2026-04-03"
      },
      {
       "n": 28,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 5,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 29,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 30,
       "count": 9,
-      "expected": 10.5,
-      "deviation": -14.3,
+      "expected": 10.4,
+      "deviation": -13.5,
       "drawsSince": 1,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 31,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 2,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 32,
       "count": 5,
-      "expected": 10.5,
-      "deviation": -52.4,
+      "expected": 10.4,
+      "deviation": -51.9,
       "drawsSince": 25,
       "lastSeen": "2026-05-12"
      },
      {
       "n": 33,
       "count": 8,
-      "expected": 10.5,
-      "deviation": -23.8,
+      "expected": 10.4,
+      "deviation": -23.1,
       "drawsSince": 8,
       "lastSeen": "2026-07-10"
      },
      {
       "n": 34,
-      "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "count": 12,
+      "expected": 10.4,
+      "deviation": 15.4,
       "drawsSince": 1,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 35,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 36,
       "count": 8,
-      "expected": 10.5,
-      "deviation": -23.8,
+      "expected": 10.4,
+      "deviation": -23.1,
       "drawsSince": 4,
       "lastSeen": "2026-07-24"
      },
      {
       "n": 37,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 7,
       "lastSeen": "2026-07-14"
      },
      {
       "n": 38,
       "count": 7,
-      "expected": 10.5,
-      "deviation": -33.3,
+      "expected": 10.4,
+      "deviation": -32.7,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 39,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 5,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 40,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 6,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 41,
       "count": 14,
-      "expected": 10.5,
-      "deviation": 33.3,
+      "expected": 10.4,
+      "deviation": 34.6,
       "drawsSince": 14,
       "lastSeen": "2026-06-19"
      },
      {
       "n": 42,
       "count": 15,
-      "expected": 10.5,
-      "deviation": 42.9,
+      "expected": 10.4,
+      "deviation": 44.2,
       "drawsSince": 7,
       "lastSeen": "2026-07-14"
      },
      {
       "n": 43,
       "count": 10,
-      "expected": 10.5,
-      "deviation": -4.8,
+      "expected": 10.4,
+      "deviation": -3.8,
       "drawsSince": 24,
       "lastSeen": "2026-05-15"
      },
      {
       "n": 44,
-      "count": 15,
-      "expected": 10.5,
-      "deviation": 42.9,
+      "count": 14,
+      "expected": 10.4,
+      "deviation": 34.6,
       "drawsSince": 11,
       "lastSeen": "2026-06-30"
      },
      {
       "n": 45,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 2,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 46,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 1,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 47,
       "count": 13,
-      "expected": 10.5,
-      "deviation": 23.8,
+      "expected": 10.4,
+      "deviation": 25,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 48,
       "count": 11,
-      "expected": 10.5,
-      "deviation": 4.8,
+      "expected": 10.4,
+      "deviation": 5.8,
       "drawsSince": 8,
       "lastSeen": "2026-07-10"
      },
      {
       "n": 49,
       "count": 6,
-      "expected": 10.5,
-      "deviation": -42.9,
+      "expected": 10.4,
+      "deviation": -42.3,
       "drawsSince": 3,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 50,
       "count": 5,
-      "expected": 10.5,
-      "deviation": -52.4,
+      "expected": 10.4,
+      "deviation": -51.9,
       "drawsSince": 1,
       "lastSeen": "2026-08-04"
      }
     ],
-    "expected": 10.5,
-    "chi2": 52.62,
+    "expected": 10.4,
+    "chi2": 52.69,
     "df": 49,
-    "p": 0.3358,
+    "p": 0.3332,
     "biased": false
    },
    "extra": {
@@ -2026,234 +2026,234 @@
      {
       "n": 1,
       "count": 16,
-      "expected": 17.5,
-      "deviation": -8.6,
+      "expected": 17.33,
+      "deviation": -7.7,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 2,
       "count": 24,
-      "expected": 17.5,
-      "deviation": 37.1,
+      "expected": 17.33,
+      "deviation": 38.5,
       "drawsSince": 0,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 3,
       "count": 13,
-      "expected": 17.5,
-      "deviation": -25.7,
+      "expected": 17.33,
+      "deviation": -25,
       "drawsSince": 17,
       "lastSeen": "2026-06-09"
      },
      {
       "n": 4,
       "count": 12,
-      "expected": 17.5,
-      "deviation": -31.4,
+      "expected": 17.33,
+      "deviation": -30.8,
       "drawsSince": 2,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 5,
       "count": 22,
-      "expected": 17.5,
-      "deviation": 25.7,
+      "expected": 17.33,
+      "deviation": 26.9,
       "drawsSince": 2,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 6,
-      "count": 20,
-      "expected": 17.5,
-      "deviation": 14.3,
+      "count": 19,
+      "expected": 17.33,
+      "deviation": 9.6,
       "drawsSince": 11,
       "lastSeen": "2026-06-30"
      },
      {
       "n": 7,
       "count": 12,
-      "expected": 17.5,
-      "deviation": -31.4,
+      "expected": 17.33,
+      "deviation": -30.8,
       "drawsSince": 14,
       "lastSeen": "2026-06-19"
      },
      {
       "n": 8,
       "count": 17,
-      "expected": 17.5,
-      "deviation": -2.9,
+      "expected": 17.33,
+      "deviation": -1.9,
       "drawsSince": 8,
       "lastSeen": "2026-07-10"
      },
      {
       "n": 9,
       "count": 18,
-      "expected": 17.5,
-      "deviation": 2.9,
+      "expected": 17.33,
+      "deviation": 3.8,
       "drawsSince": 6,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 10,
-      "count": 21,
-      "expected": 17.5,
-      "deviation": 20,
+      "count": 20,
+      "expected": 17.33,
+      "deviation": 15.4,
       "drawsSince": 3,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 11,
       "count": 16,
-      "expected": 17.5,
-      "deviation": -8.6,
+      "expected": 17.33,
+      "deviation": -7.7,
       "drawsSince": 3,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 12,
       "count": 19,
-      "expected": 17.5,
-      "deviation": 8.6,
+      "expected": 17.33,
+      "deviation": 9.6,
       "drawsSince": 1,
       "lastSeen": "2026-08-04"
      }
     ],
-    "expected": 17.5,
-    "chi2": 9.66,
+    "expected": 17.33,
+    "chi2": 9.15,
     "df": 11,
-    "p": 0.5615,
+    "p": 0.6077,
     "biased": false
    },
    "hot": [
     {
      "n": 13,
      "count": 16,
-     "expected": 10.5,
-     "deviation": 52.4,
+     "expected": 10.4,
+     "deviation": 53.8,
      "drawsSince": 31,
      "lastSeen": "2026-04-21"
     },
     {
      "n": 17,
      "count": 16,
-     "expected": 10.5,
-     "deviation": 52.4,
+     "expected": 10.4,
+     "deviation": 53.8,
      "drawsSince": 10,
      "lastSeen": "2026-07-03"
     },
     {
      "n": 5,
      "count": 15,
-     "expected": 10.5,
-     "deviation": 42.9,
+     "expected": 10.4,
+     "deviation": 44.2,
      "drawsSince": 3,
      "lastSeen": "2026-07-28"
     },
     {
      "n": 8,
      "count": 15,
-     "expected": 10.5,
-     "deviation": 42.9,
+     "expected": 10.4,
+     "deviation": 44.2,
      "drawsSince": 4,
      "lastSeen": "2026-07-24"
     },
     {
      "n": 10,
      "count": 15,
-     "expected": 10.5,
-     "deviation": 42.9,
+     "expected": 10.4,
+     "deviation": 44.2,
      "drawsSince": 2,
      "lastSeen": "2026-07-31"
     },
     {
      "n": 42,
      "count": 15,
-     "expected": 10.5,
-     "deviation": 42.9,
+     "expected": 10.4,
+     "deviation": 44.2,
      "drawsSince": 7,
      "lastSeen": "2026-07-14"
     },
     {
-     "n": 44,
-     "count": 15,
-     "expected": 10.5,
-     "deviation": 42.9,
-     "drawsSince": 11,
-     "lastSeen": "2026-06-30"
-    },
-    {
      "n": 6,
      "count": 14,
-     "expected": 10.5,
-     "deviation": 33.3,
+     "expected": 10.4,
+     "deviation": 34.6,
      "drawsSince": 12,
      "lastSeen": "2026-06-26"
+    },
+    {
+     "n": 14,
+     "count": 14,
+     "expected": 10.4,
+     "deviation": 34.6,
+     "drawsSince": 8,
+     "lastSeen": "2026-07-10"
     }
    ],
    "cold": [
     {
      "n": 15,
      "count": 4,
-     "expected": 10.5,
-     "deviation": -61.9,
+     "expected": 10.4,
+     "deviation": -61.5,
      "drawsSince": 44,
      "lastSeen": "2026-03-06"
     },
     {
      "n": 50,
      "count": 5,
-     "expected": 10.5,
-     "deviation": -52.4,
+     "expected": 10.4,
+     "deviation": -51.9,
      "drawsSince": 1,
      "lastSeen": "2026-08-04"
     },
     {
      "n": 32,
      "count": 5,
-     "expected": 10.5,
-     "deviation": -52.4,
+     "expected": 10.4,
+     "deviation": -51.9,
      "drawsSince": 25,
      "lastSeen": "2026-05-12"
     },
     {
      "n": 20,
      "count": 5,
-     "expected": 10.5,
-     "deviation": -52.4,
+     "expected": 10.4,
+     "deviation": -51.9,
      "drawsSince": 23,
      "lastSeen": "2026-05-19"
     },
     {
      "n": 49,
      "count": 6,
-     "expected": 10.5,
-     "deviation": -42.9,
+     "expected": 10.4,
+     "deviation": -42.3,
      "drawsSince": 3,
      "lastSeen": "2026-07-28"
     },
     {
      "n": 22,
      "count": 6,
-     "expected": 10.5,
-     "deviation": -42.9,
+     "expected": 10.4,
+     "deviation": -42.3,
      "drawsSince": 16,
      "lastSeen": "2026-06-12"
     },
     {
      "n": 21,
      "count": 6,
-     "expected": 10.5,
-     "deviation": -42.9,
+     "expected": 10.4,
+     "deviation": -42.3,
      "drawsSince": 6,
      "lastSeen": "2026-07-17"
     },
     {
      "n": 11,
      "count": 6,
-     "expected": 10.5,
-     "deviation": -42.9,
+     "expected": 10.4,
+     "deviation": -42.3,
      "drawsSince": 35,
      "lastSeen": "2026-04-07"
     }
@@ -2262,64 +2262,64 @@
     {
      "n": 15,
      "count": 4,
-     "expected": 10.5,
-     "deviation": -61.9,
+     "expected": 10.4,
+     "deviation": -61.5,
      "drawsSince": 44,
      "lastSeen": "2026-03-06"
     },
     {
      "n": 27,
      "count": 10,
-     "expected": 10.5,
-     "deviation": -4.8,
+     "expected": 10.4,
+     "deviation": -3.8,
      "drawsSince": 36,
      "lastSeen": "2026-04-03"
     },
     {
      "n": 11,
      "count": 6,
-     "expected": 10.5,
-     "deviation": -42.9,
+     "expected": 10.4,
+     "deviation": -42.3,
      "drawsSince": 35,
      "lastSeen": "2026-04-07"
     },
     {
      "n": 13,
      "count": 16,
-     "expected": 10.5,
-     "deviation": 52.4,
+     "expected": 10.4,
+     "deviation": 53.8,
      "drawsSince": 31,
      "lastSeen": "2026-04-21"
     },
     {
      "n": 32,
      "count": 5,
-     "expected": 10.5,
-     "deviation": -52.4,
+     "expected": 10.4,
+     "deviation": -51.9,
      "drawsSince": 25,
      "lastSeen": "2026-05-12"
     },
     {
      "n": 43,
      "count": 10,
-     "expected": 10.5,
-     "deviation": -4.8,
+     "expected": 10.4,
+     "deviation": -3.8,
      "drawsSince": 24,
      "lastSeen": "2026-05-15"
     },
     {
      "n": 20,
      "count": 5,
-     "expected": 10.5,
-     "deviation": -52.4,
+     "expected": 10.4,
+     "deviation": -51.9,
      "drawsSince": 23,
      "lastSeen": "2026-05-19"
     },
     {
      "n": 9,
      "count": 9,
-     "expected": 10.5,
-     "deviation": -14.3,
+     "expected": 10.4,
+     "deviation": -13.5,
      "drawsSince": 19,
      "lastSeen": "2026-06-02"
     }
@@ -2328,40 +2328,40 @@
     {
      "n": 2,
      "count": 24,
-     "expected": 17.5,
-     "deviation": 37.1,
+     "expected": 17.33,
+     "deviation": 38.5,
      "drawsSince": 0,
      "lastSeen": "2026-08-07"
     },
     {
      "n": 5,
      "count": 22,
-     "expected": 17.5,
-     "deviation": 25.7,
+     "expected": 17.33,
+     "deviation": 26.9,
      "drawsSince": 2,
      "lastSeen": "2026-07-31"
     },
     {
      "n": 10,
-     "count": 21,
-     "expected": 17.5,
-     "deviation": 20,
+     "count": 20,
+     "expected": 17.33,
+     "deviation": 15.4,
      "drawsSince": 3,
      "lastSeen": "2026-07-28"
     },
     {
      "n": 6,
-     "count": 20,
-     "expected": 17.5,
-     "deviation": 14.3,
+     "count": 19,
+     "expected": 17.33,
+     "deviation": 9.6,
      "drawsSince": 11,
      "lastSeen": "2026-06-30"
     },
     {
      "n": 12,
      "count": 19,
-     "expected": 17.5,
-     "deviation": 8.6,
+     "expected": 17.33,
+     "deviation": 9.6,
      "drawsSince": 1,
      "lastSeen": "2026-08-04"
     }
@@ -2370,40 +2370,40 @@
     {
      "n": 3,
      "count": 13,
-     "expected": 17.5,
-     "deviation": -25.7,
+     "expected": 17.33,
+     "deviation": -25,
      "drawsSince": 17,
      "lastSeen": "2026-06-09"
     },
     {
      "n": 7,
      "count": 12,
-     "expected": 17.5,
-     "deviation": -31.4,
+     "expected": 17.33,
+     "deviation": -30.8,
      "drawsSince": 14,
      "lastSeen": "2026-06-19"
     },
     {
      "n": 6,
-     "count": 20,
-     "expected": 17.5,
-     "deviation": 14.3,
+     "count": 19,
+     "expected": 17.33,
+     "deviation": 9.6,
      "drawsSince": 11,
      "lastSeen": "2026-06-30"
     },
     {
      "n": 8,
      "count": 17,
-     "expected": 17.5,
-     "deviation": -2.9,
+     "expected": 17.33,
+     "deviation": -1.9,
      "drawsSince": 8,
      "lastSeen": "2026-07-10"
     },
     {
      "n": 9,
      "count": 18,
-     "expected": 17.5,
-     "deviation": 2.9,
+     "expected": 17.33,
+     "deviation": 3.8,
      "drawsSince": 6,
      "lastSeen": "2026-07-17"
     }
@@ -2412,44 +2412,44 @@
     "sum": {
      "min": 61,
      "max": 196,
-     "mean": 127.6,
+     "mean": 127.7,
      "median": 129,
      "p10": 85,
      "p90": 166
     },
     "span": {
-     "mean": 33.9,
-     "median": 36
+     "mean": 33.8,
+     "median": 35.5
     },
     "oddEven": {
      "3/2": 37,
      "2/3": 32,
-     "1/4": 17,
+     "1/4": 16,
      "4/1": 15,
      "0/5": 3,
      "5/0": 1
     },
     "lowHigh": {
-     "3/2": 33,
+     "3/2": 32,
      "2/3": 31,
      "1/4": 19,
      "4/1": 14,
      "0/5": 4,
      "5/0": 4
     },
-    "consecutivePct": 39,
-    "repeatFromPrevPct": 39.4,
+    "consecutivePct": 39.4,
+    "repeatFromPrevPct": 39.8,
     "buckets": {
      "20-29": 97,
-     "30-39": 100,
-     "40-49": 117,
+     "30-39": 99,
+     "40-49": 116,
      "50-59": 5,
-     "10-19": 108,
-     "1-9": 98
+     "10-19": 106,
+     "1-9": 97
     }
    },
    "pairs": {
-    "expected": 0.86,
+    "expected": 0.85,
     "top": [
      {
       "pair": [
@@ -2538,7 +2538,7 @@
     ]
    },
    "monthly": {
-    "2025-08": 7,
+    "2025-08": 6,
     "2025-09": 9,
     "2025-10": 9,
     "2025-11": 8,
@@ -3812,329 +3812,329 @@
     "extraLabel": "Thunderball",
     "extraClass": "thunder",
     "extraPlayerPicks": true,
-    "draws": 209,
-    "from": "2025-08-08",
-    "to": "2026-08-07"
+    "draws": 208,
+    "from": "2025-08-12",
+    "to": "2026-08-08"
    },
    "main": {
     "rows": [
      {
       "n": 1,
       "count": 29,
-      "expected": 26.79,
-      "deviation": 8.2,
-      "drawsSince": 4,
+      "expected": 26.67,
+      "deviation": 8.7,
+      "drawsSince": 5,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 2,
       "count": 28,
-      "expected": 26.79,
-      "deviation": 4.5,
-      "drawsSince": 19,
+      "expected": 26.67,
+      "deviation": 5,
+      "drawsSince": 20,
       "lastSeen": "2026-07-04"
      },
      {
       "n": 3,
-      "count": 29,
-      "expected": 26.79,
-      "deviation": 8.2,
-      "drawsSince": 9,
+      "count": 28,
+      "expected": 26.67,
+      "deviation": 5,
+      "drawsSince": 10,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 4,
       "count": 26,
-      "expected": 26.79,
-      "deviation": -3,
-      "drawsSince": 0,
+      "expected": 26.67,
+      "deviation": -2.5,
+      "drawsSince": 1,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 5,
-      "count": 22,
-      "expected": 26.79,
-      "deviation": -17.9,
-      "drawsSince": 12,
+      "count": 21,
+      "expected": 26.67,
+      "deviation": -21.3,
+      "drawsSince": 13,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 6,
       "count": 22,
-      "expected": 26.79,
-      "deviation": -17.9,
-      "drawsSince": 11,
+      "expected": 26.67,
+      "deviation": -17.5,
+      "drawsSince": 12,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 7,
       "count": 32,
-      "expected": 26.79,
-      "deviation": 19.4,
-      "drawsSince": 6,
+      "expected": 26.67,
+      "deviation": 20,
+      "drawsSince": 7,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 8,
       "count": 26,
-      "expected": 26.79,
-      "deviation": -3,
-      "drawsSince": 12,
+      "expected": 26.67,
+      "deviation": -2.5,
+      "drawsSince": 13,
       "lastSeen": "2026-07-17"
      },
      {
       "n": 9,
-      "count": 20,
-      "expected": 26.79,
-      "deviation": -25.4,
-      "drawsSince": 9,
+      "count": 19,
+      "expected": 26.67,
+      "deviation": -28.8,
+      "drawsSince": 10,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 10,
       "count": 22,
-      "expected": 26.79,
-      "deviation": -17.9,
-      "drawsSince": 8,
+      "expected": 26.67,
+      "deviation": -17.5,
+      "drawsSince": 9,
       "lastSeen": "2026-07-24"
      },
      {
       "n": 11,
-      "count": 39,
-      "expected": 26.79,
-      "deviation": 45.6,
-      "drawsSince": 16,
-      "lastSeen": "2026-07-10"
+      "count": 40,
+      "expected": 26.67,
+      "deviation": 50,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 12,
       "count": 21,
-      "expected": 26.79,
-      "deviation": -21.6,
-      "drawsSince": 1,
+      "expected": 26.67,
+      "deviation": -21.3,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 13,
       "count": 24,
-      "expected": 26.79,
-      "deviation": -10.4,
-      "drawsSince": 7,
+      "expected": 26.67,
+      "deviation": -10,
+      "drawsSince": 8,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 14,
       "count": 27,
-      "expected": 26.79,
-      "deviation": 0.8,
-      "drawsSince": 13,
+      "expected": 26.67,
+      "deviation": 1.2,
+      "drawsSince": 14,
       "lastSeen": "2026-07-15"
      },
      {
       "n": 15,
       "count": 28,
-      "expected": 26.79,
-      "deviation": 4.5,
-      "drawsSince": 2,
+      "expected": 26.67,
+      "deviation": 5,
+      "drawsSince": 3,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 16,
       "count": 35,
-      "expected": 26.79,
-      "deviation": 30.6,
-      "drawsSince": 1,
-      "lastSeen": "2026-08-05"
+      "expected": 26.67,
+      "deviation": 31.2,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 17,
       "count": 21,
-      "expected": 26.79,
-      "deviation": -21.6,
-      "drawsSince": 7,
+      "expected": 26.67,
+      "deviation": -21.3,
+      "drawsSince": 8,
       "lastSeen": "2026-07-25"
      },
      {
       "n": 18,
       "count": 23,
-      "expected": 26.79,
-      "deviation": -14.2,
-      "drawsSince": 0,
+      "expected": 26.67,
+      "deviation": -13.8,
+      "drawsSince": 1,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 19,
       "count": 23,
-      "expected": 26.79,
-      "deviation": -14.2,
-      "drawsSince": 4,
+      "expected": 26.67,
+      "deviation": -13.8,
+      "drawsSince": 5,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 20,
       "count": 28,
-      "expected": 26.79,
-      "deviation": 4.5,
-      "drawsSince": 1,
+      "expected": 26.67,
+      "deviation": 5,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 21,
       "count": 27,
-      "expected": 26.79,
-      "deviation": 0.8,
-      "drawsSince": 1,
+      "expected": 26.67,
+      "deviation": 1.2,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 22,
       "count": 20,
-      "expected": 26.79,
-      "deviation": -25.4,
-      "drawsSince": 23,
+      "expected": 26.67,
+      "deviation": -25,
+      "drawsSince": 24,
       "lastSeen": "2026-06-27"
      },
      {
       "n": 23,
       "count": 31,
-      "expected": 26.79,
-      "deviation": 15.7,
-      "drawsSince": 5,
+      "expected": 26.67,
+      "deviation": 16.2,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 24,
       "count": 32,
-      "expected": 26.79,
-      "deviation": 19.4,
-      "drawsSince": 2,
+      "expected": 26.67,
+      "deviation": 20,
+      "drawsSince": 3,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 25,
       "count": 22,
-      "expected": 26.79,
-      "deviation": -17.9,
-      "drawsSince": 11,
-      "lastSeen": "2026-07-18"
+      "expected": 26.67,
+      "deviation": -17.5,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 26,
       "count": 39,
-      "expected": 26.79,
-      "deviation": 45.6,
-      "drawsSince": 5,
+      "expected": 26.67,
+      "deviation": 46.2,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 27,
       "count": 21,
-      "expected": 26.79,
-      "deviation": -21.6,
-      "drawsSince": 4,
+      "expected": 26.67,
+      "deviation": -21.3,
+      "drawsSince": 5,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 28,
-      "count": 23,
-      "expected": 26.79,
-      "deviation": -14.2,
-      "drawsSince": 0,
+      "count": 22,
+      "expected": 26.67,
+      "deviation": -17.5,
+      "drawsSince": 1,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 29,
       "count": 33,
-      "expected": 26.79,
-      "deviation": 23.2,
-      "drawsSince": 8,
+      "expected": 26.67,
+      "deviation": 23.7,
+      "drawsSince": 9,
       "lastSeen": "2026-07-24"
      },
      {
       "n": 30,
       "count": 23,
-      "expected": 26.79,
-      "deviation": -14.2,
-      "drawsSince": 0,
+      "expected": 26.67,
+      "deviation": -13.8,
+      "drawsSince": 1,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 31,
-      "count": 29,
-      "expected": 26.79,
-      "deviation": 8.2,
-      "drawsSince": 3,
+      "count": 28,
+      "expected": 26.67,
+      "deviation": 5,
+      "drawsSince": 4,
       "lastSeen": "2026-08-01"
      },
      {
       "n": 32,
       "count": 30,
-      "expected": 26.79,
-      "deviation": 12,
-      "drawsSince": 3,
-      "lastSeen": "2026-08-01"
+      "expected": 26.67,
+      "deviation": 12.5,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 33,
-      "count": 25,
-      "expected": 26.79,
-      "deviation": -6.7,
-      "drawsSince": 6,
+      "count": 23,
+      "expected": 26.67,
+      "deviation": -13.8,
+      "drawsSince": 7,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 34,
       "count": 19,
-      "expected": 26.79,
-      "deviation": -29.1,
-      "drawsSince": 0,
+      "expected": 26.67,
+      "deviation": -28.8,
+      "drawsSince": 1,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 35,
-      "count": 29,
-      "expected": 26.79,
-      "deviation": 8.2,
-      "drawsSince": 2,
-      "lastSeen": "2026-08-04"
+      "count": 30,
+      "expected": 26.67,
+      "deviation": 12.5,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 36,
       "count": 27,
-      "expected": 26.79,
-      "deviation": 0.8,
-      "drawsSince": 6,
+      "expected": 26.67,
+      "deviation": 1.2,
+      "drawsSince": 7,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 37,
       "count": 33,
-      "expected": 26.79,
-      "deviation": 23.2,
-      "drawsSince": 1,
+      "expected": 26.67,
+      "deviation": 23.7,
+      "drawsSince": 2,
       "lastSeen": "2026-08-05"
      },
      {
       "n": 38,
       "count": 32,
-      "expected": 26.79,
-      "deviation": 19.4,
-      "drawsSince": 18,
+      "expected": 26.67,
+      "deviation": 20,
+      "drawsSince": 19,
       "lastSeen": "2026-07-07"
      },
      {
       "n": 39,
       "count": 25,
-      "expected": 26.79,
-      "deviation": -6.7,
-      "drawsSince": 30,
+      "expected": 26.67,
+      "deviation": -6.3,
+      "drawsSince": 31,
       "lastSeen": "2026-06-16"
      }
     ],
-    "expected": 26.79,
-    "chi2": 37.11,
+    "expected": 26.67,
+    "chi2": 39.85,
     "df": 38,
-    "p": 0.5104,
+    "p": 0.3878,
     "biased": false
    },
    "extra": {
@@ -4142,185 +4142,185 @@
      {
       "n": 1,
       "count": 11,
-      "expected": 14.93,
-      "deviation": -26.3,
-      "drawsSince": 9,
+      "expected": 14.86,
+      "deviation": -26,
+      "drawsSince": 10,
       "lastSeen": "2026-07-22"
      },
      {
       "n": 2,
-      "count": 11,
-      "expected": 14.93,
-      "deviation": -26.3,
-      "drawsSince": 1,
-      "lastSeen": "2026-08-05"
+      "count": 12,
+      "expected": 14.86,
+      "deviation": -19.2,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-08"
      },
      {
       "n": 3,
       "count": 21,
-      "expected": 14.93,
-      "deviation": 40.7,
-      "drawsSince": 8,
+      "expected": 14.86,
+      "deviation": 41.3,
+      "drawsSince": 9,
       "lastSeen": "2026-07-24"
      },
      {
       "n": 4,
       "count": 10,
-      "expected": 14.93,
-      "deviation": -33,
-      "drawsSince": 19,
+      "expected": 14.86,
+      "deviation": -32.7,
+      "drawsSince": 20,
       "lastSeen": "2026-07-04"
      },
      {
       "n": 5,
       "count": 20,
-      "expected": 14.93,
-      "deviation": 34,
-      "drawsSince": 47,
+      "expected": 14.86,
+      "deviation": 34.6,
+      "drawsSince": 48,
       "lastSeen": "2026-05-16"
      },
      {
       "n": 6,
       "count": 16,
-      "expected": 14.93,
-      "deviation": 7.2,
-      "drawsSince": 11,
+      "expected": 14.86,
+      "deviation": 7.7,
+      "drawsSince": 12,
       "lastSeen": "2026-07-18"
      },
      {
       "n": 7,
       "count": 13,
-      "expected": 14.93,
-      "deviation": -12.9,
-      "drawsSince": 14,
+      "expected": 14.86,
+      "deviation": -12.5,
+      "drawsSince": 15,
       "lastSeen": "2026-07-14"
      },
      {
       "n": 8,
       "count": 18,
-      "expected": 14.93,
-      "deviation": 20.6,
-      "drawsSince": 2,
+      "expected": 14.86,
+      "deviation": 21.2,
+      "drawsSince": 3,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 9,
       "count": 11,
-      "expected": 14.93,
-      "deviation": -26.3,
-      "drawsSince": 16,
+      "expected": 14.86,
+      "deviation": -26,
+      "drawsSince": 17,
       "lastSeen": "2026-07-10"
      },
      {
       "n": 10,
-      "count": 16,
-      "expected": 14.93,
-      "deviation": 7.2,
-      "drawsSince": 18,
+      "count": 15,
+      "expected": 14.86,
+      "deviation": 1,
+      "drawsSince": 19,
       "lastSeen": "2026-07-07"
      },
      {
       "n": 11,
       "count": 16,
-      "expected": 14.93,
-      "deviation": 7.2,
-      "drawsSince": 0,
+      "expected": 14.86,
+      "deviation": 7.7,
+      "drawsSince": 1,
       "lastSeen": "2026-08-07"
      },
      {
       "n": 12,
-      "count": 18,
-      "expected": 14.93,
-      "deviation": 20.6,
-      "drawsSince": 4,
+      "count": 17,
+      "expected": 14.86,
+      "deviation": 14.4,
+      "drawsSince": 5,
       "lastSeen": "2026-07-31"
      },
      {
       "n": 13,
       "count": 18,
-      "expected": 14.93,
-      "deviation": 20.6,
-      "drawsSince": 5,
+      "expected": 14.86,
+      "deviation": 21.2,
+      "drawsSince": 6,
       "lastSeen": "2026-07-29"
      },
      {
       "n": 14,
       "count": 10,
-      "expected": 14.93,
-      "deviation": -33,
-      "drawsSince": 6,
+      "expected": 14.86,
+      "deviation": -32.7,
+      "drawsSince": 7,
       "lastSeen": "2026-07-28"
      }
     ],
-    "expected": 14.93,
-    "chi2": 12.92,
+    "expected": 14.86,
+    "chi2": 12.1,
     "df": 13,
-    "p": 0.4537,
+    "p": 0.5198,
     "biased": false
    },
    "hot": [
     {
      "n": 11,
-     "count": 39,
-     "expected": 26.79,
-     "deviation": 45.6,
-     "drawsSince": 16,
-     "lastSeen": "2026-07-10"
+     "count": 40,
+     "expected": 26.67,
+     "deviation": 50,
+     "drawsSince": 0,
+     "lastSeen": "2026-08-08"
     },
     {
      "n": 26,
      "count": 39,
-     "expected": 26.79,
-     "deviation": 45.6,
-     "drawsSince": 5,
+     "expected": 26.67,
+     "deviation": 46.2,
+     "drawsSince": 6,
      "lastSeen": "2026-07-29"
     },
     {
      "n": 16,
      "count": 35,
-     "expected": 26.79,
-     "deviation": 30.6,
-     "drawsSince": 1,
-     "lastSeen": "2026-08-05"
+     "expected": 26.67,
+     "deviation": 31.2,
+     "drawsSince": 0,
+     "lastSeen": "2026-08-08"
     },
     {
      "n": 29,
      "count": 33,
-     "expected": 26.79,
-     "deviation": 23.2,
-     "drawsSince": 8,
+     "expected": 26.67,
+     "deviation": 23.7,
+     "drawsSince": 9,
      "lastSeen": "2026-07-24"
     },
     {
      "n": 37,
      "count": 33,
-     "expected": 26.79,
-     "deviation": 23.2,
-     "drawsSince": 1,
+     "expected": 26.67,
+     "deviation": 23.7,
+     "drawsSince": 2,
      "lastSeen": "2026-08-05"
     },
     {
      "n": 7,
      "count": 32,
-     "expected": 26.79,
-     "deviation": 19.4,
-     "drawsSince": 6,
+     "expected": 26.67,
+     "deviation": 20,
+     "drawsSince": 7,
      "lastSeen": "2026-07-28"
     },
     {
      "n": 24,
      "count": 32,
-     "expected": 26.79,
-     "deviation": 19.4,
-     "drawsSince": 2,
+     "expected": 26.67,
+     "deviation": 20,
+     "drawsSince": 3,
      "lastSeen": "2026-08-04"
     },
     {
      "n": 38,
      "count": 32,
-     "expected": 26.79,
-     "deviation": 19.4,
-     "drawsSince": 18,
+     "expected": 26.67,
+     "deviation": 20,
+     "drawsSince": 19,
      "lastSeen": "2026-07-07"
     }
    ],
@@ -4328,215 +4328,215 @@
     {
      "n": 34,
      "count": 19,
-     "expected": 26.79,
-     "deviation": -29.1,
-     "drawsSince": 0,
+     "expected": 26.67,
+     "deviation": -28.8,
+     "drawsSince": 1,
      "lastSeen": "2026-08-07"
+    },
+    {
+     "n": 9,
+     "count": 19,
+     "expected": 26.67,
+     "deviation": -28.8,
+     "drawsSince": 10,
+     "lastSeen": "2026-07-22"
     },
     {
      "n": 22,
      "count": 20,
-     "expected": 26.79,
-     "deviation": -25.4,
-     "drawsSince": 23,
+     "expected": 26.67,
+     "deviation": -25,
+     "drawsSince": 24,
      "lastSeen": "2026-06-27"
-    },
-    {
-     "n": 9,
-     "count": 20,
-     "expected": 26.79,
-     "deviation": -25.4,
-     "drawsSince": 9,
-     "lastSeen": "2026-07-22"
     },
     {
      "n": 27,
      "count": 21,
-     "expected": 26.79,
-     "deviation": -21.6,
-     "drawsSince": 4,
+     "expected": 26.67,
+     "deviation": -21.3,
+     "drawsSince": 5,
      "lastSeen": "2026-07-31"
     },
     {
      "n": 17,
      "count": 21,
-     "expected": 26.79,
-     "deviation": -21.6,
-     "drawsSince": 7,
+     "expected": 26.67,
+     "deviation": -21.3,
+     "drawsSince": 8,
      "lastSeen": "2026-07-25"
     },
     {
      "n": 12,
      "count": 21,
-     "expected": 26.79,
-     "deviation": -21.6,
-     "drawsSince": 1,
+     "expected": 26.67,
+     "deviation": -21.3,
+     "drawsSince": 2,
      "lastSeen": "2026-08-05"
     },
     {
-     "n": 25,
-     "count": 22,
-     "expected": 26.79,
-     "deviation": -17.9,
-     "drawsSince": 11,
-     "lastSeen": "2026-07-18"
+     "n": 5,
+     "count": 21,
+     "expected": 26.67,
+     "deviation": -21.3,
+     "drawsSince": 13,
+     "lastSeen": "2026-07-17"
     },
     {
-     "n": 10,
+     "n": 28,
      "count": 22,
-     "expected": 26.79,
-     "deviation": -17.9,
-     "drawsSince": 8,
-     "lastSeen": "2026-07-24"
+     "expected": 26.67,
+     "deviation": -17.5,
+     "drawsSince": 1,
+     "lastSeen": "2026-08-07"
     }
    ],
    "overdue": [
     {
      "n": 39,
      "count": 25,
-     "expected": 26.79,
-     "deviation": -6.7,
-     "drawsSince": 30,
+     "expected": 26.67,
+     "deviation": -6.3,
+     "drawsSince": 31,
      "lastSeen": "2026-06-16"
     },
     {
      "n": 22,
      "count": 20,
-     "expected": 26.79,
-     "deviation": -25.4,
-     "drawsSince": 23,
+     "expected": 26.67,
+     "deviation": -25,
+     "drawsSince": 24,
      "lastSeen": "2026-06-27"
     },
     {
      "n": 2,
      "count": 28,
-     "expected": 26.79,
-     "deviation": 4.5,
-     "drawsSince": 19,
+     "expected": 26.67,
+     "deviation": 5,
+     "drawsSince": 20,
      "lastSeen": "2026-07-04"
     },
     {
      "n": 38,
      "count": 32,
-     "expected": 26.79,
-     "deviation": 19.4,
-     "drawsSince": 18,
+     "expected": 26.67,
+     "deviation": 20,
+     "drawsSince": 19,
      "lastSeen": "2026-07-07"
-    },
-    {
-     "n": 11,
-     "count": 39,
-     "expected": 26.79,
-     "deviation": 45.6,
-     "drawsSince": 16,
-     "lastSeen": "2026-07-10"
     },
     {
      "n": 14,
      "count": 27,
-     "expected": 26.79,
-     "deviation": 0.8,
-     "drawsSince": 13,
+     "expected": 26.67,
+     "deviation": 1.2,
+     "drawsSince": 14,
      "lastSeen": "2026-07-15"
     },
     {
      "n": 5,
-     "count": 22,
-     "expected": 26.79,
-     "deviation": -17.9,
-     "drawsSince": 12,
+     "count": 21,
+     "expected": 26.67,
+     "deviation": -21.3,
+     "drawsSince": 13,
      "lastSeen": "2026-07-17"
     },
     {
      "n": 8,
      "count": 26,
-     "expected": 26.79,
-     "deviation": -3,
-     "drawsSince": 12,
+     "expected": 26.67,
+     "deviation": -2.5,
+     "drawsSince": 13,
      "lastSeen": "2026-07-17"
+    },
+    {
+     "n": 6,
+     "count": 22,
+     "expected": 26.67,
+     "deviation": -17.5,
+     "drawsSince": 12,
+     "lastSeen": "2026-07-18"
     }
    ],
    "hotExtra": [
     {
      "n": 3,
      "count": 21,
-     "expected": 14.93,
-     "deviation": 40.7,
-     "drawsSince": 8,
+     "expected": 14.86,
+     "deviation": 41.3,
+     "drawsSince": 9,
      "lastSeen": "2026-07-24"
     },
     {
      "n": 5,
      "count": 20,
-     "expected": 14.93,
-     "deviation": 34,
-     "drawsSince": 47,
+     "expected": 14.86,
+     "deviation": 34.6,
+     "drawsSince": 48,
      "lastSeen": "2026-05-16"
     },
     {
      "n": 8,
      "count": 18,
-     "expected": 14.93,
-     "deviation": 20.6,
-     "drawsSince": 2,
+     "expected": 14.86,
+     "deviation": 21.2,
+     "drawsSince": 3,
      "lastSeen": "2026-08-04"
-    },
-    {
-     "n": 12,
-     "count": 18,
-     "expected": 14.93,
-     "deviation": 20.6,
-     "drawsSince": 4,
-     "lastSeen": "2026-07-31"
     },
     {
      "n": 13,
      "count": 18,
-     "expected": 14.93,
-     "deviation": 20.6,
-     "drawsSince": 5,
+     "expected": 14.86,
+     "deviation": 21.2,
+     "drawsSince": 6,
      "lastSeen": "2026-07-29"
+    },
+    {
+     "n": 12,
+     "count": 17,
+     "expected": 14.86,
+     "deviation": 14.4,
+     "drawsSince": 5,
+     "lastSeen": "2026-07-31"
     }
    ],
    "overdueExtra": [
     {
      "n": 5,
      "count": 20,
-     "expected": 14.93,
-     "deviation": 34,
-     "drawsSince": 47,
+     "expected": 14.86,
+     "deviation": 34.6,
+     "drawsSince": 48,
      "lastSeen": "2026-05-16"
     },
     {
      "n": 4,
      "count": 10,
-     "expected": 14.93,
-     "deviation": -33,
-     "drawsSince": 19,
+     "expected": 14.86,
+     "deviation": -32.7,
+     "drawsSince": 20,
      "lastSeen": "2026-07-04"
     },
     {
      "n": 10,
-     "count": 16,
-     "expected": 14.93,
-     "deviation": 7.2,
-     "drawsSince": 18,
+     "count": 15,
+     "expected": 14.86,
+     "deviation": 1,
+     "drawsSince": 19,
      "lastSeen": "2026-07-07"
     },
     {
      "n": 9,
      "count": 11,
-     "expected": 14.93,
-     "deviation": -26.3,
-     "drawsSince": 16,
+     "expected": 14.86,
+     "deviation": -26,
+     "drawsSince": 17,
      "lastSeen": "2026-07-10"
     },
     {
      "n": 7,
      "count": 13,
-     "expected": 14.93,
-     "deviation": -12.9,
-     "drawsSince": 14,
+     "expected": 14.86,
+     "deviation": -12.5,
+     "drawsSince": 15,
      "lastSeen": "2026-07-14"
     }
    ],
@@ -4556,30 +4556,30 @@
     "oddEven": {
      "3/2": 69,
      "2/3": 68,
-     "4/1": 37,
+     "4/1": 36,
      "1/4": 26,
      "5/0": 5,
      "0/5": 4
     },
     "lowHigh": {
-     "2/3": 76,
-     "3/2": 72,
-     "1/4": 28,
+     "2/3": 77,
+     "3/2": 71,
+     "1/4": 27,
      "4/1": 19,
      "0/5": 9,
      "5/0": 5
     },
-    "consecutivePct": 41.6,
-    "repeatFromPrevPct": 59.1,
+    "consecutivePct": 41.3,
+    "repeatFromPrevPct": 58.9,
     "buckets": {
-     "1-9": 234,
-     "10-19": 263,
-     "20-29": 276,
-     "30-39": 272
+     "10-19": 264,
+     "20-29": 275,
+     "30-39": 270,
+     "1-9": 231
     }
    },
    "pairs": {
-    "expected": 2.82,
+    "expected": 2.81,
     "top": [
      {
       "pair": [
@@ -4668,7 +4668,7 @@
     ]
    },
    "monthly": {
-    "2025-08": 14,
+    "2025-08": 12,
     "2025-09": 17,
     "2025-10": 18,
     "2025-11": 17,
@@ -4680,9 +4680,22 @@
     "2026-05": 18,
     "2026-06": 17,
     "2026-07": 18,
-    "2026-08": 4
+    "2026-08": 5
    },
    "recent": [
+    {
+     "date": "2026-08-08",
+     "main": [
+      11,
+      16,
+      25,
+      32,
+      35
+     ],
+     "extra": [
+      2
+     ]
+    },
     {
      "date": "2026-08-07",
      "main": [
@@ -4825,19 +4838,6 @@
      "extra": [
       3
      ]
-    },
-    {
-     "date": "2026-07-18",
-     "main": [
-      3,
-      6,
-      19,
-      25,
-      36
-     ],
-     "extra": [
-      6
-     ]
     }
    ]
   },
@@ -4855,569 +4855,569 @@
     "extraLabel": "Powerball",
     "extraClass": "power",
     "extraPlayerPicks": true,
-    "draws": 156,
+    "draws": 157,
     "from": "2025-08-10",
-    "to": "2026-08-06"
+    "to": "2026-08-09"
    },
    "main": {
     "rows": [
      {
       "n": 1,
       "count": 4,
-      "expected": 11.3,
-      "deviation": -64.6,
-      "drawsSince": 29,
+      "expected": 11.38,
+      "deviation": -64.8,
+      "drawsSince": 30,
       "lastSeen": "2026-05-31"
      },
      {
       "n": 2,
       "count": 10,
-      "expected": 11.3,
-      "deviation": -11.5,
-      "drawsSince": 7,
+      "expected": 11.38,
+      "deviation": -12.1,
+      "drawsSince": 8,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 3,
       "count": 19,
-      "expected": 11.3,
-      "deviation": 68.1,
-      "drawsSince": 5,
+      "expected": 11.38,
+      "deviation": 67,
+      "drawsSince": 6,
       "lastSeen": "2026-07-26"
      },
      {
       "n": 4,
       "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 5,
+      "expected": 11.38,
+      "deviation": -3.3,
+      "drawsSince": 6,
       "lastSeen": "2026-07-26"
      },
      {
       "n": 5,
-      "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 6,
-      "lastSeen": "2026-07-23"
+      "count": 12,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-09"
      },
      {
       "n": 6,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 2,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 3,
       "lastSeen": "2026-08-02"
      },
      {
       "n": 7,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 9,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 10,
       "lastSeen": "2026-07-16"
      },
      {
       "n": 8,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 1,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 2,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 9,
-      "count": 7,
-      "expected": 11.3,
-      "deviation": -38.1,
-      "drawsSince": 7,
-      "lastSeen": "2026-07-21"
+      "count": 8,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-09"
      },
      {
       "n": 10,
       "count": 10,
-      "expected": 11.3,
-      "deviation": -11.5,
-      "drawsSince": 11,
+      "expected": 11.38,
+      "deviation": -12.1,
+      "drawsSince": 12,
       "lastSeen": "2026-07-12"
      },
      {
       "n": 11,
       "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 54,
+      "expected": 11.38,
+      "deviation": -3.3,
+      "drawsSince": 55,
       "lastSeen": "2026-04-02"
      },
      {
       "n": 12,
       "count": 7,
-      "expected": 11.3,
-      "deviation": -38.1,
-      "drawsSince": 12,
+      "expected": 11.38,
+      "deviation": -38.5,
+      "drawsSince": 13,
       "lastSeen": "2026-07-09"
      },
      {
       "n": 13,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 18,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 19,
       "lastSeen": "2026-06-25"
      },
      {
       "n": 14,
       "count": 16,
-      "expected": 11.3,
-      "deviation": 41.5,
-      "drawsSince": 0,
+      "expected": 11.38,
+      "deviation": 40.6,
+      "drawsSince": 1,
       "lastSeen": "2026-08-06"
      },
      {
       "n": 15,
       "count": 7,
-      "expected": 11.3,
-      "deviation": -38.1,
-      "drawsSince": 38,
+      "expected": 11.38,
+      "deviation": -38.5,
+      "drawsSince": 39,
       "lastSeen": "2026-05-10"
      },
      {
       "n": 16,
       "count": 16,
-      "expected": 11.3,
-      "deviation": 41.5,
-      "drawsSince": 17,
+      "expected": 11.38,
+      "deviation": 40.6,
+      "drawsSince": 18,
       "lastSeen": "2026-06-28"
      },
      {
       "n": 17,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 2,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 3,
       "lastSeen": "2026-08-02"
      },
      {
       "n": 18,
       "count": 16,
-      "expected": 11.3,
-      "deviation": 41.5,
-      "drawsSince": 9,
+      "expected": 11.38,
+      "deviation": 40.6,
+      "drawsSince": 10,
       "lastSeen": "2026-07-16"
      },
      {
       "n": 19,
       "count": 10,
-      "expected": 11.3,
-      "deviation": -11.5,
-      "drawsSince": 19,
+      "expected": 11.38,
+      "deviation": -12.1,
+      "drawsSince": 20,
       "lastSeen": "2026-06-23"
      },
      {
       "n": 20,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 0,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 1,
       "lastSeen": "2026-08-06"
      },
      {
       "n": 21,
       "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 18,
+      "expected": 11.38,
+      "deviation": -3.3,
+      "drawsSince": 19,
       "lastSeen": "2026-06-25"
      },
      {
       "n": 22,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 6,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 7,
       "lastSeen": "2026-07-23"
      },
      {
       "n": 23,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 64,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 65,
       "lastSeen": "2026-03-10"
      },
      {
       "n": 24,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 5,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 6,
       "lastSeen": "2026-07-26"
      },
      {
       "n": 25,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 10,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 11,
       "lastSeen": "2026-07-14"
      },
      {
       "n": 26,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 4,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 5,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 27,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 2,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 3,
       "lastSeen": "2026-08-02"
      },
      {
       "n": 28,
       "count": 20,
-      "expected": 11.3,
-      "deviation": 76.9,
-      "drawsSince": 17,
+      "expected": 11.38,
+      "deviation": 75.8,
+      "drawsSince": 18,
       "lastSeen": "2026-06-28"
      },
      {
       "n": 29,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 9,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 10,
       "lastSeen": "2026-07-16"
      },
      {
       "n": 30,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 1,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 2,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 31,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 24,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 25,
       "lastSeen": "2026-06-11"
      },
      {
       "n": 32,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 26,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 27,
       "lastSeen": "2026-06-07"
      },
      {
       "n": 33,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 43,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 44,
       "lastSeen": "2026-04-28"
      },
      {
       "n": 34,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 25,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 26,
       "lastSeen": "2026-06-09"
      },
      {
       "n": 35,
-      "count": 6,
-      "expected": 11.3,
-      "deviation": -46.9,
-      "drawsSince": 29,
-      "lastSeen": "2026-05-31"
+      "count": 7,
+      "expected": 11.38,
+      "deviation": -38.5,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-09"
      },
      {
       "n": 36,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 3,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 4,
       "lastSeen": "2026-07-30"
      },
      {
       "n": 37,
       "count": 10,
-      "expected": 11.3,
-      "deviation": -11.5,
-      "drawsSince": 12,
+      "expected": 11.38,
+      "deviation": -12.1,
+      "drawsSince": 13,
       "lastSeen": "2026-07-09"
      },
      {
       "n": 38,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 9,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 10,
       "lastSeen": "2026-07-16"
      },
      {
       "n": 39,
       "count": 7,
-      "expected": 11.3,
-      "deviation": -38.1,
-      "drawsSince": 15,
+      "expected": 11.38,
+      "deviation": -38.5,
+      "drawsSince": 16,
       "lastSeen": "2026-07-02"
      },
      {
       "n": 40,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 3,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 4,
       "lastSeen": "2026-07-30"
      },
      {
       "n": 41,
       "count": 10,
-      "expected": 11.3,
-      "deviation": -11.5,
-      "drawsSince": 1,
+      "expected": 11.38,
+      "deviation": -12.1,
+      "drawsSince": 2,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 42,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 3,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 4,
       "lastSeen": "2026-07-30"
      },
      {
       "n": 43,
       "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 12,
+      "expected": 11.38,
+      "deviation": -3.3,
+      "drawsSince": 13,
       "lastSeen": "2026-07-09"
      },
      {
       "n": 44,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 7,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 8,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 45,
       "count": 6,
-      "expected": 11.3,
-      "deviation": -46.9,
-      "drawsSince": 11,
+      "expected": 11.38,
+      "deviation": -47.3,
+      "drawsSince": 12,
       "lastSeen": "2026-07-12"
      },
      {
       "n": 46,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 4,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 5,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 47,
       "count": 14,
-      "expected": 11.3,
-      "deviation": 23.8,
-      "drawsSince": 5,
+      "expected": 11.38,
+      "deviation": 23.1,
+      "drawsSince": 6,
       "lastSeen": "2026-07-26"
      },
      {
       "n": 48,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 1,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 2,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 49,
       "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 21,
+      "expected": 11.38,
+      "deviation": -3.3,
+      "drawsSince": 22,
       "lastSeen": "2026-06-18"
      },
      {
       "n": 50,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 2,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 3,
       "lastSeen": "2026-08-02"
      },
      {
       "n": 51,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 30,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 31,
       "lastSeen": "2026-05-28"
      },
      {
       "n": 52,
       "count": 15,
-      "expected": 11.3,
-      "deviation": 32.7,
-      "drawsSince": 29,
+      "expected": 11.38,
+      "deviation": 31.8,
+      "drawsSince": 30,
       "lastSeen": "2026-05-31"
      },
      {
       "n": 53,
       "count": 16,
-      "expected": 11.3,
-      "deviation": 41.5,
-      "drawsSince": 7,
+      "expected": 11.38,
+      "deviation": 40.6,
+      "drawsSince": 8,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 54,
-      "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 1,
-      "lastSeen": "2026-08-04"
+      "count": 9,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-09"
      },
      {
       "n": 55,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 12,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 13,
       "lastSeen": "2026-07-09"
      },
      {
       "n": 56,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 8,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 9,
       "lastSeen": "2026-07-19"
      },
      {
       "n": 57,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 3,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 4,
       "lastSeen": "2026-07-30"
      },
      {
       "n": 58,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 4,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 5,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 59,
       "count": 16,
-      "expected": 11.3,
-      "deviation": 41.5,
-      "drawsSince": 0,
+      "expected": 11.38,
+      "deviation": 40.6,
+      "drawsSince": 1,
       "lastSeen": "2026-08-06"
      },
      {
       "n": 60,
       "count": 15,
-      "expected": 11.3,
-      "deviation": 32.7,
-      "drawsSince": 0,
+      "expected": 11.38,
+      "deviation": 31.8,
+      "drawsSince": 1,
       "lastSeen": "2026-08-06"
      },
      {
       "n": 61,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 0,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 1,
       "lastSeen": "2026-08-06"
      },
      {
       "n": 62,
       "count": 11,
-      "expected": 11.3,
-      "deviation": -2.7,
-      "drawsSince": 22,
+      "expected": 11.38,
+      "deviation": -3.3,
+      "drawsSince": 23,
       "lastSeen": "2026-06-16"
      },
      {
       "n": 63,
-      "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 13,
-      "lastSeen": "2026-07-07"
+      "count": 13,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-09"
      },
      {
       "n": 64,
       "count": 19,
-      "expected": 11.3,
-      "deviation": 68.1,
-      "drawsSince": 26,
+      "expected": 11.38,
+      "deviation": 67,
+      "drawsSince": 27,
       "lastSeen": "2026-06-07"
      },
      {
       "n": 65,
       "count": 13,
-      "expected": 11.3,
-      "deviation": 15,
-      "drawsSince": 4,
+      "expected": 11.38,
+      "deviation": 14.3,
+      "drawsSince": 5,
       "lastSeen": "2026-07-28"
      },
      {
       "n": 66,
       "count": 12,
-      "expected": 11.3,
-      "deviation": 6.2,
-      "drawsSince": 13,
+      "expected": 11.38,
+      "deviation": 5.5,
+      "drawsSince": 14,
       "lastSeen": "2026-07-07"
      },
      {
       "n": 67,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 13,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 14,
       "lastSeen": "2026-07-07"
      },
      {
       "n": 68,
       "count": 9,
-      "expected": 11.3,
-      "deviation": -20.4,
-      "drawsSince": 15,
+      "expected": 11.38,
+      "deviation": -20.9,
+      "drawsSince": 16,
       "lastSeen": "2026-07-02"
      },
      {
       "n": 69,
       "count": 8,
-      "expected": 11.3,
-      "deviation": -29.2,
-      "drawsSince": 14,
+      "expected": 11.38,
+      "deviation": -29.7,
+      "drawsSince": 15,
       "lastSeen": "2026-07-05"
      }
     ],
-    "expected": 11.3,
-    "chi2": 61.62,
+    "expected": 11.38,
+    "chi2": 59.44,
     "df": 68,
-    "p": 0.694,
+    "p": 0.7611,
     "biased": false
    },
    "extra": {
@@ -5425,281 +5425,281 @@
      {
       "n": 1,
       "count": 12,
-      "expected": 6,
-      "deviation": 100,
-      "drawsSince": 6,
+      "expected": 6.04,
+      "deviation": 98.7,
+      "drawsSince": 7,
       "lastSeen": "2026-07-23"
      },
      {
       "n": 2,
       "count": 9,
-      "expected": 6,
-      "deviation": 50,
-      "drawsSince": 3,
+      "expected": 6.04,
+      "deviation": 49,
+      "drawsSince": 4,
       "lastSeen": "2026-07-30"
      },
      {
       "n": 3,
       "count": 8,
-      "expected": 6,
-      "deviation": 33.3,
-      "drawsSince": 8,
+      "expected": 6.04,
+      "deviation": 32.5,
+      "drawsSince": 9,
       "lastSeen": "2026-07-19"
      },
      {
       "n": 4,
       "count": 7,
-      "expected": 6,
-      "deviation": 16.7,
-      "drawsSince": 1,
+      "expected": 6.04,
+      "deviation": 15.9,
+      "drawsSince": 2,
       "lastSeen": "2026-08-04"
      },
      {
       "n": 5,
       "count": 9,
-      "expected": 6,
-      "deviation": 50,
-      "drawsSince": 2,
+      "expected": 6.04,
+      "deviation": 49,
+      "drawsSince": 3,
       "lastSeen": "2026-08-02"
      },
      {
       "n": 6,
       "count": 6,
-      "expected": 6,
-      "deviation": 0,
-      "drawsSince": 15,
+      "expected": 6.04,
+      "deviation": -0.6,
+      "drawsSince": 16,
       "lastSeen": "2026-07-02"
      },
      {
       "n": 7,
-      "count": 3,
-      "expected": 6,
-      "deviation": -50,
-      "drawsSince": 37,
-      "lastSeen": "2026-05-12"
+      "count": 4,
+      "expected": 6.04,
+      "deviation": -33.8,
+      "drawsSince": 0,
+      "lastSeen": "2026-08-09"
      },
      {
       "n": 8,
       "count": 1,
-      "expected": 6,
-      "deviation": -83.3,
-      "drawsSince": 7,
+      "expected": 6.04,
+      "deviation": -83.4,
+      "drawsSince": 8,
       "lastSeen": "2026-07-21"
      },
      {
       "n": 9,
       "count": 1,
-      "expected": 6,
-      "deviation": -83.3,
-      "drawsSince": 142,
+      "expected": 6.04,
+      "deviation": -83.4,
+      "drawsSince": 143,
       "lastSeen": "2025-09-09"
      },
      {
       "n": 10,
       "count": 4,
-      "expected": 6,
-      "deviation": -33.3,
-      "drawsSince": 31,
+      "expected": 6.04,
+      "deviation": -33.8,
+      "drawsSince": 32,
       "lastSeen": "2026-05-26"
      },
      {
       "n": 11,
       "count": 4,
-      "expected": 6,
-      "deviation": -33.3,
-      "drawsSince": 17,
+      "expected": 6.04,
+      "deviation": -33.8,
+      "drawsSince": 18,
       "lastSeen": "2026-06-28"
      },
      {
       "n": 12,
       "count": 8,
-      "expected": 6,
-      "deviation": 33.3,
-      "drawsSince": 21,
+      "expected": 6.04,
+      "deviation": 32.5,
+      "drawsSince": 22,
       "lastSeen": "2026-06-18"
      },
      {
       "n": 13,
       "count": 4,
-      "expected": 6,
-      "deviation": -33.3,
-      "drawsSince": 19,
+      "expected": 6.04,
+      "deviation": -33.8,
+      "drawsSince": 20,
       "lastSeen": "2026-06-23"
      },
      {
       "n": 14,
       "count": 11,
-      "expected": 6,
-      "deviation": 83.3,
-      "drawsSince": 18,
+      "expected": 6.04,
+      "deviation": 82.2,
+      "drawsSince": 19,
       "lastSeen": "2026-06-25"
      },
      {
       "n": 15,
       "count": 8,
-      "expected": 6,
-      "deviation": 33.3,
-      "drawsSince": 20,
+      "expected": 6.04,
+      "deviation": 32.5,
+      "drawsSince": 21,
       "lastSeen": "2026-06-21"
      },
      {
       "n": 16,
       "count": 3,
-      "expected": 6,
-      "deviation": -50,
-      "drawsSince": 9,
+      "expected": 6.04,
+      "deviation": -50.3,
+      "drawsSince": 10,
       "lastSeen": "2026-07-16"
      },
      {
       "n": 17,
       "count": 5,
-      "expected": 6,
-      "deviation": -16.7,
-      "drawsSince": 5,
+      "expected": 6.04,
+      "deviation": -17.2,
+      "drawsSince": 6,
       "lastSeen": "2026-07-26"
      },
      {
       "n": 18,
       "count": 5,
-      "expected": 6,
-      "deviation": -16.7,
-      "drawsSince": 12,
+      "expected": 6.04,
+      "deviation": -17.2,
+      "drawsSince": 13,
       "lastSeen": "2026-07-09"
      },
      {
       "n": 19,
       "count": 5,
-      "expected": 6,
-      "deviation": -16.7,
-      "drawsSince": 96,
+      "expected": 6.04,
+      "deviation": -17.2,
+      "drawsSince": 97,
       "lastSeen": "2025-12-25"
      },
      {
       "n": 20,
       "count": 8,
-      "expected": 6,
-      "deviation": 33.3,
-      "drawsSince": 14,
+      "expected": 6.04,
+      "deviation": 32.5,
+      "drawsSince": 15,
       "lastSeen": "2026-07-05"
      },
      {
       "n": 21,
       "count": 4,
-      "expected": 6,
-      "deviation": -33.3,
-      "drawsSince": 62,
+      "expected": 6.04,
+      "deviation": -33.8,
+      "drawsSince": 63,
       "lastSeen": "2026-03-15"
      },
      {
       "n": 22,
       "count": 5,
-      "expected": 6,
-      "deviation": -16.7,
-      "drawsSince": 38,
+      "expected": 6.04,
+      "deviation": -17.2,
+      "drawsSince": 39,
       "lastSeen": "2026-05-10"
      },
      {
       "n": 23,
       "count": 10,
-      "expected": 6,
-      "deviation": 66.7,
-      "drawsSince": 22,
+      "expected": 6.04,
+      "deviation": 65.6,
+      "drawsSince": 23,
       "lastSeen": "2026-06-16"
      },
      {
       "n": 24,
       "count": 4,
-      "expected": 6,
-      "deviation": -33.3,
-      "drawsSince": 54,
+      "expected": 6.04,
+      "deviation": -33.8,
+      "drawsSince": 55,
       "lastSeen": "2026-04-02"
      },
      {
       "n": 25,
       "count": 5,
-      "expected": 6,
-      "deviation": -16.7,
-      "drawsSince": 0,
+      "expected": 6.04,
+      "deviation": -17.2,
+      "drawsSince": 1,
       "lastSeen": "2026-08-06"
      },
      {
       "n": 26,
       "count": 7,
-      "expected": 6,
-      "deviation": 16.7,
-      "drawsSince": 32,
+      "expected": 6.04,
+      "deviation": 15.9,
+      "drawsSince": 33,
       "lastSeen": "2026-05-24"
      }
     ],
-    "expected": 6,
-    "chi2": 34.33,
+    "expected": 6.04,
+    "chi2": 33.28,
     "df": 25,
-    "p": 0.101,
+    "p": 0.1242,
     "biased": false
    },
    "hot": [
     {
      "n": 28,
      "count": 20,
-     "expected": 11.3,
-     "deviation": 76.9,
-     "drawsSince": 17,
+     "expected": 11.38,
+     "deviation": 75.8,
+     "drawsSince": 18,
      "lastSeen": "2026-06-28"
     },
     {
      "n": 3,
      "count": 19,
-     "expected": 11.3,
-     "deviation": 68.1,
-     "drawsSince": 5,
+     "expected": 11.38,
+     "deviation": 67,
+     "drawsSince": 6,
      "lastSeen": "2026-07-26"
     },
     {
      "n": 64,
      "count": 19,
-     "expected": 11.3,
-     "deviation": 68.1,
-     "drawsSince": 26,
+     "expected": 11.38,
+     "deviation": 67,
+     "drawsSince": 27,
      "lastSeen": "2026-06-07"
     },
     {
      "n": 14,
      "count": 16,
-     "expected": 11.3,
-     "deviation": 41.5,
-     "drawsSince": 0,
+     "expected": 11.38,
+     "deviation": 40.6,
+     "drawsSince": 1,
      "lastSeen": "2026-08-06"
     },
     {
      "n": 16,
      "count": 16,
-     "expected": 11.3,
-     "deviation": 41.5,
-     "drawsSince": 17,
+     "expected": 11.38,
+     "deviation": 40.6,
+     "drawsSince": 18,
      "lastSeen": "2026-06-28"
     },
     {
      "n": 18,
      "count": 16,
-     "expected": 11.3,
-     "deviation": 41.5,
-     "drawsSince": 9,
+     "expected": 11.38,
+     "deviation": 40.6,
+     "drawsSince": 10,
      "lastSeen": "2026-07-16"
     },
     {
      "n": 53,
      "count": 16,
-     "expected": 11.3,
-     "deviation": 41.5,
-     "drawsSince": 7,
+     "expected": 11.38,
+     "deviation": 40.6,
+     "drawsSince": 8,
      "lastSeen": "2026-07-21"
     },
     {
      "n": 59,
      "count": 16,
-     "expected": 11.3,
-     "deviation": 41.5,
-     "drawsSince": 0,
+     "expected": 11.38,
+     "deviation": 40.6,
+     "drawsSince": 1,
      "lastSeen": "2026-08-06"
     }
    ],
@@ -5707,173 +5707,173 @@
     {
      "n": 1,
      "count": 4,
-     "expected": 11.3,
-     "deviation": -64.6,
-     "drawsSince": 29,
+     "expected": 11.38,
+     "deviation": -64.8,
+     "drawsSince": 30,
      "lastSeen": "2026-05-31"
     },
     {
      "n": 45,
      "count": 6,
-     "expected": 11.3,
-     "deviation": -46.9,
-     "drawsSince": 11,
+     "expected": 11.38,
+     "deviation": -47.3,
+     "drawsSince": 12,
      "lastSeen": "2026-07-12"
-    },
-    {
-     "n": 35,
-     "count": 6,
-     "expected": 11.3,
-     "deviation": -46.9,
-     "drawsSince": 29,
-     "lastSeen": "2026-05-31"
     },
     {
      "n": 39,
      "count": 7,
-     "expected": 11.3,
-     "deviation": -38.1,
-     "drawsSince": 15,
+     "expected": 11.38,
+     "deviation": -38.5,
+     "drawsSince": 16,
      "lastSeen": "2026-07-02"
+    },
+    {
+     "n": 35,
+     "count": 7,
+     "expected": 11.38,
+     "deviation": -38.5,
+     "drawsSince": 0,
+     "lastSeen": "2026-08-09"
     },
     {
      "n": 15,
      "count": 7,
-     "expected": 11.3,
-     "deviation": -38.1,
-     "drawsSince": 38,
+     "expected": 11.38,
+     "deviation": -38.5,
+     "drawsSince": 39,
      "lastSeen": "2026-05-10"
     },
     {
      "n": 12,
      "count": 7,
-     "expected": 11.3,
-     "deviation": -38.1,
-     "drawsSince": 12,
+     "expected": 11.38,
+     "deviation": -38.5,
+     "drawsSince": 13,
      "lastSeen": "2026-07-09"
-    },
-    {
-     "n": 9,
-     "count": 7,
-     "expected": 11.3,
-     "deviation": -38.1,
-     "drawsSince": 7,
-     "lastSeen": "2026-07-21"
     },
     {
      "n": 69,
      "count": 8,
-     "expected": 11.3,
-     "deviation": -29.2,
-     "drawsSince": 14,
+     "expected": 11.38,
+     "deviation": -29.7,
+     "drawsSince": 15,
      "lastSeen": "2026-07-05"
+    },
+    {
+     "n": 67,
+     "count": 8,
+     "expected": 11.38,
+     "deviation": -29.7,
+     "drawsSince": 14,
+     "lastSeen": "2026-07-07"
     }
    ],
    "overdue": [
     {
      "n": 23,
      "count": 8,
-     "expected": 11.3,
-     "deviation": -29.2,
-     "drawsSince": 64,
+     "expected": 11.38,
+     "deviation": -29.7,
+     "drawsSince": 65,
      "lastSeen": "2026-03-10"
     },
     {
      "n": 11,
      "count": 11,
-     "expected": 11.3,
-     "deviation": -2.7,
-     "drawsSince": 54,
+     "expected": 11.38,
+     "deviation": -3.3,
+     "drawsSince": 55,
      "lastSeen": "2026-04-02"
     },
     {
      "n": 33,
      "count": 8,
-     "expected": 11.3,
-     "deviation": -29.2,
-     "drawsSince": 43,
+     "expected": 11.38,
+     "deviation": -29.7,
+     "drawsSince": 44,
      "lastSeen": "2026-04-28"
     },
     {
      "n": 15,
      "count": 7,
-     "expected": 11.3,
-     "deviation": -38.1,
-     "drawsSince": 38,
+     "expected": 11.38,
+     "deviation": -38.5,
+     "drawsSince": 39,
      "lastSeen": "2026-05-10"
     },
     {
      "n": 51,
      "count": 13,
-     "expected": 11.3,
-     "deviation": 15,
-     "drawsSince": 30,
+     "expected": 11.38,
+     "deviation": 14.3,
+     "drawsSince": 31,
      "lastSeen": "2026-05-28"
     },
     {
      "n": 1,
      "count": 4,
-     "expected": 11.3,
-     "deviation": -64.6,
-     "drawsSince": 29,
-     "lastSeen": "2026-05-31"
-    },
-    {
-     "n": 35,
-     "count": 6,
-     "expected": 11.3,
-     "deviation": -46.9,
-     "drawsSince": 29,
+     "expected": 11.38,
+     "deviation": -64.8,
+     "drawsSince": 30,
      "lastSeen": "2026-05-31"
     },
     {
      "n": 52,
      "count": 15,
-     "expected": 11.3,
-     "deviation": 32.7,
-     "drawsSince": 29,
+     "expected": 11.38,
+     "deviation": 31.8,
+     "drawsSince": 30,
      "lastSeen": "2026-05-31"
+    },
+    {
+     "n": 32,
+     "count": 12,
+     "expected": 11.38,
+     "deviation": 5.5,
+     "drawsSince": 27,
+     "lastSeen": "2026-06-07"
     }
    ],
    "hotExtra": [
     {
      "n": 1,
      "count": 12,
-     "expected": 6,
-     "deviation": 100,
-     "drawsSince": 6,
+     "expected": 6.04,
+     "deviation": 98.7,
+     "drawsSince": 7,
      "lastSeen": "2026-07-23"
     },
     {
      "n": 14,
      "count": 11,
-     "expected": 6,
-     "deviation": 83.3,
-     "drawsSince": 18,
+     "expected": 6.04,
+     "deviation": 82.2,
+     "drawsSince": 19,
      "lastSeen": "2026-06-25"
     },
     {
      "n": 23,
      "count": 10,
-     "expected": 6,
-     "deviation": 66.7,
-     "drawsSince": 22,
+     "expected": 6.04,
+     "deviation": 65.6,
+     "drawsSince": 23,
      "lastSeen": "2026-06-16"
     },
     {
      "n": 2,
      "count": 9,
-     "expected": 6,
-     "deviation": 50,
-     "drawsSince": 3,
+     "expected": 6.04,
+     "deviation": 49,
+     "drawsSince": 4,
      "lastSeen": "2026-07-30"
     },
     {
      "n": 5,
      "count": 9,
-     "expected": 6,
-     "deviation": 50,
-     "drawsSince": 2,
+     "expected": 6.04,
+     "deviation": 49,
+     "drawsSince": 3,
      "lastSeen": "2026-08-02"
     }
    ],
@@ -5881,41 +5881,41 @@
     {
      "n": 9,
      "count": 1,
-     "expected": 6,
-     "deviation": -83.3,
-     "drawsSince": 142,
+     "expected": 6.04,
+     "deviation": -83.4,
+     "drawsSince": 143,
      "lastSeen": "2025-09-09"
     },
     {
      "n": 19,
      "count": 5,
-     "expected": 6,
-     "deviation": -16.7,
-     "drawsSince": 96,
+     "expected": 6.04,
+     "deviation": -17.2,
+     "drawsSince": 97,
      "lastSeen": "2025-12-25"
     },
     {
      "n": 21,
      "count": 4,
-     "expected": 6,
-     "deviation": -33.3,
-     "drawsSince": 62,
+     "expected": 6.04,
+     "deviation": -33.8,
+     "drawsSince": 63,
      "lastSeen": "2026-03-15"
     },
     {
      "n": 24,
      "count": 4,
-     "expected": 6,
-     "deviation": -33.3,
-     "drawsSince": 54,
+     "expected": 6.04,
+     "deviation": -33.8,
+     "drawsSince": 55,
      "lastSeen": "2026-04-02"
     },
     {
      "n": 22,
      "count": 5,
-     "expected": 6,
-     "deviation": -16.7,
-     "drawsSince": 38,
+     "expected": 6.04,
+     "deviation": -17.2,
+     "drawsSince": 39,
      "lastSeen": "2026-05-10"
     }
    ],
@@ -5923,10 +5923,10 @@
     "sum": {
      "min": 77,
      "max": 285,
-     "mean": 178.6,
-     "median": 176.5,
+     "mean": 178.5,
+     "median": 176,
      "p10": 130,
-     "p90": 228
+     "p90": 227
     },
     "span": {
      "mean": 47.7,
@@ -5936,32 +5936,32 @@
      "3/2": 48,
      "2/3": 47,
      "1/4": 32,
-     "4/1": 17,
+     "4/1": 18,
      "0/5": 6,
      "5/0": 6
     },
     "lowHigh": {
-     "2/3": 60,
+     "2/3": 61,
      "3/2": 51,
      "1/4": 24,
      "4/1": 16,
      "5/0": 3,
      "0/5": 2
     },
-    "consecutivePct": 23.7,
-    "repeatFromPrevPct": 37.4,
+    "consecutivePct": 23.6,
+    "repeatFromPrevPct": 37.2,
     "buckets": {
+     "1-9": 101,
+     "30-39": 99,
+     "50-59": 128,
+     "60-69": 120,
      "10-19": 114,
      "20-29": 110,
-     "50-59": 127,
-     "60-69": 119,
-     "1-9": 99,
-     "30-39": 98,
      "40-49": 113
     }
    },
    "pairs": {
-    "expected": 0.66,
+    "expected": 0.67,
     "top": [
      {
       "pair": [
@@ -6028,6 +6028,13 @@
      },
      {
       "pair": [
+       35,
+       63
+      ],
+      "count": 3
+     },
+     {
+      "pair": [
        14,
        59
       ],
@@ -6037,13 +6044,6 @@
       "pair": [
        17,
        48
-      ],
-      "count": 3
-     },
-     {
-      "pair": [
-       17,
-       50
       ],
       "count": 3
      }
@@ -6062,9 +6062,22 @@
     "2026-05": 13,
     "2026-06": 13,
     "2026-07": 13,
-    "2026-08": 3
+    "2026-08": 4
    },
    "recent": [
+    {
+     "date": "2026-08-09",
+     "main": [
+      5,
+      9,
+      35,
+      54,
+      63
+     ],
+     "extra": [
+      7
+     ]
+    },
     {
      "date": "2026-08-06",
      "main": [
@@ -6206,19 +6219,6 @@
      ],
      "extra": [
       3
-     ]
-    },
-    {
-     "date": "2026-07-12",
-     "main": [
-      8,
-      10,
-      14,
-      45,
-      59
-     ],
-     "extra": [
-      5
      ]
     }
    ]
