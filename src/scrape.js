@@ -12,7 +12,7 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-async function get(url, tries = 3) {
+async function get(url, tries = 5) {
   for (let i = 1; i <= tries; i++) {
     try {
       const res = await fetch(url, { headers: { 'User-Agent': UA }, redirect: 'follow' });
@@ -20,7 +20,8 @@ async function get(url, tries = 3) {
       return await res.text();
     } catch (err) {
       if (i === tries) throw err;
-      await new Promise((r) => setTimeout(r, 800 * i));
+      // back off 2s, 4s, 8s, 16s so a transient 5xx has time to clear
+      await new Promise((r) => setTimeout(r, 2000 * 2 ** (i - 1)));
     }
   }
 }
