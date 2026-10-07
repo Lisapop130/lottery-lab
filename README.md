@@ -9,10 +9,13 @@ patterns, and suggests lines to play.
 | EuroMillions | UK / EU | 5 from 50 + 2 Lucky Stars from 12 | Tue & Fri |
 | Set For Life | UK | 5 from 47 + 1 Life Ball from 10 | Mon & Thu |
 | Thunderball | UK | 5 from 39 + 1 Thunderball from 14 | Tue, Wed, Fri & Sat |
-| Powerball | US | 5 from 69 + 1 Powerball from 26 | Mon, Wed & Sat |
+| Powerball | UK / US | 5 from 69 + 1 Powerball from 26 | Tue, Thu & Sun (UK time) |
 
-> There is no UK game called Powerball — the one included here is the US draw, marked `US` in the
-> dashboard. Note that Lotto has run **two rounds per draw date** since early 2026; both are counted.
+> Powerball has been on sale in the UK since July 2026 (via Allwyn), but it is the **same drawing**
+> as the US game, not a separate UK draw, so the numbers are identical and the full 12 months of
+> history applies. It is marked `UK / US` in the dashboard. Only the prize structure for UK
+> players differs (lower tiers and jackpot payout), which does not affect the number analysis.
+> Note that Lotto has run **two rounds per draw date** since early 2026; both are counted.
 
 ## Running it
 

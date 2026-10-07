@@ -54,8 +54,10 @@ export const GAMES = [
     id: 'powerball',
     slug: 'powerball',
     name: 'Powerball',
-    region: 'US',
-    draws: 'Mon, Wed & Sat',
+    region: 'UK / US',
+    // Same drawing for both countries. Held Mon/Wed/Sat evening US time, which is
+    // early Tue/Thu/Sun in the UK, and lottery.co.uk dates each draw by UK day.
+    draws: 'Tue, Thu & Sun (UK time)',
     main: { count: 5, max: 69, label: 'Main balls' },
     extra: { count: 1, max: 26, label: 'Powerball', class: 'power' },
     ballClass: /powerball-ball/,

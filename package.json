@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Personal dashboard analysing 12 months of UK (and US Powerball) lottery draws.",
+  "description": "Personal dashboard analysing 12 months of UK (including Powerball) lottery draws.",
   "scripts": {
     "scrape": "node src/scrape.js",
     "analyse": "node src/analyse.js",

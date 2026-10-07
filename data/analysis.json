@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-05T15:34:59.914Z",
+ "generatedAt": "2026-10-07T11:22:48.369Z",
  "sourceGeneratedAt": "2026-10-05T15:34:58.826Z",
  "windowMonths": 12,
  "cutoff": "2025-10-05",
@@ -4846,8 +4846,8 @@
    "meta": {
     "id": "powerball",
     "name": "Powerball",
-    "region": "US",
-    "schedule": "Mon, Wed & Sat",
+    "region": "UK / US",
+    "schedule": "Tue, Thu & Sun (UK time)",
     "mainCount": 5,
     "mainMax": 69,
     "mainLabel": "Main balls",
